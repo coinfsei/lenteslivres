@@ -95,9 +95,14 @@ $conn = conexao_banco();
 
     $res = $conn->query($sql);
 
+    $conn->close();
+
     }
+
+    header("location: inscricao.php?cadastro=sucesso");
+    exit();
   }
 
-    $conn->close();
+   
   
 ?>

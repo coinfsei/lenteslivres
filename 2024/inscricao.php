@@ -1,5 +1,10 @@
 
+<?php 
+    if (isset($_GET['cadastro']) && $_GET['cadastro'] == 'sucesso') {
+        echo "<script>alert('Inscrição realizada com sucesso!')</script>";
+    }
 
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -17,7 +22,7 @@
     <!-- Sessão Home -->
     <?php //include('./snippets/banner.html'); ?>
 
-    <!--Galeria -->
+    <!--inscricao -->
     <?php include('./snippets/inscricao.html'); ?>
 
     <!-- Sessão dos Patrocinadores -->

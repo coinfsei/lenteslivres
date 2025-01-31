@@ -15,10 +15,10 @@
     <?php include('./snippets/navegacao-inscricao.html'); ?>
 
     <!-- Sessão Home -->
-    <?php include('./snippets/home.html'); ?>
+    <?php //include('./snippets/banner.html'); ?>
 
     <!--Galeria -->
-    <?php include('./snippets/galeria.html'); ?>
+    <?php include('./snippets/inscricao.html'); ?>
 
     <!-- Sessão dos Patrocinadores -->
     <?php include('./snippets/patrocinio.html'); ?>

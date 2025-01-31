@@ -28,6 +28,13 @@ $conn = conexao_banco();
 
     $res = $conn->query($sql);
 
+	$email_valid = "^[a-zA-Z0-9]+\@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$";
+
+	if (!preg_match($email, $email_valid)) {
+		echo "email inválido";
+		return;
+	}
+
     //comando para verificar se foi possivel envia para o banco
     if ($res) {
       // Obter o id da pessoa inserida

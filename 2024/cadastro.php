@@ -28,13 +28,6 @@ $conn = conexao_banco();
 
     $res = $conn->query($sql);
 
-	$email_valid = "^[a-zA-Z0-9]+\@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$";
-
-	if (!preg_match($email, $email_valid)) {
-		echo "email inválido";
-		return;
-	}
-
     //comando para verificar se foi possivel envia para o banco
     if ($res) {
       // Obter o id da pessoa inserida
@@ -59,38 +52,52 @@ $conn = conexao_banco();
 
     $res = $conn->query($sql);
 
+    //sistema para alteração de nome dos arquivos
 
-      //inserir no banco de dados na tabela upload
+    $caminho_comprovante = 'uploads/comprovante_residencia/';
+    $caminho_video = 'uploads/video/';
+    $caminho_declaracao = 'uploads/declaracao_de_autotoria/';
+    $caminho_indentificacao = 'uploads/indentificacao_do_candidato/';
+    $caminho_termo = 'uploads/termo_de_premiacao/';
+    
 
-      $caminho_comprovante = 'uploads/comprovante_residencia/';
-      $caminho_video = 'uploads/video/';
-
-    if ($_FILES['foto'] && $_FILES['video']){
+ if ($_FILES['foto'] && $_FILES['video'] && $_FILES['decla_autoria'] && $_FILES['identi_candi'] && $_FILES['termo_premi']){
  
-        $nome_compro = $_FILES['foto']['name'];
-        $nome_video = $_FILES['video']['name'];
+    $nome_compro = $_FILES['foto']['name'];
+    $nome_video = $_FILES['video']['name'];
+    $nome_decla_autoria = $_FILES['decla_autoria']['name'];
+    $nome_identi_candi = $_FILES['identi_candi']['name'];
+    $nome_termo_premi = $_FILES['termo_premi']['name'];
 
-        //alteração do nome
+    $altera_n_video = "id_".$id_inscrito."_Nome_".$nome."_video";
+    $altera_n_compro ="id_".$id_inscrito."_Nome_".$nome."_compro_residencia";
+    $altera_n_decla = "id_".$id_inscrito."_Nome_".$nome."_decla_autoria";
+    $altera_n_identi = "id_".$id_inscrito."_Nome_".$nome."_identi_candi";
+    $altera_n_termo = "id_".$id_inscrito."_Nome_".$nome."_termo_premi";
 
-        $altera_n_video = "id_".$id_inscrito."_Nome_".$nome."_video";
-        $altera_n_compro ="id_".$id_inscrito."_Nome_".$nome."_compro_residencia";
+    $novovideo = $altera_n_video .'.'. pathinfo($nome_video, PATHINFO_EXTENSION);
+    $novocompro = $altera_n_compro .'.'. pathinfo($nome_compro, PATHINFO_EXTENSION);
+    $novodecla = $altera_n_decla .'.'. pathinfo($nome_decla_autoria, PATHINFO_EXTENSION);
+    $novoidenti = $altera_n_identi .'.'. pathinfo($nome_identi_candi, PATHINFO_EXTENSION);
+    $novotermo = $altera_n_termo .'.'. pathinfo($nome_termo_premi, PATHINFO_EXTENSION);
 
-        $novovideo = $altera_n_video .'.'. pathinfo($nome_video, PATHINFO_EXTENSION);
-        $novocompro = $altera_n_compro .'.'. pathinfo($nome_compro, PATHINFO_EXTENSION);
+    $caminho_video = $caminho_video . $novovideo;
+    $caminho_compro = $caminho_comprovante . $novocompro;
+    $caminho_decla = $caminho_declaracao . $novodecla;
+    $caminho_identi = $caminho_indentificacao . $novoidenti;
+    $caminho_termo = $caminho_termo . $novotermo;
 
-        $caminho_video = $caminho_video . $novovideo;
-        $caminho_compro = $caminho_comprovante . $novocompro;
+    }
 
-// salva arquivo no diretorio correspondente a cada arquivo
+       if(move_uploaded_file($_FILES['foto']['tmp_name'], $caminho_compro) && move_uploaded_file($_FILES['video']['tmp_name'], $caminho_video) && move_uploaded_file($_FILES['decla_autoria']['tmp_name'], $caminho_decla)  && move_uploaded_file($_FILES['identi_candi']['tmp_name'], $caminho_identi) && move_uploaded_file($_FILES['termo_premi']['tmp_name'], $caminho_termo)){
 
-       if(move_uploaded_file($_FILES['foto']['tmp_name'], $caminho_compro) && move_uploaded_file($_FILES['video']['tmp_name'], $caminho_video)){
-
-       $sql = "INSERT INTO upload (compro_resi, video_arquivo, id_inscrito, local_compro, local_video) VALUES ('{$novocompro}', '{$novovideo}', '{$id_inscrito}', '{$caminho_compro}', '{$caminho_video}')";
+       $sql = "INSERT INTO upload (compro_resi, video_arquivo, decla_autoria_arquivo, identi_candi_arquivo, quali_participes_arquivo, id_inscrito, local_compro, local_video, local_decla_autoria, local_identi_candi, local_quali_participes) VALUES ('{$novocompro}','{$novovideo}','{$novodecla}','{$novoidenti}','{ $novotermo}','{$id_inscrito}', '{$caminho_compro}','{$caminho_video}','{$caminho_decla}','{$caminho_identi}','{$caminho_termo}')";
 
     $res = $conn->query($sql);
+
     }
   }
 
-    }
     $conn->close();
+  
 ?>

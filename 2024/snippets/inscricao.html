@@ -1,0 +1,125 @@
+<section id="inscricao" class="bg-light">
+    <div class="box flex container">
+        <div class="coluna">
+
+            <!--formulario de coletadas de dados-->
+    <div class="container mt-5 container-form">
+        <header><h1>Formulario de envio</h1></header>
+    
+        <form action="cadastro.php" method="post" enctype="multipart/form-data">
+    
+            <div class="mb-3">
+                <label for="nome" >Nome Completo:</label>
+                <input type="text" name="nome" id="">
+            </div>
+    
+            <div class="mb-3">
+                <label for="profissao">Profissão:</label>
+                <input type="text" name="profissao" id="">
+            </div>
+    
+            <div class="mb-3">
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" id="">
+            </div>
+    
+            <div class="mb-3">
+                <label for="cpf">CPF:</label>
+                <input type="number" name="cpf" id="">
+            </div>
+    
+            <div class="mb-3">
+                <label for="rg">RG:</label>
+                <input type="number" name="rg" id="">
+            </div>
+    
+            <div class="mb-3">
+                <label for="orgao_expedidor">Órgão Expedidor:</label>
+                <input type="text" name="orgao_expedidor" id="">
+            </div>
+    
+            <div class="mb-3">
+                <label for="telefone_1">telefone 1:</label>
+                <input type="number" name="telefone_1" id="">
+            </div>
+      
+    
+            <div class="mb-3">
+                <label for="telefone_2">telefone 2:</label>
+                <input type="number" name="telefone_2" id="">
+            </div>
+    
+            <strong>
+                <p style="font-size: medium;">Endereço</p>
+            </strong>
+    
+            <div class="mb-3">
+                <label for="rua">Rua:</label>
+                <input type="text" name="rua" id="">
+            </div>
+    
+            <div class="mb-3">
+                <label for="bairro">Bairro:</label>
+                <input type="text" name="bairro" id="">
+            </div>
+    
+            <div class="mb-3">
+                <label for="cidade">Cidade:</label>
+                <input type="text" name="cidade" id="">
+            </div>
+    
+            <div class="mb-3">
+                <label for="cep">CEP:</label>
+                <input type="text" name="cep" id="">
+            </div>
+    
+            <div class="mb-3">
+                <label for="uf">UF:</label>
+                <input type="text" name="uf" id="">
+            </div>
+    
+            <strong>
+                <p style="font-size: medium;">Dados Bancarios</p>
+            </strong>
+    
+            <div class="mb-3">
+                <label for="agencia">Agencia Nº:</label>
+                <input type="number" name="agencia" id="">
+            </div>
+      
+    
+            <div class="mb-3">
+                <label for="conta_bancaria">Conta Bancaria Nº:</label>
+                <input type="number" name="conta_bancaria" id="">
+            </div>
+    
+            <div class="mb-3">
+                <label for="tipo_conta">Tipo da Conta:</label>
+                <input type="text" name="tipo_conta" id="">
+            </div>
+            
+            <div class="mb-3">
+                <label for="pis_nit">PIS/NIT:</label>
+                <input type="number" name="pis_nit" id="">
+            </div> 
+                <strong>
+            <p style="font-size: medium;">Enviar comprovante de residencia</p>
+                </strong>
+                <Label for="file"></Label>
+                <input type="file" name="foto" id="foto" required>
+    
+                <strong>
+            <p style="font-size: medium;">Enviar Video</p>
+                </strong>
+                <Label for="file"></Label>
+                <input type="file" name="video" id="video" required>
+    
+    
+              <input type="submit" value="Enviar formulario">
+    
+    
+        </form>
+         
+        </div>
+       
+</section>

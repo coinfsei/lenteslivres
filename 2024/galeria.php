@@ -9,7 +9,7 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="70">
 
     <!-- Barra de Navegação -->
-    <?php include('./snippets/navegacao-galeria.html'); ?>
+    <?php include('./snippets/navegacao-inscricao.html'); ?>
 
     <!-- Sessão Home -->
     <?php include('./snippets/home.html'); ?>

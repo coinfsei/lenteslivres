@@ -11,8 +11,8 @@
     <!-- Barra de Navegação -->
     <?php include('./snippets/navegacao.html'); ?>
 
-    <!-- Sessão Home -->
-    <?php include('./snippets/home.html'); ?>
+    <!-- Sessão Banner -->
+    <?php include('./snippets/banner.html'); ?>
 
     <!-- Sessão Sobre -->
     <?php include('./snippets/sobre.html'); ?>

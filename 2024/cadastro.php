@@ -26,6 +26,13 @@ $conn = conexao_banco();
 
     $sql = "INSERT INTO inscrito (nome, profissao, cpf, rg, org_expedidor, email) VALUES ('{$nome}', '{$profissao}', '{$cpf}', '{$rg}', '{$orgao_expedidor}', '{$email}')";
 
+	$email_valid = "/[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+/";
+
+	if (!preg_match($email_valid, $email)) {
+		header("location: inscricao.php?cadastro=email_invalido");
+		return;
+	}
+
     $res = $conn->query($sql);
 
     //comando para verificar se foi possivel envia para o banco

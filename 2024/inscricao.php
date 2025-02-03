@@ -1,8 +1,12 @@
 
 <?php 
-    if (isset($_GET['cadastro']) && $_GET['cadastro'] == 'sucesso') {
-        echo "<script>alert('Inscrição realizada com sucesso!')</script>";
-    }
+    if (isset($_GET['cadastro'])) {
+		if ($_GET['cadastro'] == 'sucesso') 
+			echo "<script>alert('Inscrição realizada com sucesso!')</script>";
+		if ($_GET['cadastro'] == 'email_invalido') 
+			echo "<script>alert('Email inválido!')</script>";
+    } 
+	
 
 ?>
 

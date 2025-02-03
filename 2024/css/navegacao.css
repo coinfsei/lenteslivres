@@ -22,7 +22,13 @@
 	flex-wrap: wrap !important;
     justify-content: space-between !important;
 	display: flex;
-	width: fit-content; /* allows margin auto to center */
+	width: 100%; /* allows margin auto to center */
+	max-width: 1405px;
+	margin: auto;
+}
+
+.navbar .gap {
+	flex: 1; 
 	margin: auto;
 }
 
@@ -56,7 +62,7 @@
 }
 
 #navbarNav {
-/*     justify-content: flex-end; */
+     justify-content: flex-end;
 }
 
 #botao-home {

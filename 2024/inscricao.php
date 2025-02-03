@@ -1,12 +1,21 @@
 
-<?php 
-    if (isset($_GET['cadastro'])) {
-		if ($_GET['cadastro'] == 'sucesso') 
-			echo "<script>alert('Inscrição realizada com sucesso!')</script>";
-		if ($_GET['cadastro'] == 'email_invalido') 
-			echo "<script>alert('Email inválido!')</script>";
-    } 
-	
+<?php
+
+        switch ($_GET['cadastro']) {
+
+            case "sucesso":
+
+                echo "<script>alert('Inscrição realizada com sucesso!')</script>";
+                
+                break;
+
+            case "falha":
+
+                    echo "<script>alert('Inscrição não foi possivel ser realizada!,verifique os arquivos enviados!')</script>";
+                    
+                
+                break;
+        }
 
 ?>
 

@@ -22,6 +22,80 @@ $conn = conexao_banco();
     $pis_nit = $_POST["pis_nit"];
     $telefone_2 = $_POST["telefone_2"];
 
+    //coleta e validação de arquivos
+    if ($_FILES['foto'] && $_FILES['video'] && $_FILES['decla_autoria'] && $_FILES['identi_candi'] && $_FILES['termo_premi']){
+ 
+      $nome_compro = $_FILES['foto']['name'];
+      $nome_video = $_FILES['video']['name'];
+      $nome_decla_autoria = $_FILES['decla_autoria']['name'];
+      $nome_identi_candi = $_FILES['identi_candi']['name'];
+      $nome_termo_premi = $_FILES['termo_premi']['name'];
+
+      //extensoes permitidas
+
+      $extencao_foto =['jpeg','jpg','png','pdf'];
+      $extencao_video =['mp4'];
+      $extencao_arquivo =['pdf'];
+
+      $cole_extencao_compro= strtolower(pathinfo($nome_compro, PATHINFO_EXTENSION));
+      $cole_extencao_video= strtolower(pathinfo($nome_video, PATHINFO_EXTENSION));
+      $cole_extencao_decla= strtolower(pathinfo($nome_decla_autoria, PATHINFO_EXTENSION));
+      $cole_extencao_identi= strtolower(pathinfo($nome_identi_candi, PATHINFO_EXTENSION));
+      $cole_extencao_termo= strtolower(pathinfo($nome_termo_premi, PATHINFO_EXTENSION));
+
+      //verifica se os uploads possuem as extensões permitidas
+
+      if(!in_array($cole_extencao_compro,$extencao_foto)){
+
+         header("location: inscricao.php?cadastro=falha");
+          exit();
+         
+      }
+
+      if(!in_array($cole_extencao_video,$extencao_video)){
+
+         header("location: inscricao.php?cadastro=falha");
+          exit();
+         
+      }
+
+      if(!in_array($cole_extencao_decla,$extencao_arquivo)){
+
+         header("location: inscricao.php?cadastro=falha");
+          exit();
+         
+      }
+
+      if(!in_array($cole_extencao_identi,$extencao_arquivo)){
+
+         header("location: inscricao.php?cadastro=falha");
+          exit();
+         
+      }
+
+      if(!in_array($cole_extencao_termo,$extencao_arquivo)){
+
+         header("location: inscricao.php?cadastro=falha");
+          exit();
+         
+      }
+   
+      $novovideo = "id_".$id_inscrito."_Nome_".$nome."_video".'.'. pathinfo($nome_video, PATHINFO_EXTENSION);
+      $novocompro ="id_".$id_inscrito."_Nome_".$nome."_compro_residencia" .'.'. pathinfo($nome_compro, PATHINFO_EXTENSION);
+      $novodecla = "id_".$id_inscrito."_Nome_".$nome."_decla_autoria" .'.'. pathinfo($nome_decla_autoria, PATHINFO_EXTENSION);
+      $novoidenti= "id_".$id_inscrito."_Nome_".$nome."_identi_candi" .'.'. pathinfo($nome_identi_candi, PATHINFO_EXTENSION);
+      $novotermo = "id_".$id_inscrito."_Nome_".$nome."_termo_premi" .'.'. pathinfo($nome_termo_premi, PATHINFO_EXTENSION);
+
+
+  
+      $caminho_video = 'uploads/video/' . $novovideo;
+      $caminho_compro = 'uploads/comprovante_residencia/' . $novocompro;
+      $caminho_decla = 'uploads/declaracao_de_autotoria/' . $novodecla;
+      $caminho_identi = 'uploads/indentificacao_do_candidato/' . $novoidenti;
+      $caminho_termo = 'uploads/termo_de_premiacao/' . $novotermo;
+  
+      }
+
 //inserir no banco de dados na tabela inscrito
 
     $sql = "INSERT INTO inscrito (nome, profissao, cpf, rg, org_expedidor, email) VALUES ('{$nome}', '{$profissao}', '{$cpf}', '{$rg}', '{$orgao_expedidor}', '{$email}')";
@@ -55,46 +129,19 @@ $conn = conexao_banco();
 
      //inserir no banco de dados na tabela endereco
 
+     
+     
+
      $sql = "INSERT INTO endereco (rua, bairro, cidade, cep, uf, id_inscrito) VALUES ('{$rua}', '{$bairro}', '{$cidade}', '{$cep}', '{$uf}', '{$id_inscrito}')";
 
     $res = $conn->query($sql);
 
-    //sistema para alteração de nome dos arquivos
-
-    $caminho_comprovante = 'uploads/comprovante_residencia/';
-    $caminho_video = 'uploads/video/';
-    $caminho_declaracao = 'uploads/declaracao_de_autotoria/';
-    $caminho_indentificacao = 'uploads/indentificacao_do_candidato/';
-    $caminho_termo = 'uploads/termo_de_premiacao/';
-    
-
- if ($_FILES['foto'] && $_FILES['video'] && $_FILES['decla_autoria'] && $_FILES['identi_candi'] && $_FILES['termo_premi']){
- 
-    $nome_compro = $_FILES['foto']['name'];
-    $nome_video = $_FILES['video']['name'];
-    $nome_decla_autoria = $_FILES['decla_autoria']['name'];
-    $nome_identi_candi = $_FILES['identi_candi']['name'];
-    $nome_termo_premi = $_FILES['termo_premi']['name'];
-
-    $altera_n_video = "id_".$id_inscrito."_Nome_".$nome."_video";
-    $altera_n_compro ="id_".$id_inscrito."_Nome_".$nome."_compro_residencia";
-    $altera_n_decla = "id_".$id_inscrito."_Nome_".$nome."_decla_autoria";
-    $altera_n_identi = "id_".$id_inscrito."_Nome_".$nome."_identi_candi";
-    $altera_n_termo = "id_".$id_inscrito."_Nome_".$nome."_termo_premi";
-
-    $novovideo = $altera_n_video .'.'. pathinfo($nome_video, PATHINFO_EXTENSION);
-    $novocompro = $altera_n_compro .'.'. pathinfo($nome_compro, PATHINFO_EXTENSION);
-    $novodecla = $altera_n_decla .'.'. pathinfo($nome_decla_autoria, PATHINFO_EXTENSION);
-    $novoidenti = $altera_n_identi .'.'. pathinfo($nome_identi_candi, PATHINFO_EXTENSION);
-    $novotermo = $altera_n_termo .'.'. pathinfo($nome_termo_premi, PATHINFO_EXTENSION);
-
-    $caminho_video = $caminho_video . $novovideo;
-    $caminho_compro = $caminho_comprovante . $novocompro;
-    $caminho_decla = $caminho_declaracao . $novodecla;
-    $caminho_identi = $caminho_indentificacao . $novoidenti;
-    $caminho_termo = $caminho_termo . $novotermo;
-
-    }
+   //altera nome dos arquivos
+      $novovideo = "id_".$id_inscrito."_Nome_".$nome."_video".'.'. pathinfo($nome_video, PATHINFO_EXTENSION);
+      $novocompro ="id_".$id_inscrito."_Nome_".$nome."_compro_residencia" .'.'. pathinfo($nome_compro, PATHINFO_EXTENSION);
+      $novodecla = "id_".$id_inscrito."_Nome_".$nome."_decla_autoria" .'.'. pathinfo($nome_decla_autoria, PATHINFO_EXTENSION);
+      $novoidenti= "id_".$id_inscrito."_Nome_".$nome."_identi_candi" .'.'. pathinfo($nome_identi_candi, PATHINFO_EXTENSION);
+      $novotermo = "id_".$id_inscrito."_Nome_".$nome."_termo_premi" .'.'. pathinfo($nome_termo_premi, PATHINFO_EXTENSION);
 
        if(move_uploaded_file($_FILES['foto']['tmp_name'], $caminho_compro) && move_uploaded_file($_FILES['video']['tmp_name'], $caminho_video) && move_uploaded_file($_FILES['decla_autoria']['tmp_name'], $caminho_decla)  && move_uploaded_file($_FILES['identi_candi']['tmp_name'], $caminho_identi) && move_uploaded_file($_FILES['termo_premi']['tmp_name'], $caminho_termo)){
 
@@ -105,7 +152,7 @@ $conn = conexao_banco();
     $conn->close();
 
     }
-
+    
     header("location: inscricao.php?cadastro=sucesso");
     exit();
   }

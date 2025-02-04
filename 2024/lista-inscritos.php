@@ -31,6 +31,7 @@ $conn = conexao_banco();
     u.identi_candi_arquivo,
     u.quali_participes_arquivo,
     u.local_compro,
+    u.local_documento,
     u.local_video,
     u.local_decla_autoria,
     u.local_identi_candi,
@@ -74,7 +75,8 @@ LEFT JOIN
             echo "Agencia: {$arquivo['agencia']}<br>";
             echo "Conta Bancaria: {$arquivo['tipo_conta']}<br>";
             echo "PIS/NIT: {$arquivo['pis_nit']}<br>";
-            echo "<a href='{$arquivo['local_compro']}' target='_blank'>Comprovante</a><br>";;
+            echo "<a href='{$arquivo['local_documento']}' target='_blank'>Documento</a><br>";
+            echo "<a href='{$arquivo['local_compro']}' target='_blank'>Comprovante</a><br>";
             echo "<a href='{$arquivo['local_video']}' target='_blank'>Vídeo</a><br>";
             echo "<a href='{$arquivo['local_decla_autoria']}' target='_blank'>Declaração de autotoria e residencia</a><br>";
             echo "<a href='{$arquivo['local_identi_candi']}' target='_blank'>Indentificação do candidato e da proposta</a><br>";

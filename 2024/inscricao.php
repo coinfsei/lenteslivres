@@ -1,6 +1,8 @@
 
 <?php
 
+ini_set('display_errors', 'Off');
+
         switch ($_GET['cadastro']) {
 
             case "sucesso":
@@ -12,10 +14,10 @@
             case "falha":
 
                     echo "<script>alert('Inscrição não foi possivel ser realizada!,verifique os arquivos enviados!')</script>";
-                    
-                
-                break;
+                    break;
+
         }
+
 
 ?>
 

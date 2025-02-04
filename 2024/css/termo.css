@@ -1,12 +1,13 @@
 .box-termo{
-	background-color: #f8F9FA ;
-	padding: 40px 30px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 0px;
+	padding-right: 0px;
 	height: auto;
 	color: black;
 }
 
 .termo-forma{
-
 	margin-bottom: 0px;
 }
 

@@ -21,6 +21,7 @@ $conn = conexao_banco();
     $tipo_conta = $_POST["tipo_conta"];
     $pis_nit = $_POST["pis_nit"];
     $telefone_2 = $_POST["telefone_2"];
+    $proposta = $_POST["proposta"];
 
     //coleta e validação de arquivos
     if ($_FILES['foto'] && $_FILES['video'] && $_FILES['decla_autoria'] && $_FILES['identi_candi'] && $_FILES['termo_premi']){
@@ -93,7 +94,7 @@ $conn = conexao_banco();
 
 //inserir no banco de dados na tabela inscrito
 
-    $sql = "INSERT INTO inscrito (nome, profissao, cpf, rg, org_expedidor, email) VALUES ('{$nome}', '{$profissao}', '{$cpf}', '{$rg}', '{$orgao_expedidor}', '{$email}')";
+    $sql = "INSERT INTO inscrito (nome, profissao, cpf, rg, org_expedidor, email, proposta_intervecao) VALUES ('{$nome}', '{$profissao}', '{$cpf}', '{$rg}', '{$orgao_expedidor}', '{$email}', '{$proposta}')";
 
 	$email_valid = "/[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+/";
 

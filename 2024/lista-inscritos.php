@@ -57,30 +57,37 @@ LEFT JOIN
         // Transformar os resultados em um array
         $dados = $result->fetch_all(MYSQLI_ASSOC);
         foreach ($dados as $arquivo) {
-            echo "ID: {$arquivo['id_inscrito']}<br>";
-            echo "Nome: {$arquivo['nome_inscrito']}<br>";
-            echo "Profissão: {$arquivo['profissao']}<br>";
-            echo "CPF: {$arquivo['cpf']}<br>";
-            echo "RG: {$arquivo['rg']}<br>";
-            echo "Órgão Expedidor: {$arquivo['org_expedidor']}<br>";
-            echo "E-mail: {$arquivo['email']}<br>";
-            echo "Data inscrição: {$arquivo['data_inscricao']}<br>";
-            echo "Telefone 1: {$arquivo['telefone_1']}<br>";
-            echo "Telefone 2: {$arquivo['telefone_2']}<br>";
-            echo "Rua: {$arquivo['rua']}<br>";
-            echo "Bairro: {$arquivo['bairro']}<br>";
-            echo "Cidade: {$arquivo['cidade']}<br>";
-            echo "CEP: {$arquivo['cep']}<br>";
-            echo "UF: {$arquivo['uf']}<br>";
-            echo "Agencia: {$arquivo['agencia']}<br>";
-            echo "Conta Bancaria: {$arquivo['tipo_conta']}<br>";
+            echo "<table class='table table-dark table-hover'>";
+            echo "<tr>";
+            echo "<th>ID: {$arquivo['id_inscrito']}</th>";
+            echo "<th>Nome: {$arquivo['nome_inscrito']}</th>";
+            echo "</td>";
+            echo "<tbody>";
+            echo "<td>Profissão: {$arquivo['profissao']}</td>";
+            echo "<td>CPF: {$arquivo['cpf']}</td>";
+            echo "<td>RG: {$arquivo['rg']}</td>";
+            echo "<td>Órgão Expedidor: {$arquivo['org_expedidor']}</td>";
+            echo "<td>E-mail: {$arquivo['email']}</td>";
+            echo "<td>Data inscrição: {$arquivo['data_inscricao']}</td>";
+            echo "<td>Telefone 1: {$arquivo['telefone_1']}</td>";
+            echo "<td>Telefone 2: {$arquivo['telefone_2']}</td>";
+            echo "<td>Rua: {$arquivo['rua']}</td>";
+            echo "<td>Bairro: {$arquivo['bairro']}</td>";
+            echo "<td>Cidade: {$arquivo['cidade']}</td>";
+            echo "<td>CEP: {$arquivo['cep']}</td>";
+            echo "<td>UF: {$arquivo['uf']}</td>";
+            echo "<td>Agencia: {$arquivo['agencia']}</td>";
+            echo "<td>Conta Bancaria: {$arquivo['tipo_conta']}</td>";
             echo "PIS/NIT: {$arquivo['pis_nit']}<br>";
+            echo "<td>Titulo da Proposta de intervenção:<br>{$arquivo['Proposta_intervecao']}</td>";
+            echo "</tbody>";
             echo "<a href='{$arquivo['local_documento']}' target='_blank'>Documento</a><br>";
             echo "<a href='{$arquivo['local_compro']}' target='_blank'>Comprovante</a><br>";
             echo "<a href='{$arquivo['local_video']}' target='_blank'>Vídeo</a><br>";
             echo "<a href='{$arquivo['local_decla_autoria']}' target='_blank'>Declaração de autotoria e residencia</a><br>";
             echo "<a href='{$arquivo['local_identi_candi']}' target='_blank'>Indentificação do candidato e da proposta</a><br>";
             echo "<a href='{$arquivo['local_quali_participes']}' target='_blank'>Termo de premiacão e cessão de direitos patrimoniais e de imagem</a><br>";
+            echo "</table>";
             echo "<hr>";
         }
     } else {

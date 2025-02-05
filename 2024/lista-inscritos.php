@@ -14,6 +14,7 @@ $conn = conexao_banco();
     i.org_expedidor,
     i.email,
     i.data_inscricao,
+    i.proposta_intervecao,
     t.telefone_1,
     t.telefone_2,
     e.rua,
@@ -79,7 +80,7 @@ LEFT JOIN
             echo "<td>Agencia: {$arquivo['agencia']}</td>";
             echo "<td>Conta Bancaria: {$arquivo['tipo_conta']}</td>";
             echo "PIS/NIT: {$arquivo['pis_nit']}<br>";
-            echo "<td>Titulo da Proposta de intervenção:<br>{$arquivo['Proposta_intervecao']}</td>";
+            echo "Titulo da Proposta de intervenção: {$arquivo['proposta_intervecao']}<br>";
             echo "</tbody>";
             echo "<a href='{$arquivo['local_documento']}' target='_blank'>Documento</a><br>";
             echo "<a href='{$arquivo['local_compro']}' target='_blank'>Comprovante</a><br>";

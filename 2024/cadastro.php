@@ -22,86 +22,33 @@ $conn = conexao_banco();
     $pis_nit = $_POST["pis_nit"];
     $telefone_2 = $_POST["telefone_2"];
     $proposta = $_POST["proposta"];
+    $nome_compro = $_FILES['foto']['name'];
+    $nome_video = $_FILES['video']['name'];
+    $nome_identidade = $_FILES['identidade']['name'];
+    $nome_decla_autoria = $_FILES['decla_autoria']['name'];
+    $nome_identi_candi = $_FILES['identi_candi']['name'];
+    $nome_termo_premi = $_FILES['termo_premi']['name'];
 
     //coleta e validação de arquivos
-    if ($_FILES['foto'] && $_FILES['video'] && $_FILES['decla_autoria'] && $_FILES['identi_candi'] && $_FILES['termo_premi']){
- 
-      $nome_compro = $_FILES['foto']['name'];
-      $nome_video = $_FILES['video']['name'];
-      $nome_identidade = $_FILES['identidade']['name'];
-      $nome_decla_autoria = $_FILES['decla_autoria']['name'];
-      $nome_identi_candi = $_FILES['identi_candi']['name'];
-      $nome_termo_premi = $_FILES['termo_premi']['name'];
 
-      //extensoes permitidas
+      validar_foto($nome_compro);
+      validar_foto($nome_identidade);
+      validar_video($nome_video);
+      validar_arquivo($nome_decla_autoria);
+      validar_arquivo($nome_identi_candi);
+      validar_arquivo($nome_termo_premi);
 
-      $extencao_foto =['jpeg','jpg','png','pdf'];
-      $extencao_video =['mp4'];
-      $extencao_arquivo =['pdf'];
-
-      $cole_extencao_compro= strtolower(pathinfo($nome_compro, PATHINFO_EXTENSION));
-      $cole_extencao_video= strtolower(pathinfo($nome_video, PATHINFO_EXTENSION));
-      $cole_extencao_decla= strtolower(pathinfo($nome_decla_autoria, PATHINFO_EXTENSION));
-      $cole_extencao_identi= strtolower(pathinfo($nome_identi_candi, PATHINFO_EXTENSION));
-      $cole_extencao_termo= strtolower(pathinfo($nome_termo_premi, PATHINFO_EXTENSION));
-      $cole_extencao_identidade = strtolower(pathinfo($nome_identidade, PATHINFO_EXTENSION));
-
-      //verifica se os uploads possuem as extensões permitidas
-
-      if(!in_array($cole_extencao_compro,$extencao_foto)){
-
-         header("location: inscricao.php?cadastro=falha");
-          exit();
-         
-      }
-
-      if(!in_array($cole_extencao_video,$extencao_video)){
-
-         header("location: inscricao.php?cadastro=falha");
-          exit();
-         
-      }
-
-      if(!in_array($cole_extencao_decla,$extencao_arquivo)){
-
-         header("location: inscricao.php?cadastro=falha");
-          exit();
-         
-      }
-
-      if(!in_array($cole_extencao_identi,$extencao_arquivo)){
-
-         header("location: inscricao.php?cadastro=falha");
-          exit();
-         
-      }
-
-      if(!in_array($cole_extencao_termo,$extencao_arquivo)){
-
-         header("location: inscricao.php?cadastro=falha");
-          exit();
-         
-      }
-
-      if(!in_array($cole_extencao_identidade,$extencao_foto)){
-
-        header("location: inscricao.php?cadastro=falha");
-         exit();
-        
-     }
-  
-      }
-
-//inserir no banco de dados na tabela inscrito
-
-    $sql = "INSERT INTO inscrito (nome, profissao, cpf, rg, org_expedidor, email, proposta_intervecao) VALUES ('{$nome}', '{$profissao}', '{$cpf}', '{$rg}', '{$orgao_expedidor}', '{$email}', '{$proposta}')";
-
-	$email_valid = "/[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+/";
-
+    //verifica se os uploads possuem as extensões permitidas   
+    
+    $email_valid = "/[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+/";
 	if (!preg_match($email_valid, $email)) {
 		header("location: inscricao.php?cadastro=email_invalido");
 		return;
 	}
+
+//inserir no banco de dados na tabela inscrito
+
+    $sql = "INSERT INTO inscrito (nome, profissao, cpf, rg, org_expedidor, email, proposta_intervecao) VALUES ('{$nome}', '{$profissao}', '{$cpf}', '{$rg}', '{$orgao_expedidor}', '{$email}', '{$proposta}')";
 
     $res = $conn->query($sql);
 
@@ -139,7 +86,7 @@ $conn = conexao_banco();
 
       $caminho_video = 'uploads/video/' . $novovideo;
       $caminho_compro = 'uploads/comprovante_residencia/' . $novocompro;
-      $caminho_decla = 'uploads/declaracao_de_autotoria/' . $novodecla;
+      $caminho_decla = 'uploads/declaracao_de_autoria/' . $novodecla;
       $caminho_identi = 'uploads/indentificacao_do_candidato/' . $novoidenti;
       $caminho_termo = 'uploads/termo_de_premiacao/' . $novotermo;
       $caminho_identidade ='uploads/docu_identidade/' . $novoidentidade;

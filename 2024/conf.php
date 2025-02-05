@@ -14,7 +14,44 @@ function conexao_banco(){
     }
     return $conn;
     };
+
+    function validar_foto($foto){
+
+        $extencao =['jpeg','jpg','png','pdf'];
+
+        $testa_extencao = strtolower(pathinfo($foto, PATHINFO_EXTENSION));
+
+        if(!in_array($testa_extencao,$extencao)){
+
+            header("location: inscricao.php?cadastro=falha");
+            exit();
+        }
+    }
+
+    function validar_video($video){
+
+        $extencao =['mp4'];
+
+        $testa_extencao = strtolower(pathinfo($video, PATHINFO_EXTENSION));
+
+        if(!in_array($testa_extencao,$extencao)){
+
+            header("location: inscricao.php?cadastro=falha");
+            exit();
+        }
+    }
+
+    function validar_arquivo($arquivo){
+
+        $extencao =['pdf'];
+
+        $testa_extencao = strtolower(pathinfo($arquivo, PATHINFO_EXTENSION));
+
+        if(!in_array($testa_extencao,$extencao)){
+
+            header("location: inscricao.php?cadastro=falha");
+            exit();
+        }
+    } 
     
-
-
     ?>

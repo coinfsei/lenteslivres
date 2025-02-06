@@ -23,7 +23,7 @@ function conexao_banco(){
 
         if(!in_array($testa_extencao,$extencao)){
 
-            header("location: inscricao.php?cadastro=falha");
+            header("location: inscricao.php?cadastro=arquivo_invalido");
             exit();
         }
     }
@@ -36,7 +36,7 @@ function conexao_banco(){
 
         if(!in_array($testa_extencao,$extencao)){
 
-            header("location: inscricao.php?cadastro=falha");
+            header("location: inscricao.php?cadastro=arquivo_invalido");
             exit();
         }
     }
@@ -49,7 +49,7 @@ function conexao_banco(){
 
         if(!in_array($testa_extencao,$extencao)){
 
-            header("location: inscricao.php?cadastro=falha");
+            header("location: inscricao.php?cadastro=arquivo_invalido");
             exit();
         }
     } 

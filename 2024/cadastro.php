@@ -40,6 +40,40 @@ $conn = conexao_banco();
 
     //verifica se os uploads possuem as extensões permitidas   
     
+	$name_valid = "/[a-zA-Z0-9]+([a-zA-Z0-9]|(\ [a-zA-Z0-9]+)*)*/";
+	if (!preg_match($name_valid, $name)) {
+		header("location: inscricao.php?cadastro=nome_invalido");
+		return;
+	}
+	
+	if (!preg_match($name_valid, $profissao)) {
+		header("location: inscricao.php?cadastro=profissao_invalida");
+		return;
+	}
+	
+	$cpf = preg_replace( '/[^0-9]/is', '', $cpf );
+	
+	$cpf_valid = "/[0-9]{11}/";
+	
+	if (!preg_match($cpf_valid, $cpf)) {
+		header("location: inscricao.php?cadastro=cpf_invalido");
+		return;
+	} else if (preg_match('/(\d)\1{10}/', $cpf)) {
+		header("location: inscricao.php?cadastro=cpf_invalido");
+        return;
+	} else {
+		for ($t = 9; $t < 11; $t++) {
+        for ($d = 0, $c = 0; $c < $t; $c++) {
+            $d += $cpf[$c] * (($t + 1) - $c);
+        }
+        $d = ((10 * $d) % 11) % 10;
+        if ($cpf[$c] != $d) {
+            header("location: inscricao.php?cadastro=cpf_invalido");
+			return;
+        }
+	}
+	}
+	
     $email_valid = "/[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+/";
 	if (!preg_match($email_valid, $email)) {
 		header("location: inscricao.php?cadastro=email_invalido");

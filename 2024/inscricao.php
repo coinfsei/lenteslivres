@@ -8,7 +8,7 @@ ini_set('display_errors', 'Off');
             case "sucesso":
 
                     echo "<script>alert('Inscrição realizada com sucesso!')</script>";
-                    break;
+                    break; 
 
 			case "nome_invalido":
 			
@@ -18,6 +18,11 @@ ini_set('display_errors', 'Off');
 			case "profissao_invalida":
 
 					echo "<script>alert('Inscrição não foi possivel ser realizada! Profissão inválida!')</script>";
+					break;
+
+			case "email_invalido":
+
+					echo "<script>alert('Inscrição não foi possivel ser realizada! CPF inválido!')</script>";
 					break;
 
 			case "cpf_invalido":

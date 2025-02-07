@@ -29,19 +29,10 @@ $conn = conexao_banco();
     $nome_identi_candi = $_FILES['identi_candi']['name'];
     $nome_termo_premi = $_FILES['termo_premi']['name'];
 
-    //coleta e validação de arquivos
-
-      validar_foto($nome_compro);
-      validar_foto($nome_identidade);
-      validar_video($nome_video);
-      validar_arquivo($nome_decla_autoria);
-      validar_arquivo($nome_identi_candi);
-      validar_arquivo($nome_termo_premi);
-
  //verifica se os uploads possuem as extensões permitidas   
     
-	$name_valid = "/[a-zA-Z0-9]+([a-zA-Z0-9]|(\ [a-zA-Z0-9]+)*)/";
-	if (!preg_match($name_valid, $name)) {
+	$name_valid = "/^[a-zA-Z0-9]+([a-zA-Z0-9]|(\ [a-zA-Z0-9]+)*)$/";
+	if (!preg_match($name_valid, $nome)) {
 		header("location: inscricao.php?cadastro=nome_invalido");
 		return;
 	}
@@ -51,9 +42,15 @@ $conn = conexao_banco();
 		return;
 	}
 	
+	$email_valid = "/[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+/";
+	if (!preg_match($email_valid, $email)) {
+		header("location: inscricao.php?cadastro=email_invalido");
+		return;
+	}
+	
 	$cpf = preg_replace( '/[\.|\-]/', '', $cpf );
 	
-	$cpf_valid = "/[0-9]{11}/";
+	$cpf_valid = "/^[0-9]{11}$/";
 	
 	if (!preg_match($cpf_valid, $cpf)) {
 		header("location: inscricao.php?cadastro=cpf_invalido");
@@ -73,13 +70,17 @@ $conn = conexao_banco();
         }
         
 	}
-	}
+	} 
 	
-    $email_valid = "/[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+/";
-	if (!preg_match($email_valid, $email)) {
-		header("location: inscricao.php?cadastro=email_invalido");
-		return;
-	}
+	//coleta e validação de arquivos
+
+      validar_foto($nome_compro);
+      validar_foto($nome_identidade);
+      validar_video($nome_video);
+      validar_arquivo($nome_decla_autoria);
+      validar_arquivo($nome_identi_candi);
+      validar_arquivo($nome_termo_premi);
+
 
 //inserir no banco de dados na tabela inscrito
 

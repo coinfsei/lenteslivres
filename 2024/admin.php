@@ -4,6 +4,15 @@
     include('conf.php');
     $conn = conexao_banco();
     
+    echo "<h1>Arquivos Enviados</h1>";
+
+    $sql = "SELECT * FROM  inscrito ORDER BY id DESC LIMIT 1";
+
+    $result = $conn->query($sql);
+
+    $dados = $result->fetch_assoc();
+
+    echo "O total de inscrições ate o momento são de ".$dados['id'];
     //sistema para listar inscritos
     
         $sql= "SELECT
@@ -51,11 +60,8 @@
         upload u ON i.id = u.id_inscrito;
     ";
     
-        echo "<h1>Arquivos Enviados</h1>";
     
         $result = $conn->query($sql);
-
-        
     
         if ($result->num_rows > 0) {
             // Transformar os resultados em um array

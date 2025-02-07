@@ -14,6 +14,28 @@ function conexao_banco(){
     }
     return $conn;
     };
+	
+	if (!file_exists('uploads')) {
+    mkdir('uploads', 0755, true);
+	}
+	if (!file_exists('uploads/comprovante_residencia/')) {
+    mkdir('uploads/comprovante_residencia/', 0755, true);
+	}
+	if (!file_exists('uploads/declaracao_de_autoria/')) {
+    mkdir('uploads/declaracao_de_autoria/', 0755, true);
+	}
+	if (!file_exists('uploads/docu_identidade/')) {
+    mkdir('uploads/docu_identidade/', 0755, true);
+	}
+	if (!file_exists('uploads/identificacao_do_candidato/')) {
+    mkdir('uploads/identificacao_do_candidato/', 0755, true);
+	}
+	if (!file_exists('uploads/termo_de_premiacao/')) {
+    mkdir('uploads/termo_de_premiacao/', 0755, true);
+	}
+	if (!file_exists('uploads/video/')) {
+    mkdir('uploads/video/', 0755, true);
+	}
 
     function validar_foto($foto){
 

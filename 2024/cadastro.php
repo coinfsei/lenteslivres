@@ -72,6 +72,24 @@ $conn = conexao_banco();
 	}
 	} 
 	
+	$rg = preg_replace( '/[\.|\-]/', '', $cpf );
+	
+	$rg_valid = "/^[0-9]{6,14}$/";
+	
+	if (!preg_match($rg_valid, $cpf)) {
+		header("location: inscricao.php?cadastro=rg_invalido");
+		return;
+	}
+	
+	$cep = preg_replace( '/[\.|\-]/', '', $cpf );
+	
+	$cep_valid = "/^[0-9]{8}$/";
+	
+	if (!preg_match($rg_valid, $cpf)) {
+		header("location: inscricao.php?cadastro=rg_invalido");
+		return;
+	}
+	
 	//coleta e validação de arquivos
 
       validar_foto($nome_compro);

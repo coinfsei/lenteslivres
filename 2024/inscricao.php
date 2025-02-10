@@ -22,12 +22,20 @@ ini_set('display_errors', 'Off');
 
 			case "email_invalido":
 
-					echo "<script>alert('Inscrição não foi possivel ser realizada! CPF inválido!')</script>";
+					echo "<script>alert('Inscrição não foi possivel ser realizada! Email inválido!')</script>";
 					break;
 
 			case "cpf_invalido":
 
 					echo "<script>alert('Inscrição não foi possivel ser realizada! CPF inválido!')</script>";
+					break;
+			case "rg_invalido":
+
+					echo "<script>alert('Inscrição não foi possivel ser realizada! RG inválido!')</script>";
+					break;
+			case "cep_invalido":
+
+					echo "<script>alert('Inscrição não foi possivel ser realizada! CEP inválido!')</script>";
 					break;
 
             case "arquivo_invalido":

@@ -31,7 +31,7 @@ $conn = conexao_banco();
 
  //verifica se os uploads possuem as extensões permitidas   
     
-	$name_valid = "/^[a-zA-Z0-9]+([a-zA-Z0-9]|(\ [a-zA-Z0-9]+)*)$/";
+	$name_valid = "/^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$/";
 	if (!preg_match($name_valid, $nome)) {
 		header("location: inscricao.php?cadastro=nome_invalido");
 		return;

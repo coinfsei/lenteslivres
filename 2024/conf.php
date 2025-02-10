@@ -1,6 +1,7 @@
 <?php 
 function conexao_banco(){
     //Definindo variaveis para acessa o banco
+    ini_set('display_errors', 'Off');
     
     $server_name = ('10.28.0.41');
     $user = ('root');
@@ -106,7 +107,7 @@ function conexao_banco(){
 
         }elseif(preg_match("/_identi_candi/",$arquivo)){
 //
-            $caminho = 'uploads/indentificacao_do_candidato/' . $arquivo;
+            $caminho = 'uploads/identificacao_do_candidato/' . $arquivo;
 
             move_uploaded_file($_FILES['identi_candi']['tmp_name'], $caminho);
 

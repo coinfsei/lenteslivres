@@ -48,7 +48,7 @@ $conn = conexao_banco();
 		return;
 	}
 	
-	$cpf = preg_replace( '/[\.|\-]/', '', $cpf );
+	$cpf = preg_replace( '/[\.|\-]/', '', $cpf);
 	
 	$cpf_valid = "/^[0-9]{11}$/";
 	
@@ -72,21 +72,21 @@ $conn = conexao_banco();
 	}
 	} 
 	
-	$rg = preg_replace( '/[\.|\-]/', '', $cpf );
+	$rg = preg_replace( '/[\.|\-]/', '', $rg);
 	
 	$rg_valid = "/^[0-9]{6,14}$/";
 	
-	if (!preg_match($rg_valid, $cpf)) {
+	if (!preg_match($rg_valid, $rg)) {
 		header("location: inscricao.php?cadastro=rg_invalido");
 		return;
 	}
 	
-	$cep = preg_replace( '/[\.|\-]/', '', $cpf );
+	$cep = preg_replace( '/[\.|\-]/', '', $cep);
 	
 	$cep_valid = "/^[0-9]{8}$/";
 	
-	if (!preg_match($rg_valid, $cpf)) {
-		header("location: inscricao.php?cadastro=rg_invalido");
+	if (!preg_match($rg_valid, $cep)) {
+		header("location: inscricao.php?cadastro=cep_invalido");
 		return;
 	}
 	

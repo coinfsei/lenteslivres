@@ -42,6 +42,7 @@ $conn = conexao_banco();
 		return;
 	}
 	
+	$email = strtolower($email)
 	$email_valid = "/[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+/";
 	if (!preg_match($email_valid, $email)) {
 		header("location: inscricao.php?cadastro=email_invalido");
@@ -85,8 +86,23 @@ $conn = conexao_banco();
 	
 	$cep_valid = "/^[0-9]{8}$/";
 	
-	if (!preg_match($rg_valid, $cep)) {
+	if (!preg_match($cep_valid, $cep)) {
 		header("location: inscricao.php?cadastro=cep_invalido");
+		return;
+	}
+	
+	$telefone_1 = preg_replace( '/[\(|\)|\-|]/', '', $telefone_1);
+	$telefone_2 = preg_replace( '/[\(|\)|\-|]/', '', $telefone_2);
+	
+	$telefone_valid = "/^[0-9]{10,11}$/";
+	
+	if (!preg_match($telefone_valid, $telefone1)) {
+		header("location: inscricao.php?cadastro=telefone_invalido");
+		return;
+	}
+	
+	if (!preg_match($telefone_valid, $telefone2)) {
+		header("location: inscricao.php?cadastro=telefone_invalido");
 		return;
 	}
 	

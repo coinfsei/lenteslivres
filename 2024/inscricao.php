@@ -68,6 +68,9 @@ ini_set('display_errors', 'Off');
     <!-- Sessão Home -->
     <?php //include('./snippets/banner.html'); ?>
 
+    <!-- Modal Termo -->
+    <?php include('./snippets/modal.html');?>
+
     <!--inscricao -->
     <?php include('./snippets/inscricao.html'); ?>
 

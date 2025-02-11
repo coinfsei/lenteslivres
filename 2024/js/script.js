@@ -104,5 +104,23 @@ $(document).ready(function () {
       }
     });
   });
+        // Configurar o modal para não fechar ao clicar fora ou pressionar ESC
+        const modalElement = document.getElementById('termo-modal');
+        modal = new bootstrap.Modal(modalElement, {
+            backdrop: 'static',
+            keyboard: false
+        });
+        modal.show(); // Exibe o modal assim que a página carrega
+
+        // Botão Rejeitar
+        document.getElementById('rejeitarBtn').addEventListener('click', function() {
+            alert('Okay,você sera redirecionado para a pagina inicial');
+            window.location.href = 'index.php'; // Redireciona para a página inicial
+        });
+
+        // Botão Aceitar
+        document.getElementById('aceitarBtn').addEventListener('click', function() {
+          modal.hide();
+        });
 
 });

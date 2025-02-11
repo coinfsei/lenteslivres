@@ -1,10 +1,12 @@
 /* Você pode adicionar qualquer estilo adicional para o modal aqui */
 .modal-content {
     padding: 20px;
+    width: 100%;
 }
 
 .modal-body p::first-letter {
     font-size: 1.5em;
+    
 }
 
 
@@ -13,6 +15,7 @@
 .modal-body ul {
     list-style-type: none;
     padding: 0;
+    display: flex;
 }
 
 .modal-body ul li {
@@ -37,3 +40,18 @@
 .modal-body ul li a:hover {
     text-decoration: underline;
 }
+
+.modal-body{
+    max-height: 400px;
+    width: 100%;
+    overflow-y: auto;
+
+}
+
+.modal-dialog{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 80% !important;
+    max-width: 650px !important;
+}
+

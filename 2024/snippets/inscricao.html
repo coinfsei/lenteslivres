@@ -8,6 +8,7 @@
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente quam a, tempora nulla at possimus ipsam assumenda neque nemo, nam delectus! Nesciunt debitis magnam earum voluptatem cum at et quae!</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, similique vel corrupti doloribus facere rem eligendi, quam commodi nemo voluptas, esse iste qui perspiciatis corporis nam sed excepturi voluptatum voluptatibus?</p>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae libero illum quidem distinctio voluptate nobis voluptatibus? Nemo sunt fugit amet, veniam, inventore fuga dolorem magnam necessitatibus quas at, quis rerum.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab aspernatur officiis voluptates quo vitae cum unde eveniet saepe culpa consequatur aliquam quis aut at, nihil assumenda cupiditate ad vero ducimus.</p>
             <button id="button-confirmar" onclick="confirmatermo()">Aceito os termos</button>
             <button id ="button-recusa" onclick="recusartermo()">Recusa os termos</button>
 
@@ -229,6 +230,31 @@
 
                         alert("Okay,não sera possivel ser feita a inscrição, você sera redirecionado para a pagina inicial");
                         document.location.href = "index.php";
+
+
+             var confirmar = document.getElementById("button-confirmar");
+             var recusar = document.getelementsbyid("button-recusar");
+
+             confirmar.addEventListener("mouseenter", function(){
+
+                confirmar.style.backgroundColor = "green";
+             });
+
+             confirmar.addEventListener("mouseleave", function(){
+
+                confirmar.style.backgroundColor = "default";
+            });
+
+            recusar.addEventListener("mouseenter", function(){
+
+                recusar.style.backgroundColor = "red";
+            });
+
+            recusar.addEventListener("mouseleave", function(){
+
+                recusar.style.backgroundColor = "default";
+            });
+
 
                 
         }

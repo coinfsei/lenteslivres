@@ -1,5 +1,21 @@
 
 <section id="inscricao" class="bg-light">
+    <!--Box de Termos-->
+    <div id="background-termo">
+        <div id="box-termo">
+
+            <h2>Teste</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente quam a, tempora nulla at possimus ipsam assumenda neque nemo, nam delectus! Nesciunt debitis magnam earum voluptatem cum at et quae!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, similique vel corrupti doloribus facere rem eligendi, quam commodi nemo voluptas, esse iste qui perspiciatis corporis nam sed excepturi voluptatum voluptatibus?</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae libero illum quidem distinctio voluptate nobis voluptatibus? Nemo sunt fugit amet, veniam, inventore fuga dolorem magnam necessitatibus quas at, quis rerum.</p>
+            <button id="button-confirmar" onclick="confirmatermo()">Aceito os termos</button>
+            <button id ="button-recusa" onclick="recusartermo()">Recusa os termos</button>
+
+
+        </div>
+    </div>
+
+
     <div class="box flex container">
         <div class="coluna">
 
@@ -197,5 +213,28 @@
             SEI não se responsabilizará por erros de digitação, grafia ou indisponibilidade das operadoras de telefonia 
             fixa e celular ou e-mail</small>
     </div>   
+
+    <script>
+
+        document.getElementById("background-termo").style.display = "flex;"
+
+        function confirmatermo(){     
+
+                        alert("Permitido continuar com a Inscrição!");
+                        document.getElementById("background-termo").style.display = "none";
+        }
+
+
+        function recusartermo(){
+
+                        alert("Okay,não sera possivel ser feita a inscrição, você sera redirecionado para a pagina inicial");
+                        document.location.href = "index.php";
+
+                
+        }
+
+
+
+    </script>
        
 </section>

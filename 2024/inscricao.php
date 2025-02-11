@@ -37,7 +37,10 @@ ini_set('display_errors', 'Off');
 
 					echo "<script>alert('Inscrição não foi possivel ser realizada! CEP inválido!')</script>";
 					break;
+			case "cep_invalido":
 
+					echo "<script>alert('Inscrição não foi possivel ser realizada! Telefone inválido! Coloque o DDD!')</script>";
+					break;
             case "arquivo_invalido":
 
                     echo "<script>alert('Inscrição não foi possivel ser realizada! Verifique os arquivos enviados!')</script>";

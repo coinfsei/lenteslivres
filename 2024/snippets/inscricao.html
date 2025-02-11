@@ -4,7 +4,7 @@
     <div id="background-termo">
         <div id="box-termo">
 
-            <h2>Teste</h2>
+            <h2 class="title-termo">Teste</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente quam a, tempora nulla at possimus ipsam assumenda neque nemo, nam delectus! Nesciunt debitis magnam earum voluptatem cum at et quae!</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, similique vel corrupti doloribus facere rem eligendi, quam commodi nemo voluptas, esse iste qui perspiciatis corporis nam sed excepturi voluptatum voluptatibus?</p>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae libero illum quidem distinctio voluptate nobis voluptatibus? Nemo sunt fugit amet, veniam, inventore fuga dolorem magnam necessitatibus quas at, quis rerum.</p>
@@ -197,9 +197,11 @@
                     </strong>
 						<br/><span class="smaller">Arquivos permitidos: pdf</span></p>
                         <Label for="file"></Label>
-                        <input type="file" name="termo_premi" id="termo_premi" >
-			</div>
-              <input type="submit" class="submit" value="Enviar formulario">
+                        <input type="file" name="termo_premi" id="termo_premi" required>
+    
+                        <br>
+                        <br>
+              <input type="submit" value="Enviar formulario">
     <br>
     
         </form>
@@ -224,14 +226,14 @@
 
         function confirmatermo(){     
 
-                        alert("Permitido continuar com a Inscrição!");
+                        alert("Termos aceitos com sucesso.");
                         document.getElementById("background-termo").style.display = "none";
         }
 
 
         function recusartermo(){
 
-                        alert("Okay,não sera possivel ser feita a inscrição, você sera redirecionado para a pagina inicial");
+                        alert("É necessário concordar com os termos de consentimento para progredir com a inscrição.");
                         document.location.href = "index.php";
 
 

@@ -13,14 +13,57 @@
 #box-termo{
 
 	background-color: antiquewhite;
+	width: 90%;	
 	max-width: 460px;
 	padding: 20px;
 	height: 500px;
-	border-radius: 5px;
+	border-radius: 12px;
 	align-items: center;
 	overflow-y: auto;
 	
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 	
 }
+
+#button-confirmar{
+	padding: 5px 10px;
+	background-color: grey;
+	color: white;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+#hover_confirmar{
+
+	background-color:  #4CAF50;
+}
+
+#button-recusa{
+
+	padding: 5px 10px;
+	background-color: grey;
+	color: white;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+#hover_recusa{
+
+	background-color:  ;
+}
+
+
+
+
+
+
+
+
+
+.termo-forma{
+	margin-bottom: 0px;
+}
+
 

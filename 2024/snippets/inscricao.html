@@ -1,5 +1,22 @@
 
 <section id="inscricao" class="bg-light">
+    <!--Box de Termos-->
+    <div id="background-termo">
+        <div id="box-termo">
+
+            <h2>Teste</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente quam a, tempora nulla at possimus ipsam assumenda neque nemo, nam delectus! Nesciunt debitis magnam earum voluptatem cum at et quae!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, similique vel corrupti doloribus facere rem eligendi, quam commodi nemo voluptas, esse iste qui perspiciatis corporis nam sed excepturi voluptatum voluptatibus?</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae libero illum quidem distinctio voluptate nobis voluptatibus? Nemo sunt fugit amet, veniam, inventore fuga dolorem magnam necessitatibus quas at, quis rerum.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab aspernatur officiis voluptates quo vitae cum unde eveniet saepe culpa consequatur aliquam quis aut at, nihil assumenda cupiditate ad vero ducimus.</p>
+            <button id="button-confirmar" onclick="confirmatermo()">Aceito os termos</button>
+            <button id ="button-recusa" onclick="recusartermo()">Recusa os termos</button>
+
+
+        </div>
+    </div>
+
+
     <div class="box flex container">
         <div class="coluna">
 
@@ -10,44 +27,52 @@
 		
         <form action="cadastro.php" class="submission-form" method="post" enctype="multipart/form-data">
     
-            <div class="mb-3">
-                <label for="nome" >Nome Completo:</label>
+            <div class="mb-3 submission-item">
+                <label for="nome">Nome Completo:</label>
+				<br/>
                 <input type="text" name="nome" id="">
             </div>
     
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="profissao">Profissão:</label>
+				<br/>
                 <input type="text" name="profissao" id="">
             </div>
     
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="email">E-mail:</label>
+				<br/>
                 <input type="email" name="email" id="">
             </div>
     
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="cpf">CPF:</label>
-                <input type="number" name="cpf" id="">
+				<br/>
+                <input type="text" maxlength="11" name="cpf" id="">
             </div>
     
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="rg">RG:</label>
-                <input type="number" name="rg" id="">
+				<br/>
+                <input type="text" maxlength="14" name="rg" id="">
             </div>
     
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="orgao_expedidor">Órgão Expedidor:</label>
-                <input type="text" name="orgao_expedidor" id="">
+				<br/>
+                <input type="text" maxlength="3" name="orgao_expedidor" id="">
             </div>
     
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="telefone_1">telefone 1:</label>
-                <input type="number" name="telefone_1" id="">
+				<br/>
+                <input type="number"  name="telefone_1" id="">
             </div>
       
     
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="telefone_2">telefone 2:</label>
+				<br/>
                 <input type="number" name="telefone_2" id="">
             </div>
     
@@ -55,101 +80,121 @@
                 <p style="font-size: medium;">Endereço</p>
             </strong>
     
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="rua">Rua:</label>
+				<br/>
                 <input type="text" name="rua" id="">
             </div>
     
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="bairro">Bairro:</label>
+				<br/>
                 <input type="text" name="bairro" id="">
             </div>
     
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="cidade">Cidade:</label>
+				<br/>
                 <input type="text" name="cidade" id="">
             </div>
     
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="cep">CEP:</label>
-                <input type="text" name="cep" id="">
+				<br/>
+                <input type="text" maxlength="8" name="cep" id="">
             </div>
     
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="uf">UF:</label>
-                <input type="text" name="uf" id="">
+				<br/>
+                <input type="text" maxlength="2" name="uf" id="">
             </div>
     
             <strong>
                 <p style="font-size: medium;">Dados Bancarios</p>
             </strong>
     
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="agencia">Agencia Nº:</label>
+				<br/>
                 <input type="number" name="agencia" id="">
             </div>
       
     
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="conta_bancaria">Conta Bancaria Nº:</label>
+				<br/>
                 <input type="number" name="conta_bancaria" id="">
             </div>
     
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="tipo_conta">Tipo da Conta:</label>
+				<br/>
                 <input type="text" name="tipo_conta" id="">
             </div>
             
-            <div class="mb-3">
+            <div class="mb-3 submission-item">
                 <label for="pis_nit">PIS/NIT:</label>
+				<br/>
                 <input type="number" name="pis_nit" id="">
             </div> 
 
-            <strong>
-                <p style="font-size: medium;">Foto do Documento de indentificação</p>
-                    </strong>
-                    <p>Arquivos permitidos: jpg, jpeg, png, pdf</p>
-                    <br>
+            <div class="mb-3 submission-item">
+                <strong><label for="pis_nit">Titulo da Proposta de intervenção:</label><br></strong>
+                <textarea name="proposta" id="proposta" rows="3" cols="70" ></textarea>
+            </div> 
+			
+			<div class="mb-3 submission-item">
+                <p style="font-size: medium;"><strong>
+					Foto do Documento de indentificação
+                    </strong><br/>
+                    <span class="smaller">Arquivos permitidos: jpg, jpeg, png, pdf</span>
+				</p>
+                    
                     <Label for="file"></Label>
-                    <input type="file" name="identidade" id="identidade" required>
+                    <input type="file" name="identidade" id="identidade" >
 
-                <strong>
-            <p style="font-size: medium;">Enviar comprovante de residencia</p>
-                </strong>
-                <p>Arquivos permitidos: jpg, jpeg, png, pdf</p>
-                <br>
-                <Label for="file"></Label>
-                <input type="file" name="foto" id="foto" required>
-    
-                <strong>
-            <p style="font-size: medium;">Enviar Video</p>
-                </strong>
-                <p>Arquivos permitidos: mp4</p>
-                <br>
-                <Label for="file"></Label>
-                <input type="file" name="video" id="video" required>
-
-                <strong>
-                    <p style="font-size: medium;">Declaração de autotoria e residencia</p>
-                    </strong>
-                    <p>Arquivos permitido: pdf</p>
-                    <br>
-                        <Label for="file"></Label>
-                        <input type="file" name="decla_autoria" id="decla_autoria" required>
+			</div>
+			<div class="mb-3 submission-item">
+            <p style="font-size: medium;">
+				<strong>Enviar comprovante de residencia
+                </strong><br/>
+                <span class="smaller">Arquivos permitidos: jpg, jpeg, png, pdf</span>
+			</p>
                 
+                <Label for="file"></Label>
+                <input type="file" name="foto" id="foto">
+			</div>
+			<div class="mb-3 submission-item">
+            <p style="font-size: medium;"><strong>Enviar Video
+                <br/></strong>
+                <span class="smaller">Arquivos permitidos: mp4</span>
+			</p>
+                <Label for="file"></Label>
+                <input type="file" name="video" id="video">
+			</div>
+			<div class="mb-3 submission-item">
+                <p style="font-size: medium;"><strong>Declaração de autoria e residencia
+                </strong>
+                <br/><span class="smaller">Arquivos permitidos: pdf</span>
+				</p>
+                <Label for="file"></Label>
+                <input type="file" name="decla_autoria" id="decla_autoria">
+            </div>    
+			<div class="mb-3 submission-item">
                     <strong>
-                    <p style="font-size: medium;">Indentificação do candidato e da proposta</p>
+                    <p style="font-size: medium;">Indentificação do candidato e da proposta
                     </strong>
-                     <p>Arquivos permitido: pdf</p>
-                        <br>
+                    <br/><span class="smaller">Arquivos permitidos: pdf</span></p>
                         <Label for="file"></Label>
-                        <input type="file" name="identi_candi" id="identi_candi" required>
-    
-                    <strong>
-                    <p style="font-size: medium;">Termo de premiacão e cessão de direitos patrimoniais e de imagem</p>
+                        <input type="file" name="identi_candi" id="identi_candi">
+			</div>
+			<div class="mb-3 submission-item">
+                    <p style="font-size: medium;">
+					<strong>
+						Termo de premiacão e cessão de direitos patrimoniais e de imagem
                     </strong>
-                    <p>Arquivos permitido: pdf</p>
-                    <br>
+						<br/><span class="smaller">Arquivos permitidos: pdf</span></p>
                         <Label for="file"></Label>
                         <input type="file" name="termo_premi" id="termo_premi" required>
     
@@ -171,5 +216,53 @@
             SEI não se responsabilizará por erros de digitação, grafia ou indisponibilidade das operadoras de telefonia 
             fixa e celular ou e-mail</small>
     </div>   
+
+    <script>
+
+        document.getElementById("background-termo").style.display = "flex;"
+
+        function confirmatermo(){     
+
+                        alert("Permitido continuar com a Inscrição!");
+                        document.getElementById("background-termo").style.display = "none";
+        }
+
+
+        function recusartermo(){
+
+                        alert("Okay,não sera possivel ser feita a inscrição, você sera redirecionado para a pagina inicial");
+                        document.location.href = "index.php";
+
+
+             var confirmar = document.getElementById("button-confirmar");
+             var recusar = document.getelementsbyid("button-recusar");
+
+             confirmar.addEventListener("mouseenter", function(){
+
+                confirmar.style.backgroundColor = "green";
+             });
+
+             confirmar.addEventListener("mouseleave", function(){
+
+                confirmar.style.backgroundColor = "default";
+            });
+
+            recusar.addEventListener("mouseenter", function(){
+
+                recusar.style.backgroundColor = "red";
+            });
+
+            recusar.addEventListener("mouseleave", function(){
+
+                recusar.style.backgroundColor = "default";
+            });
+
+
+                
+        }
+
+
+
+    </script>
        
 </section>

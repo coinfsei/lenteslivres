@@ -11,5 +11,20 @@
 	background-color: #F8F9FA;
 }
 
+.submission-form .submission-item {
+	border-left: solid 4px;
+	border-color: #C4CFCB;
+	border-radius: 4px;
+	padding-left: 10px;
+	
+}
+
+.submission-form .smaller {
+	font-size: 0.8rem;
+}
+
+.submission-form .submit {
+	margin-top: 20px;
+}
 
 

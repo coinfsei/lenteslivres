@@ -7,15 +7,46 @@ ini_set('display_errors', 'Off');
 
             case "sucesso":
 
-                echo "<script>alert('Inscrição realizada com sucesso!')</script>";
-                
-                break;
+                    echo "<script>alert('Inscrição realizada com sucesso!')</script>";
+                    break; 
 
-            case "falha":
+			case "nome_invalido":
+			
+					echo "<script>alert('Inscrição não foi possivel ser realizada! Nome inválido!')</script>";
+					break;
+					
+			case "profissao_invalida":
 
-                    echo "<script>alert('Inscrição não foi possivel ser realizada!,verifique os arquivos enviados!')</script>";
+					echo "<script>alert('Inscrição não foi possivel ser realizada! Profissão inválida!')</script>";
+					break;
+
+			case "email_invalido":
+
+					echo "<script>alert('Inscrição não foi possivel ser realizada! Email inválido!')</script>";
+					break;
+
+			case "cpf_invalido":
+
+					echo "<script>alert('Inscrição não foi possivel ser realizada! CPF inválido!')</script>";
+					break;
+			case "rg_invalido":
+
+					echo "<script>alert('Inscrição não foi possivel ser realizada! RG inválido!')</script>";
+					break;
+			case "cep_invalido":
+
+					echo "<script>alert('Inscrição não foi possivel ser realizada! CEP inválido!')</script>";
+					break;
+
+            case "arquivo_invalido":
+
+                    echo "<script>alert('Inscrição não foi possivel ser realizada! Verifique os arquivos enviados!')</script>";
                     break;
 
+			case "unknown":
+                
+					echo "<script>alert('Inscrição não foi possivel ser realizada! Erro desconhecido!')</script>";
+			
         }
 
 

@@ -74,6 +74,9 @@ ini_set('display_errors', 'Off');
     <!-- Modal Termo -->
     <?php include('./snippets/modal.html');?>
 
+    <!-- Modal confirmação -->
+    <?php include('./snippets/modal-confirmacao.html');?>
+
     <!--inscricao -->
     <?php include('./snippets/inscricao.html'); ?>
 

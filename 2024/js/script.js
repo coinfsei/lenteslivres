@@ -105,22 +105,63 @@ $(document).ready(function () {
     });
   });
         // Configurar o modal para não fechar ao clicar fora ou pressionar ESC
-        const modalElement = document.getElementById('termo-modal');
-        modal = new bootstrap.Modal(modalElement, {
+        const modalEletermo = document.getElementById('termo-modal');
+        modal_termo = new bootstrap.Modal(modalEletermo, {
             backdrop: 'static',
             keyboard: false
         });
-        modal.show(); // Exibe o modal assim que a página carrega
+        modal_termo.show(); // Exibe o modal assim que a página carrega
 
         // Botão Rejeitar
-        document.getElementById('rejeitarBtn').addEventListener('click', function() {
+        document.getElementById('rejeitar_declara').addEventListener('click', function() {
             alert('Okay,você sera redirecionado para a pagina inicial');
             window.location.href = 'index.php'; // Redireciona para a página inicial
         });
 
         // Botão Aceitar
-        document.getElementById('aceitarBtn').addEventListener('click', function() {
-          modal.hide();
+        document.getElementById('aceitar_declara').addEventListener('click', function() {
+          modal_termo.hide();
         });
 
+        //ativa botão de enviar formulario
+        var checkbox = document.getElementById('checkbox');
+        var enviar = document.getElementById('enviar');
+        const modalEleconfir = document.getElementById('confirmar-modal');
+        modal_confirmar = new bootstrap.Modal(modalEleconfir, {
+            backdrop: 'static',
+            keyboard: false
+        });
+
+          checkbox.addEventListener('change', function(){
+
+            if (checkbox.checked) {
+
+              modal_confirmar.show();
+
+            //botão Recusar
+              document.getElementById('rejeitar_envio').addEventListener('click', function() {
+                alert('Você so podera seguir com a inscrição se confirma a declaração de autoria é residencia');
+                modal_confirmar.hide();
+              
+
+            });
+    
+            // Botão Aceitar
+            document.getElementById('aceitar_envio').addEventListener('click', function() {
+              modal_confirmar.hide();
+  
+              enviar.disabled = false;
+
+            });
+
+
+            }else{
+
+              enviar.disabled = true;
+            }
+        
+        });
+       
+
 });
+

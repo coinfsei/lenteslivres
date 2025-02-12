@@ -1,22 +1,5 @@
 
 <section id="inscricao" class="bg-light">
-    <!--Box de Termos-
-    <div id="background-termo">
-        <div id="box-termo">
-
-            <h2 class="title-termo">Teste</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente quam a, tempora nulla at possimus ipsam assumenda neque nemo, nam delectus! Nesciunt debitis magnam earum voluptatem cum at et quae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, similique vel corrupti doloribus facere rem eligendi, quam commodi nemo voluptas, esse iste qui perspiciatis corporis nam sed excepturi voluptatum voluptatibus?</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae libero illum quidem distinctio voluptate nobis voluptatibus? Nemo sunt fugit amet, veniam, inventore fuga dolorem magnam necessitatibus quas at, quis rerum.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab aspernatur officiis voluptates quo vitae cum unde eveniet saepe culpa consequatur aliquam quis aut at, nihil assumenda cupiditate ad vero ducimus.</p>
-            <button id="button-confirmar" onclick="confirmatermo()">Aceito os termos</button>
-            <button id ="button-recusa" onclick="recusartermo()">Recusa os termos</button>
-
-
-        </div>
-    </div>
-   -->
-
 
     <div class="box flex container">
         <div class="coluna">
@@ -26,7 +9,7 @@
         <header><h1>Formulario de envio</h1></header>
     
 		
-        <form action="cadastro.php" class="submission-form" method="post" enctype="multipart/form-data">
+        <form action="cadastro.php" id="formulario" class="submission-form" method="post" enctype="multipart/form-data">
     
             <div class="mb-3 submission-item">
                 <label for="nome">Nome Completo:</label>
@@ -197,11 +180,15 @@
                     </strong>
 						<br/><span class="smaller">Arquivos permitidos: pdf</span></p>
                         <Label for="file"></Label>
-                        <input type="file" name="termo_premi" id="termo_premi" required>
-    
+                        <input type="file" name="termo_premi" id="termo_premi">
+
+            <div class="mb-3 submission-item">
+                        <p style="font-size: medium;"><strong>Declaração de autoria e residencia</p>
+                            <Label for="file"></Label>
+                            <input type="checkbox" name="checkbox" id="checkbox">marque a caixa caso concorde com os termos de declaração de autoria é residencia</input>
+                        </div>    
                         <br>
-                        <br>
-              <input type="submit" value="Enviar formulario">
+              <input id="enviar" type="submit" disabled value="Enviar formulario">
     <br>
     
         </form>
@@ -217,56 +204,5 @@
             SEI não se responsabilizará por erros de digitação, grafia ou indisponibilidade das operadoras de telefonia 
             fixa e celular ou e-mail</small>
     </div>
-    
-    <!---
-
-    <script>
-
-        document.getElementById("background-termo").style.display = "flex;"
-
-        function confirmatermo(){     
-
-                        alert("Termos aceitos com sucesso.");
-                        document.getElementById("background-termo").style.display = "none";
-        }
-
-
-        function recusartermo(){
-
-                        alert("É necessário concordar com os termos de consentimento para progredir com a inscrição.");
-                        document.location.href = "index.php";
-
-
-             var confirmar = document.getElementById("button-confirmar");
-             var recusar = document.getelementsbyid("button-recusar");
-
-             confirmar.addEventListener("mouseenter", function(){
-
-                confirmar.style.backgroundColor = "green";
-             });
-
-             confirmar.addEventListener("mouseleave", function(){
-
-                confirmar.style.backgroundColor = "default";
-            });
-
-            recusar.addEventListener("mouseenter", function(){
-
-                recusar.style.backgroundColor = "red";
-            });
-
-            recusar.addEventListener("mouseleave", function(){
-
-                recusar.style.backgroundColor = "default";
-            });
-
-
-                
-        }
-
-
-
-    </script>
-    -->
        
 </section>

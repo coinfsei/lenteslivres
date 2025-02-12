@@ -25,45 +25,8 @@
 	
 }
 
-#button-confirmar{
-	padding: 5px 10px;
-	background-color: grey;
-	color: white;
-	border: none;
-	border-radius: 3px;
-	cursor: pointer;
+#termo{
+
+	padding: 0px;
+	
 }
-
-#hover_confirmar{
-
-	background-color:  #4CAF50;
-}
-
-#button-recusa{
-
-	padding: 5px 10px;
-	background-color: grey;
-	color: white;
-	border: none;
-	border-radius: 3px;
-	cursor: pointer;
-}
-
-#hover_recusa{
-
-	background-color:  ;
-}
-
-
-
-
-
-
-
-
-
-.termo-forma{
-	margin-bottom: 0px;
-}
-
-

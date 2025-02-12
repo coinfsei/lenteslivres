@@ -1,5 +1,8 @@
 <?php 
 function conexao_banco(){
+	
+	try {
+	
     //Definindo variaveis para acessa o banco
     ini_set('display_errors', 'Off');
     
@@ -135,6 +138,9 @@ function conexao_banco(){
             return false;
 
         }
+		
+	} catch($e) {
+		echo "<h2>Inscrição não foi possivel ser realizada! Erro desconhecido!</h2><p>{$e}"
     }
     
     ?>

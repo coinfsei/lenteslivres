@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+  const sleep = ms => new Promise(res => setTimeout(res, ms));
+
   // Smooth scrolling
   $("a.nav-link").on("click", function (event) {
     if (this.hash !== "" && !$(this).attr("data-toggle")) {
@@ -133,23 +135,42 @@ $(document).ready(function () {
         });
 
           checkbox.addEventListener('change', function(){
-
+			
+			firstTime = document.getElementById("texto-modal-confirma").textContent.includes("[placeholder]");
+			firstTimeEnd = false;
             if (checkbox.checked) {
-
-              modal_confirmar.show();
-
+			  var nome = document.getElementById("nome").value;
+			  console.log(nome);
+			  var conteudo = document.getElementById("texto-modal-confirma").textContent;
+			  if (!firstTime) {
+				  conteudo = conteudo.replace("[placeholder2]", `${nome}`);
+				  modal_confirmar.show();
+				  document.getElementById("texto-modal-confirma").textContent = conteudo;
+				  return;
+			  } else {
+				  conteudo = conteudo.replace("[placeholder]", `${nome}`);
+				  modal_confirmar.show();
+				  document.getElementById("texto-modal-confirma").textContent = conteudo;
+				  firstTimeEnd = true;
+			  }
+			   
             //botão Recusar
-              document.getElementById('rejeitar_envio').addEventListener('click', function() {
-                alert('Você so podera seguir com a inscrição se confirma a declaração de autoria é residencia');
+              document.getElementById('rejeitar_envio').addEventListener('click', async function() {
+				document.getElementById("texto-modal-confirma").textContent = conteudo;
+				if (firstTimeEnd)
+					await alert('É necessário concordar com a declaração de autoria e residencia para prosseguir.');
                 modal_confirmar.hide();
-              
-
+				await sleep(1000);
+				conteudo = conteudo.replace(`${nome}`,"[placeholder2]");
+				
             });
     
             // Botão Aceitar
-            document.getElementById('aceitar_envio').addEventListener('click', function() {
+            document.getElementById('aceitar_envio').addEventListener('click', async function() {
               modal_confirmar.hide();
-  
+			  await sleep(1000);
+			  conteudo = conteudo.replace(`${nome}`,"[placeholder2]");
+			  document.getElementById("texto-modal-confirma").textContent = conteudo;
               enviar.disabled = false;
 
             });

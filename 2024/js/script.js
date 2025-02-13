@@ -134,65 +134,95 @@ $(document).ready(function () {
             backdrop: 'static',
             keyboard: false
         });
-
-          checkbox.addEventListener('change', function(){
-			
-			firstTime = document.getElementById("texto-modal-confirma").textContent.includes("[placeholder]");
-			firstTimeEnd = false;
-            if (checkbox.checked) {
+		
+		//botão Recusar
+            
+			document.getElementById('rejeitar_envio').addEventListener('click', async function() {
 			  var nome = document.getElementById("nome").value;
-			  console.log(nome);
-			  var conteudo = document.getElementById("texto-modal-confirma").textContent;
-			  if (!firstTime) {
-				  conteudo = conteudo.replace("[placeholder]", `${nome}`);
-				  modal_confirmar.show();
-				  document.getElementById("texto-modal-confirma").textContent = conteudo;
-				  return;
-			  } else {
-				  conteudo = conteudo.replace("[placeholder]", `${nome}`);
-				  modal_confirmar.show();
-				  document.getElementById("texto-modal-confirma").textContent = conteudo;
-				  firstTimeEnd = true;
-			  }
-			   
-            //botão Recusar
-            function esperar(ms) {
-              return new Promise(resolve => setTimeout(resolve, ms));
+			  var proposta = document.getElementById("proposta").value;
+			  var cpf = document.getElementById("cpf").value;
+			  var rua = document.getElementById("rua").value;
+			  var bairro = document.getElementById("bairro").value;
+			  var cidade = document.getElementById("cidade").value;
+			  var cep = document.getElementById("cep").value;
+			  var uf = document.getElementById("uf").value;
+			  // var conteudo = document.getElementById("texto-modal").textContent;
               checkbox.checked = false;
-          }
-              document.getElementById('rejeitar_envio').addEventListener('click', async function() {
-				      document.getElementById("texto-modal-confirma").textContent = conteudo;
+			  await alert('É necessário concordar com a declaração de autoria e residencia para prosseguir.');
               modal_confirmar.hide();
-              checkbox.checked = false;
-              await esperar(3000);
-              conteudo = conteudo.replace(`${nome}`,"[placeholder]");
-              document.getElementById("texto-modal-confirma").textContent = conteudo;
-              checkbox.checked = false;
- 
-
-				/*if (firstTimeEnd)
-					await alert('É necessário concordar com a declaração de autoria e residencia para prosseguir.');
-                modal_confirmar.hide();
-				await sleep(1000);
-				conteudo = conteudo.replace(`${nome}`,"[placeholder]");
-        */
-				
+			  await sleep(800);
+			  var conteudo_nome = document.getElementById("texto-modal-nome").textContent;
+			  var conteudo_proposta = document.getElementById("texto-modal-proposta").textContent;
+			  var conteudo_cpf = document.getElementById("texto-modal-cpf").textContent;
+			  var conteudo_nome = document.getElementById("texto-modal-endereco").textContent;
+			  conteudo_nome = conteudo_nome.replace(`${nome}`, "[placeholder]");
+			  conteudo_proposta = conteudo_proposta.replace(`${proposta}`, "[placeholder]");
+			  conteudo_cpf = conteudo_cpf.replace(`${cpf}`, "[placeholder]");
+			  conteudo_endereco = conteudo_endereco.replace(`${rua}, ${bairro}, ${cidade}, ${uf}, CEP: ${cep},`, "[placeholder]"); 
+			  document.getElementById("texto-modal-nome").textContent = conteudo_nome;
+			  document.getElementById("texto-modal-cpf").textContent = conteudo_cpf;
+			  document.getElementById("texto-modal-proposta").textContent = conteudo_proposta;
+			  document.getElementById("texto-modal-endereco").textContent = conteudo_endereco;
             });
     
             // Botão Aceitar
             document.getElementById('aceitar_envio').addEventListener('click', async function() {
-              modal_confirmar.hide();
-			          await sleep(1000);
-			          conteudo = conteudo.replace(`${nome}`,"[placeholder]");
-			          document.getElementById("texto-modal-confirma").textContent = conteudo;
-                  enviar.disabled = false;
-                  
-
+					var nome = document.getElementById("nome").value;
+					var proposta = document.getElementById("proposta").value;
+					var cpf = document.getElementById("cpf").value;
+					var rua = document.getElementById("rua").value;
+					var bairro = document.getElementById("bairro").value;
+					var cidade = document.getElementById("cidade").value;
+					var cep = document.getElementById("cep").value;
+					var uf = document.getElementById("uf").value;
+					// var conteudo = document.getElementById("texto-modal").textContent;
+					modal_confirmar.hide();
+					enviar.disabled = false;
+			        await sleep(800);
+			        var conteudo_nome = document.getElementById("texto-modal-nome").textContent;
+					var conteudo_proposta = document.getElementById("texto-modal-proposta").textContent;
+					var conteudo_cpf = document.getElementById("texto-modal-cpf").textContent;
+					var conteudo_endereco = document.getElementById("texto-modal-endereco").textContent;
+					conteudo_nome = conteudo_nome.replace(`${nome}`, "[placeholder]");
+					conteudo_proposta = conteudo_proposta.replace(`${proposta}`, "[placeholder]");
+					conteudo_cpf = conteudo_cpf.replace(`${cpf}`, "[placeholder]");
+					conteudo_endereco = conteudo_endereco.replace(`${rua}, ${bairro}, ${cidade}, ${uf}, CEP: ${cep},`, "[placeholder]"); 
+					document.getElementById("texto-modal-nome").textContent = conteudo_nome;
+					document.getElementById("texto-modal-cpf").textContent = conteudo_cpf;
+					document.getElementById("texto-modal-proposta").textContent = conteudo_proposta;
+					document.getElementById("texto-modal-endereco").textContent = conteudo_endereco;
             });
 
-
+          checkbox.addEventListener('change', function(){
+			  
+			var nome = document.getElementById("nome").value;
+			var proposta = document.getElementById("proposta").value;
+			var cpf = document.getElementById("cpf").value;
+			var rua = document.getElementById("rua").value;
+			var bairro = document.getElementById("bairro").value;
+			var cidade = document.getElementById("cidade").value;
+			var cep = document.getElementById("cep").value;
+			var uf = document.getElementById("uf").value;
+			// var conteudo = document.getElementById("texto-modal").textContent;
+			
+            if (checkbox.checked) {
+			  
+			  var conteudo_nome = document.getElementById("texto-modal-nome").textContent;
+			  var conteudo_proposta = document.getElementById("texto-modal-proposta").textContent;
+			  var conteudo_cpf = document.getElementById("texto-modal-cpf").textContent;
+			  var conteudo_endereco = document.getElementById("texto-modal-endereco").textContent;
+				  conteudo_nome = conteudo_nome.replace("[placeholder]", `${nome}`);
+				  conteudo_proposta = conteudo_proposta.replace("[placeholder]", `${proposta}`);
+				  conteudo_cpf = conteudo_cpf.replace("[placeholder]", `${cpf}`);
+				  conteudo_endereco = conteudo_endereco.replace("[placeholder]", `Rua: ${rua},\n Bairro: ${bairro},\n Cidade: ${cidade},\n UF: ${uf},\n CEP: ${cep}`); 
+				  document.getElementById("texto-modal-nome").textContent = conteudo_nome;
+				  document.getElementById("texto-modal-cpf").textContent = conteudo_cpf;
+				  document.getElementById("texto-modal-proposta").textContent = conteudo_proposta;
+				  document.getElementById("texto-modal-endereco").textContent = conteudo_endereco;
+				  modal_confirmar.show();
+				  return;
+			   
             }else{
-
               enviar.disabled = true;
             }
         

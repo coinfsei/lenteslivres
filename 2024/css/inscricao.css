@@ -34,4 +34,19 @@
 	width: 100%;
 }
 
+#enviar{
+
+	width: 170px;
+	text-align: center;
+}
+
+.checkbox-text{
+	margin-bottom: 0px;
+
+}
+#checkbox{
+
+	padding-left: 0px;
+}
+
 

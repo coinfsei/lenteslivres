@@ -141,7 +141,12 @@ $(document).ready(function () {
 			  var nome = document.getElementById("nome").value;
 			  var proposta = document.getElementById("proposta").value;
 			  var cpf = document.getElementById("cpf").value;
-			  var conteudo = document.getElementById("texto-modal").textContent;
+			  var rua = document.getElementById("rua").value;
+			  var bairro = document.getElementById("bairro").value;
+			  var cidade = document.getElementById("cidade").value;
+			  var cep = document.getElementById("cep").value;
+			  var uf = document.getElementById("uf").value;
+			  // var conteudo = document.getElementById("texto-modal").textContent;
               checkbox.checked = false;
 			  await alert('É necessário concordar com a declaração de autoria e residencia para prosseguir.');
               modal_confirmar.hide();
@@ -149,12 +154,15 @@ $(document).ready(function () {
 			  var conteudo_nome = document.getElementById("texto-modal-nome").textContent;
 			  var conteudo_proposta = document.getElementById("texto-modal-proposta").textContent;
 			  var conteudo_cpf = document.getElementById("texto-modal-cpf").textContent;
+			  var conteudo_nome = document.getElementById("texto-modal-endereco").textContent;
 			  conteudo_nome = conteudo_nome.replace(`${nome}`, "[placeholder]");
 			  conteudo_proposta = conteudo_proposta.replace(`${proposta}`, "[placeholder]");
 			  conteudo_cpf = conteudo_cpf.replace(`${cpf}`, "[placeholder]");
+			  conteudo_endereco = conteudo_endereco.replace(`${rua}, ${bairro}, ${cidade}, ${uf}, CEP: ${cep},`, "[placeholder]"); 
 			  document.getElementById("texto-modal-nome").textContent = conteudo_nome;
 			  document.getElementById("texto-modal-cpf").textContent = conteudo_cpf;
 			  document.getElementById("texto-modal-proposta").textContent = conteudo_proposta;
+			  document.getElementById("texto-modal-endereco").textContent = conteudo_endereco;
             });
     
             // Botão Aceitar
@@ -162,19 +170,27 @@ $(document).ready(function () {
 					var nome = document.getElementById("nome").value;
 					var proposta = document.getElementById("proposta").value;
 					var cpf = document.getElementById("cpf").value;
-					var conteudo = document.getElementById("texto-modal").textContent;
+					var rua = document.getElementById("rua").value;
+					var bairro = document.getElementById("bairro").value;
+					var cidade = document.getElementById("cidade").value;
+					var cep = document.getElementById("cep").value;
+					var uf = document.getElementById("uf").value;
+					// var conteudo = document.getElementById("texto-modal").textContent;
 					modal_confirmar.hide();
 					enviar.disabled = false;
 			        await sleep(800);
 			        var conteudo_nome = document.getElementById("texto-modal-nome").textContent;
 					var conteudo_proposta = document.getElementById("texto-modal-proposta").textContent;
 					var conteudo_cpf = document.getElementById("texto-modal-cpf").textContent;
+					var conteudo_endereco = document.getElementById("texto-modal-endereco").textContent;
 					conteudo_nome = conteudo_nome.replace(`${nome}`, "[placeholder]");
 					conteudo_proposta = conteudo_proposta.replace(`${proposta}`, "[placeholder]");
 					conteudo_cpf = conteudo_cpf.replace(`${cpf}`, "[placeholder]");
+					conteudo_endereco = conteudo_endereco.replace(`${rua}, ${bairro}, ${cidade}, ${uf}, CEP: ${cep},`, "[placeholder]"); 
 					document.getElementById("texto-modal-nome").textContent = conteudo_nome;
 					document.getElementById("texto-modal-cpf").textContent = conteudo_cpf;
 					document.getElementById("texto-modal-proposta").textContent = conteudo_proposta;
+					document.getElementById("texto-modal-endereco").textContent = conteudo_endereco;
             });
 
           checkbox.addEventListener('change', function(){
@@ -182,21 +198,27 @@ $(document).ready(function () {
 			var nome = document.getElementById("nome").value;
 			var proposta = document.getElementById("proposta").value;
 			var cpf = document.getElementById("cpf").value;
-			var conteudo = document.getElementById("texto-modal").textContent;
+			var rua = document.getElementById("rua").value;
+			var bairro = document.getElementById("bairro").value;
+			var cidade = document.getElementById("cidade").value;
+			var cep = document.getElementById("cep").value;
+			var uf = document.getElementById("uf").value;
+			// var conteudo = document.getElementById("texto-modal").textContent;
 			
             if (checkbox.checked) {
 			  
 			  var conteudo_nome = document.getElementById("texto-modal-nome").textContent;
-			  console.log(conteudo_nome);
 			  var conteudo_proposta = document.getElementById("texto-modal-proposta").textContent;
 			  var conteudo_cpf = document.getElementById("texto-modal-cpf").textContent;
+			  var conteudo_endereco = document.getElementById("texto-modal-endereco").textContent;
 				  conteudo_nome = conteudo_nome.replace("[placeholder]", `${nome}`);
 				  conteudo_proposta = conteudo_proposta.replace("[placeholder]", `${proposta}`);
 				  conteudo_cpf = conteudo_cpf.replace("[placeholder]", `${cpf}`);
+				  conteudo_endereco = conteudo_endereco.replace("[placeholder]", `${rua}, ${bairro}, ${cidade}, ${uf}, CEP: ${cep},`); 
 				  document.getElementById("texto-modal-nome").textContent = conteudo_nome;
 				  document.getElementById("texto-modal-cpf").textContent = conteudo_cpf;
 				  document.getElementById("texto-modal-proposta").textContent = conteudo_proposta;
-				  
+				  document.getElementById("texto-modal-endereco").textContent = conteudo_endereco;
 				  modal_confirmar.show();
 				  return;
 			   

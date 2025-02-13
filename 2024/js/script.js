@@ -105,7 +105,7 @@ $(document).ready(function () {
         this.textContent = 'Recolher biografia';
       }
     });
-  });
+  });/*
         // Configurar o modal para não fechar ao clicar fora ou pressionar ESC
         const modalEletermo = document.getElementById('termo-modal');
         modal_termo = new bootstrap.Modal(modalEletermo, {
@@ -124,6 +124,7 @@ $(document).ready(function () {
         document.getElementById('aceitar_declara').addEventListener('click', function() {
           modal_termo.hide();
         });
+        */
 
         //ativa botão de enviar formulario
         var checkbox = document.getElementById('checkbox');
@@ -143,7 +144,7 @@ $(document).ready(function () {
 			  console.log(nome);
 			  var conteudo = document.getElementById("texto-modal-confirma").textContent;
 			  if (!firstTime) {
-				  conteudo = conteudo.replace("[placeholder2]", `${nome}`);
+				  conteudo = conteudo.replace("[placeholder]", `${nome}`);
 				  modal_confirmar.show();
 				  document.getElementById("texto-modal-confirma").textContent = conteudo;
 				  return;
@@ -155,23 +156,37 @@ $(document).ready(function () {
 			  }
 			   
             //botão Recusar
+            function esperar(ms) {
+              return new Promise(resolve => setTimeout(resolve, ms));
+              checkbox.checked = false;
+          }
               document.getElementById('rejeitar_envio').addEventListener('click', async function() {
-				document.getElementById("texto-modal-confirma").textContent = conteudo;
-				if (firstTimeEnd)
+				      document.getElementById("texto-modal-confirma").textContent = conteudo;
+              modal_confirmar.hide();
+              checkbox.checked = false;
+              await esperar(3000);
+              conteudo = conteudo.replace(`${nome}`,"[placeholder]");
+              document.getElementById("texto-modal-confirma").textContent = conteudo;
+              checkbox.checked = false;
+ 
+
+				/*if (firstTimeEnd)
 					await alert('É necessário concordar com a declaração de autoria e residencia para prosseguir.');
                 modal_confirmar.hide();
 				await sleep(1000);
-				conteudo = conteudo.replace(`${nome}`,"[placeholder2]");
+				conteudo = conteudo.replace(`${nome}`,"[placeholder]");
+        */
 				
             });
     
             // Botão Aceitar
             document.getElementById('aceitar_envio').addEventListener('click', async function() {
               modal_confirmar.hide();
-			  await sleep(1000);
-			  conteudo = conteudo.replace(`${nome}`,"[placeholder2]");
-			  document.getElementById("texto-modal-confirma").textContent = conteudo;
-              enviar.disabled = false;
+			          await sleep(1000);
+			          conteudo = conteudo.replace(`${nome}`,"[placeholder]");
+			          document.getElementById("texto-modal-confirma").textContent = conteudo;
+                  enviar.disabled = false;
+                  
 
             });
 

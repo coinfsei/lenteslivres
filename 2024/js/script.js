@@ -214,7 +214,7 @@ $(document).ready(function () {
 				  conteudo_nome = conteudo_nome.replace("[placeholder]", `${nome}`);
 				  conteudo_proposta = conteudo_proposta.replace("[placeholder]", `${proposta}`);
 				  conteudo_cpf = conteudo_cpf.replace("[placeholder]", `${cpf}`);
-				  conteudo_endereco = conteudo_endereco.replace("[placeholder]", `${rua}, ${bairro}, ${cidade}, ${uf}, CEP: ${cep},`); 
+				  conteudo_endereco = conteudo_endereco.replace("[placeholder]", `Rua: ${rua},\n Bairro: ${bairro},\n Cidade: ${cidade},\n UF: ${uf},\n CEP: ${cep}`); 
 				  document.getElementById("texto-modal-nome").textContent = conteudo_nome;
 				  document.getElementById("texto-modal-cpf").textContent = conteudo_cpf;
 				  document.getElementById("texto-modal-proposta").textContent = conteudo_proposta;

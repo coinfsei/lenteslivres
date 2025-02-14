@@ -155,7 +155,7 @@ $(document).ready(function () {
 			  var conteudo_nome = document.getElementById("texto-modal-nome").textContent;
 			  var conteudo_proposta = document.getElementById("texto-modal-proposta").textContent;
 			  var conteudo_cpf = document.getElementById("texto-modal-cpf").textContent;
-			  var conteudo_nome = document.getElementById("texto-modal-endereco").textContent;
+			  var conteudo_endereco = document.getElementById("texto-modal-endereco").textContent;
 			  conteudo_nome = conteudo_nome.replace(`${nome}`, "[placeholder]");
 			  conteudo_proposta = conteudo_proposta.replace(`${proposta}`, "[placeholder]");
 			  conteudo_cpf = conteudo_cpf.replace(`${cpf}`, "[placeholder]");
@@ -253,4 +253,3 @@ $(document).ready(function () {
        
 
 });
-

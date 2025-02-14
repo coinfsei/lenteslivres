@@ -1,9 +1,11 @@
 .submission-area {
 	margin-top: 20px;
 	padding: 20px;
+	padding-left: 15px;
 	border-radius: 12px;
 	background-color: #C4CFCB;
 }
+
 
 .submission-form {
 	padding: 20px;
@@ -49,6 +51,10 @@
 	padding-left: 0px;
 }
 
-.input-group-text{
-	max-width: 150px;
+.col-md-6{
+	padding-left: 0px;
+}
+
+.col-md-4{
+	padding-left: 0px !important;
 }

@@ -17,7 +17,10 @@ function conexao_banco(){
         die("Erro de conexão: " . $conn->connect_error);
     }
     return $conn;
-	
+	} catch(Exception $e) {
+		
+	}
+}	
 	if (!file_exists('uploads')) {
     mkdir('uploads', 0755, true);
 	}
@@ -41,6 +44,8 @@ function conexao_banco(){
 	}
 
     function validar_foto($foto){
+		
+		try {
 
         $extencao =['jpeg','jpg','png','pdf'];
 
@@ -51,23 +56,32 @@ function conexao_banco(){
             header("location: inscricao.php?cadastro=arquivo_invalido");
             exit();
         }
+		
+		} catch(Exception $e) {
+			echo "<h2>Inscrição não foi possivel ser realizada! Erro desconhecido!</h2><p>{$e}";
+		}
     }
 
     function validar_video($video){
+		
+		try {
+        $extensao =['mp4'];
 
-        $extencao =['mp4'];
+        $testa_extensao = strtolower(pathinfo($video, PATHINFO_EXTENSION));
 
-        $testa_extencao = strtolower(pathinfo($video, PATHINFO_EXTENSION));
-
-        if(!in_array($testa_extencao,$extencao)){
+        if(!in_array($testa_extensao,$extensao)){
 
             header("location: inscricao.php?cadastro=arquivo_invalido");
             exit();
         }
+		} catch(Exception $e) {
+			echo "<h2>Inscrição não foi possivel ser realizada! Erro desconhecido!</h2><p>{$e}";
+		}
     }
 
     function validar_arquivo($arquivo){
 
+		try {
         $extencao =['pdf'];
 
         $testa_extencao = strtolower(pathinfo($arquivo, PATHINFO_EXTENSION));
@@ -77,10 +91,14 @@ function conexao_banco(){
             header("location: inscricao.php?cadastro=arquivo_invalido");
             exit();
         }
+		} catch(Exception $e) {
+			echo "<h2>Inscrição não foi possivel ser realizada! Erro desconhecido!</h2><p>{$e}";
+		}
     } 
 
     function move_arquivo($arquivo){
 
+		try {
         $conn = conexao_banco();
 //
         if(preg_match("/_video/",$arquivo)){
@@ -137,13 +155,10 @@ function conexao_banco(){
             return false;
 
         }
+		} catch(Exception $e) {
+			echo "<h2>Inscrição não foi possivel ser realizada! Erro desconhecido!</h2><p>{$e}";
+		}
 		
-	}
-
-	}  catch(Exception $e) {
-		echo "<h2>Inscrição não foi possivel ser realizada! Erro desconhecido!</h2><p>{$e}";
-    }
-	
 	}
     
     ?>

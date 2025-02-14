@@ -20,7 +20,6 @@ $conn = conexao_banco();
     $conta_bancaria = $_POST["conta_bancaria"];
     $tipo_conta = $_POST["tipo_conta"];
     $pis_nit = $_POST["pis_nit"];
-    $telefone_2 = $_POST["telefone_2"];
     $proposta = $_POST["proposta"];
     $nome_compro = $_FILES['foto']['name'];
     $nome_video = $_FILES['video']['name'];
@@ -42,7 +41,7 @@ $conn = conexao_banco();
 		return;
 	}
 	
-	$email = strtolower($email)
+	$email = strtolower($email);
 	$email_valid = "/[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+/";
 	if (!preg_match($email_valid, $email)) {
 		header("location: inscricao.php?cadastro=email_invalido");
@@ -96,12 +95,12 @@ $conn = conexao_banco();
 	
 	$telefone_valid = "/^[0-9]{10,11}$/";
 	
-	if (!preg_match($telefone_valid, $telefone1)) {
+	if (!preg_match($telefone_valid, $telefone_1)) {
 		header("location: inscricao.php?cadastro=telefone_invalido");
 		return;
 	}
 	
-	if (!preg_match($telefone_valid, $telefone2)) {
+	if (!preg_match($telefone_valid, $telefone_2)) {
 		header("location: inscricao.php?cadastro=telefone_invalido");
 		return;
 	}

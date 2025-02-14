@@ -1,10 +1,12 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<div class="p-3 mb-2 bg-dark text-white">
+    <h1 class="text-center">Arquivos Enviados</h1>
+</div>
+<div class="container p-3 mb-2 bg-light text-dark">
     <?php
     
     include('conf.php');
-    $conn = conexao_banco();
-    
-    echo "<h1>Arquivos Enviados</h1>";
+    $conn = conexao_banco();;
 
     $sql = "SELECT * FROM  inscrito ORDER BY id DESC LIMIT 1";
 
@@ -162,7 +164,7 @@
                 echo "<th>Video</th>";
                 echo "<th>Declaração de autoria e residencia</th>";
                 echo "<th>Indentificação do candidato e da proposta</th>";
-                echo "<th>Termo de premiacão</th>";
+                /*echo "<th>Termo de premiacão</th>";*/
                 echo "</tr>";
                 echo "<td><a href='{$arquivo['local_documento']}' target='_blank'>Documento</a></td>";
                 echo "<td><a href='{$arquivo['local_compro']}' target='_blank'>Comprovante</a></th>";
@@ -193,3 +195,4 @@
         }
 
     ?>
+    </div>

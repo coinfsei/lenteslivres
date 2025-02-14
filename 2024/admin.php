@@ -38,13 +38,13 @@
         d.pis_nit,
         u.compro_resi,
         u.video_arquivo,
-        u.decla_autoria_arquivo,
+       /*u.decla_autoria_arquivo,*/
         u.identi_candi_arquivo,
         u.quali_participes_arquivo,
         u.local_compro,
         u.local_documento,
         u.local_video,
-        u.local_decla_autoria,
+        /*u.local_decla_autoria,*/
         u.local_identi_candi,
         u.local_quali_participes,
         u.data_envio
@@ -167,7 +167,7 @@
                 echo "<td><a href='{$arquivo['local_documento']}' target='_blank'>Documento</a></td>";
                 echo "<td><a href='{$arquivo['local_compro']}' target='_blank'>Comprovante</a></th>";
                 echo "<td><a href='{$arquivo['local_video']}' target='_blank'>Vídeo</a></td>";
-                echo "<td><a href='{$arquivo['local_decla_autoria']}' target='_blank'>Declaração de autotoria e residencia</a></td>";
+                /*echo "<td><a href='{$arquivo['local_decla_autoria']}' target='_blank'>Declaração de autotoria e residencia</a></td>";*/
                 echo "<td><a href='{$arquivo['local_identi_candi']}' target='_blank'>Indentificação do candidato e da proposta</a></td>";
                 echo "<td><a href='{$arquivo['local_quali_participes']}' target='_blank'>Termo de premiacão e cessão de direitos patrimoniais e de imagem</a></td>";
                 echo "</tr>";

@@ -99,13 +99,14 @@ function conexao_banco(){
 
                         return $caminho;
 //
-        }elseif(preg_match("/_decla_autoria/",$arquivo)){
+        /*}elseif(preg_match("/_decla_autoria/",$arquivo)){
 
             $caminho = 'uploads/declaracao_de_autoria/' . $arquivo;
 
             move_uploaded_file($_FILES['decla_autoria']['tmp_name'], $caminho);
 
                         return $caminho ;
+                        */
 
         }elseif(preg_match("/_identi_candi/",$arquivo)){
 //

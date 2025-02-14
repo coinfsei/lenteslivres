@@ -136,14 +136,16 @@ $(document).ready(function () {
         });
 		const modalAlerta = document.getElementById('alertar-modal');
 		var modal_alerta = new bootstrap.Modal(modalAlerta, {
-            backdrop: 'static',
-            keyboard: false
+
+      
+
         }); 
 		
 		document.getElementById('fechar_modal_alerta').addEventListener('click', async function() {
 				modal_alerta.hide();
 				checkbox.checked = false;
 		});
+
 		
 		//botão Recusar
 
@@ -209,6 +211,7 @@ $(document).ready(function () {
 			  
 			if (!verificapreenchimento()) {
 				modal_alerta.show();
+        checkbox.checked = false;
 				return;
 			}
 			var nome = document.getElementById("nome").value;
@@ -276,7 +279,10 @@ $(document).ready(function () {
 		&& document.getElementById("uf").value && document.getElementById("orgao_expedidor").value
 		&& document.getElementById("agencia").value && document.getElementById("conta_bancaria").value
 		&& document.getElementById("tipo_conta").value && document.getElementById("pis_nit").value
-		&& document.getElementById("proposta").value && document.getElementById("pis_nit").value)
+		&& document.getElementById("proposta").value && document.getElementById("pis_nit").value 
+    && document.getElementById("foto").value && document.getElementById("video").value
+    && document.getElementById("identidade").value && document.getElementById("identi_candi").value
+    && document.getElementById("termo_premi").value)
 			return true;
 		else return false;
 		}

@@ -158,7 +158,7 @@ $res = $conn->query($sql);
     $caminho_identidade = move_arquivo($novoidentidade);
 
 
-        $sql = "INSERT INTO upload (compro_resi, video_arquivo, decla_autoria_arquivo, identi_candi_arquivo, quali_participes_arquivo, id_inscrito, local_compro, local_video, local_decla_autoria, local_identi_candi, local_quali_participes, documento_arquivo, local_documento) VALUES ('{$novocompro}','{$novovideo}',/*'{$novodecla}',*/'{$novoidenti}','{ $novotermo}','{$id_inscrito}', '{$caminho_compro}','{$caminho_video}',/*'{$caminho_decla}',*/'{$caminho_identi}','{$caminho_termo}','{$novoidentidade}','{$caminho_identidade}')";
+        $sql = "INSERT INTO upload (compro_resi, video_arquivo, identi_candi_arquivo, quali_participes_arquivo, id_inscrito, local_compro, local_video, local_identi_candi, local_quali_participes, documento_arquivo, local_documento) VALUES ('{$novocompro}','{$novovideo}','{$novoidenti}','{ $novotermo}','{$id_inscrito}', '{$caminho_compro}','{$caminho_video}','{$caminho_identi}','{$caminho_termo}','{$novoidentidade}','{$caminho_identidade}')";
 
         $res = $conn->query($sql);
   

@@ -17,7 +17,6 @@ function conexao_banco(){
         die("Erro de conexão: " . $conn->connect_error);
     }
     return $conn;
-    };
 	
 	if (!file_exists('uploads')) {
     mkdir('uploads', 0755, true);
@@ -139,8 +138,12 @@ function conexao_banco(){
 
         }
 		
-	} catch($e) {
-		echo "<h2>Inscrição não foi possivel ser realizada! Erro desconhecido!</h2><p>{$e}"
+	}
+
+	}  catch(Exception $e) {
+		echo "<h2>Inscrição não foi possivel ser realizada! Erro desconhecido!</h2><p>{$e}";
     }
+	
+	}
     
     ?>

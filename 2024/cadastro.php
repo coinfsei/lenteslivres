@@ -24,7 +24,7 @@ $conn = conexao_banco();
     $nome_compro = $_FILES['foto']['name'];
     $nome_video = $_FILES['video']['name'];
     $nome_identidade = $_FILES['identidade']['name'];
-    $nome_decla_autoria = $_FILES['decla_autoria']['name'];
+ /* $nome_decla_autoria = $_FILES['decla_autoria']['name'];*/
     $nome_identi_candi = $_FILES['identi_candi']['name'];
     $nome_termo_premi = $_FILES['termo_premi']['name'];
 
@@ -110,7 +110,6 @@ $conn = conexao_banco();
       validar_foto($nome_compro);
       validar_foto($nome_identidade);
       validar_video($nome_video);
-      validar_arquivo($nome_decla_autoria);
       validar_arquivo($nome_identi_candi);
       validar_arquivo($nome_termo_premi);
 
@@ -153,13 +152,13 @@ $res = $conn->query($sql);
 
     $caminho_compro = move_arquivo($novocompro);
     $caminho_video = move_arquivo($novovideo);
-    $caminho_decla = move_arquivo($novodecla);
+    /*$caminho_decla = move_arquivo($novodecla);*/
     $caminho_identi = move_arquivo($novoidenti);
     $caminho_termo = move_arquivo($novotermo);
     $caminho_identidade = move_arquivo($novoidentidade);
 
 
-        $sql = "INSERT INTO upload (compro_resi, video_arquivo, decla_autoria_arquivo, identi_candi_arquivo, quali_participes_arquivo, id_inscrito, local_compro, local_video, local_decla_autoria, local_identi_candi, local_quali_participes, documento_arquivo, local_documento) VALUES ('{$novocompro}','{$novovideo}','{$novodecla}','{$novoidenti}','{ $novotermo}','{$id_inscrito}', '{$caminho_compro}','{$caminho_video}','{$caminho_decla}','{$caminho_identi}','{$caminho_termo}','{$novoidentidade}','{$caminho_identidade}')";
+        $sql = "INSERT INTO upload (compro_resi, video_arquivo, decla_autoria_arquivo, identi_candi_arquivo, quali_participes_arquivo, id_inscrito, local_compro, local_video, local_decla_autoria, local_identi_candi, local_quali_participes, documento_arquivo, local_documento) VALUES ('{$novocompro}','{$novovideo}',/*'{$novodecla}',*/'{$novoidenti}','{ $novotermo}','{$id_inscrito}', '{$caminho_compro}','{$caminho_video}',/*'{$caminho_decla}',*/'{$caminho_identi}','{$caminho_termo}','{$novoidentidade}','{$caminho_identidade}')";
 
         $res = $conn->query($sql);
   

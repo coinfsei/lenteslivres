@@ -136,6 +136,7 @@ $(document).ready(function () {
         });
 		
 		//botão Recusar
+
             
 			document.getElementById('rejeitar_envio').addEventListener('click', async function() {
 			  var nome = document.getElementById("nome").value;
@@ -192,6 +193,7 @@ $(document).ready(function () {
 					document.getElementById("texto-modal-proposta").textContent = conteudo_proposta;
 					document.getElementById("texto-modal-endereco").textContent = conteudo_endereco;
             });
+          
 
           checkbox.addEventListener('change', function(){
 			  
@@ -227,6 +229,27 @@ $(document).ready(function () {
             }
         
         });
+
+
+        //função para verifica se campo foi preenchido
+
+        function verificacampo(campo){
+
+          var campo = getElementById('basic-addon1');
+          var alerta = getElementById('alerta');
+
+          if (campo === "") {
+
+            alerta.style.display = "block";
+            
+          }
+
+          else{
+
+            alerta.style.display = "none";
+
+          }
+        }
        
 
 });

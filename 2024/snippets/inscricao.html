@@ -10,7 +10,11 @@
                 </header>
 
                 <form action="cadastro.php" id="formulario" class="submission-form" method="post"
-                    enctype="multipart/form-data">
+                    enctype="multipart/form-data" onsubmit="return verificarcampo()">
+                    <div id="alerta" class="alert alert-danger" style="display: none;">
+                        Por favor, preencha o campo!
+                    </div>
+        
                             <div class="container">
                                 <strong>
                                     <p style="font-size: medium;">Dados Pessoais</p>
@@ -43,7 +47,7 @@
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">CPF:</span>
                                         <input class="form-control" placeholder="CPF" aria-label="Username"
-                                            aria-describedby="basic-addon1" type="text" maxlength="11" name="cpf" id="">
+                                            aria-describedby="basic-addon1" type="text" maxlength="11" name="cpf" id="cpf">
                                     </div>
                                 </div>
                                 <div class="col-md-6 md-3">

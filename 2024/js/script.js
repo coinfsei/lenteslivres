@@ -134,6 +134,16 @@ $(document).ready(function () {
             backdrop: 'static',
             keyboard: false
         });
+		const modalAlerta = document.getElementById('alertar-modal');
+		var modal_alerta = new bootstrap.Modal(modalAlerta, {
+            backdrop: 'static',
+            keyboard: false
+        }); 
+		
+		document.getElementById('fechar_modal_alerta').addEventListener('click', async function() {
+				modal_alerta.hide();
+				checkbox.checked = false;
+		});
 		
 		//botão Recusar
 
@@ -197,6 +207,10 @@ $(document).ready(function () {
 
           checkbox.addEventListener('change', function(){
 			  
+			if (!verificapreenchimento()) {
+				modal_alerta.show();
+				return;
+			}
 			var nome = document.getElementById("nome").value;
 			var proposta = document.getElementById("proposta").value;
 			var cpf = document.getElementById("cpf").value;
@@ -233,7 +247,7 @@ $(document).ready(function () {
 
         //função para verifica se campo foi preenchido
 
-        function verificacampo(campo){
+        /* function verificacampo(campo){
 
           var campo = getElementById('basic-addon1');
           var alerta = getElementById('alerta');
@@ -249,7 +263,21 @@ $(document).ready(function () {
             alerta.style.display = "none";
 
           }
-        }
-       
-
+        } */
+		
+		function verificapreenchimento() {
+		
+		if (document.getElementById("nome").value && document.getElementById("profissao").value
+		&& document.getElementById("email").value && document.getElementById("cpf").value
+		&& document.getElementById("rg").value && document.getElementById("orgao_expedidor").value
+		&& document.getElementById("telefone_1").value && document.getElementById("telefone_2").value
+		&& document.getElementById("rua").value && document.getElementById("bairro").value
+		&& document.getElementById("cidade").value && document.getElementById("cep").value
+		&& document.getElementById("uf").value && document.getElementById("orgao_expedidor").value
+		&& document.getElementById("agencia").value && document.getElementById("conta_bancaria").value
+		&& document.getElementById("tipo_conta").value && document.getElementById("pis_nit").value
+		&& document.getElementById("proposta").value && document.getElementById("pis_nit").value)
+			return true;
+		else return false;
+		}
 });

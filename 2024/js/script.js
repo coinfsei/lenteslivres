@@ -273,7 +273,7 @@ $(document).ready(function () {
 		if (document.getElementById("nome").value && document.getElementById("profissao").value
 		&& document.getElementById("email").value && document.getElementById("cpf").value
 		&& document.getElementById("rg").value && document.getElementById("orgao_expedidor").value
-		&& document.getElementById("telefone_1").value && document.getElementById("telefone_2").value
+		&& document.getElementById("telefone_1").value 
 		&& document.getElementById("rua").value && document.getElementById("bairro").value
 		&& document.getElementById("cidade").value && document.getElementById("cep").value
 		&& document.getElementById("uf").value && document.getElementById("orgao_expedidor").value

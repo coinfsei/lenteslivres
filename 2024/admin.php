@@ -162,9 +162,9 @@
                 echo "<th>Foto do Documento de indentificação</th>";
                 echo "<th>Comprovante de residencia</th>";
                 echo "<th>Video</th>";
-                echo "<th>Declaração de autoria e residencia</th>";
+                /*echo "<th>Declaração de autoria e residencia</th>";*/
                 echo "<th>Indentificação do candidato e da proposta</th>";
-                /*echo "<th>Termo de premiacão</th>";*/
+                echo "<th>Termo de premiacão</th>";
                 echo "</tr>";
                 echo "<td><a href='{$arquivo['local_documento']}' target='_blank'>Documento</a></td>";
                 echo "<td><a href='{$arquivo['local_compro']}' target='_blank'>Comprovante</a></th>";

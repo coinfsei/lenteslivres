@@ -58,3 +58,14 @@
 .col-md-4{
 	padding-left: 0px !important;
 }
+
+.icon{
+
+	margin-bottom: 0px;
+	color: red;
+}
+
+#smaller{
+
+	margin-bottom: 16px !important;
+}

@@ -65,7 +65,7 @@ function conexao_banco(){
     function validar_video($video){
 		
 		try {
-        $extensao =['mp4'];
+        $extensao =['mp4','m4a','mkv','webm'];
 
         $testa_extensao = strtolower(pathinfo($video, PATHINFO_EXTENSION));
 

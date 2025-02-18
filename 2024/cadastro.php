@@ -91,19 +91,26 @@ $conn = conexao_banco();
 	}
 	
 	$telefone_1 = preg_replace( '/[\(|\)|\-|]/', '', $telefone_1);
-	$telefone_2 = preg_replace( '/[\(|\)|\-|]/', '', $telefone_2);
-	
-	$telefone_valid = "/^[0-9]{10,11}$/";
-	
-	if (!preg_match($telefone_valid, $telefone_1)) {
-		header("location: inscricao.php?cadastro=telefone_invalido");
-		return;
-	}
-	
-	if (!preg_match($telefone_valid, $telefone_2)) {
-		header("location: inscricao.php?cadastro=telefone_invalido");
-		return;
-	}
+
+    $telefone_valid = "/^[0-9]{10,11}$/";
+
+    if (!preg_match($telefone_valid, $telefone_1)) {
+        header("location: inscricao.php?cadastro=telefone_invalido");
+        return;
+    }
+
+if($telefone_2 == ""){
+
+    $telefone_2 = "Não informado";
+
+}
+$telefone_valid = "/^([0-9]{10,11}|Não informado)$/";
+
+    $telefone_2 = preg_replace( '/[\(|\)|\-|]/', '', $telefone_2);
+      if (!preg_match($telefone_valid, $telefone_2)) {
+          header("location: inscricao.php?cadastro=telefone_invalido");
+          return;
+      }
 	
 	//coleta e validação de arquivos
 
@@ -145,7 +152,7 @@ $res = $conn->query($sql);
     //altera nome dos arquivos é tenta movimenta- para as pastas de destino
     $novovideo = "id_".$id_inscrito."_Nome_".$nome."_video".'.'. pathinfo($nome_video, PATHINFO_EXTENSION);
     $novocompro ="id_".$id_inscrito."_Nome_".$nome."_compro_residencia" .'.'. pathinfo($nome_compro, PATHINFO_EXTENSION);
-    $novodecla = "id_".$id_inscrito."_Nome_".$nome."_decla_autoria" .'.'. pathinfo($nome_decla_autoria, PATHINFO_EXTENSION);
+    /*$novodecla = "id_".$id_inscrito."_Nome_".$nome."_decla_autoria" .'.'. pathinfo($nome_decla_autoria, PATHINFO_EXTENSION);*/
     $novoidenti= "id_".$id_inscrito."_Nome_".$nome."_identi_candi" .'.'. pathinfo($nome_identi_candi, PATHINFO_EXTENSION);
     $novotermo = "id_".$id_inscrito."_Nome_".$nome."_termo_premi" .'.'. pathinfo($nome_termo_premi, PATHINFO_EXTENSION);
     $novoidentidade = "id_".$id_inscrito."_Nome_".$nome."_documen_identidade" .'.'. pathinfo($nome_identidade,PATHINFO_EXTENSION);
@@ -165,5 +172,10 @@ $res = $conn->query($sql);
           $conn->close();
           header("location: inscricao.php?cadastro=sucesso");
           exit();
+
+
+        
+
+      
   
 ?>

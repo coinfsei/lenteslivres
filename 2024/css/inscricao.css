@@ -38,9 +38,27 @@
 
 #enviar{
 
+	transition: 0.5s ease;
 	width: 170px;
 	text-align: center;
 }
+
+#enviar:enabled{
+
+	transition: 0.5s ease;
+	border-color: #DDDDDD !important;
+	background-color: #6c757d !important;
+	color: #DDDDDD;
+}
+
+#enviar:hover{
+
+	transition: 0.5s ease;
+	border-color: #EEEEEE !important;
+	background-color: #7c858d !important;
+	color: #EEEEEE;
+}
+
 
 .checkbox-text{
 	margin-bottom: 0px;
@@ -68,4 +86,21 @@
 #smaller{
 
 	margin-bottom: 16px !important;
+}
+
+.invalido { 
+	border-color: #FF00000;
+	color: #FF0000;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

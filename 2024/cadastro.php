@@ -28,7 +28,10 @@ $conn = conexao_banco();
     $nome_identi_candi = $_FILES['identi_candi']['name'];
     $nome_termo_premi = $_FILES['termo_premi']['name'];
 
- //verifica se os uploads possuem as extensões permitidas   
+ //verifica se os uploads possuem as extensões permitidas 
+
+
+	
     
 	$name_valid = "/^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$/";
 	if (!preg_match($name_valid, $nome)) {

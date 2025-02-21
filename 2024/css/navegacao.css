@@ -1,9 +1,77 @@
-.nav-link.active {
+.nav-link.active, .nav-link-alt.active {
     font-weight: bold;
     /* Negrito para itens destacados */
     border-radius: 5px;
     background-color: #6c757d;
     box-shadow: 2px 2px 5px hsl(0deg 0% 0% / 30%);
+}
+
+
+ @media (min-width: 992px) {
+
+	.mobile {
+		display: none;
+	}
+
+ }
+ 
+  @media (max-width: 991px) {
+
+	.desktop {
+		display: none;
+	}
+	.navbar .gap2 {
+		margin: 0;
+		min-height: 20px;
+		width: 20px;
+	}
+ }
+ 
+ 
+ @media (max-width: 512px) { 
+ 
+	.navbar-brand {
+		margin-right: 20px !important;
+	}
+	.navbar .gap2 {
+		margin: 0;
+		min-height: 20px;
+		width: 0px !important;
+	} 
+	.navbar .inscricao-mobile, .navbar .edital-mobile { 
+		font-size: 0.75rem !important;
+	}
+	.navbar .flex-botoes-mobile {
+		margin-right: 0;
+	}
+}
+
+@media (max-width: 399px) {
+		
+		.navbar-brand {
+			margin-right: 10px !important;
+		}
+		.gap {
+			display: none;
+		}
+		.navbar .inscricao-mobile {
+			margin-right: 10px !important;
+		}
+}
+.nav-link-alt {
+	padding: 0.5rem;	
+	display: block;
+}
+
+.navbar .flex-botoes-mobile {
+	display: flex;
+	align-items: flex-end;
+	margin-right: auto;
+	
+}
+
+.navbar .inscricao-mobile {
+	margin-right: 20px;
 }
 
 .navbar .center {
@@ -48,11 +116,6 @@
     align-items: center;
 }
 
-.navbar-brand-custom i {
-    margin-right: 10px;
-    /* Ajuste a margem para o espaço desejado entre o ícone e o texto */
-}
-
 .p-left {
     padding-left: 8rem;
 }
@@ -60,6 +123,8 @@
 .navbar-nav-custom {
     gap: .5rem;
 }
+
+
 
 #navbarNav {
      justify-content: flex-end;

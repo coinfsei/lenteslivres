@@ -22,8 +22,8 @@ var pis_nut document.getElementById("pis_nit").value
 var foto = document.getElementById("foto").value
 var video = document.getElementById("video").value
 var identidade = document.getElementById("identidade").value
-var identi_candi document.getElementById("identi_candi").value
-var termo_premi document.getElementById("termo_premi").value
+var identi_candi = document.getElementById("identi_candi").value
+var termo_premi = document.getElementById("termo_premi").value
 
 var name_valid = /^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$/g;
 var email_valid = /[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+/g;
@@ -66,42 +66,42 @@ function checkValid() {
 	Array.from(document.querySelectorAll('.widget.hover')).forEach(
    (el) => el.classList.remove("invalido"));
 	
-	if (name.match(name_valid)) {
+	if (!name.match(name_valid)) {
 			invalid_modal("nome");
 			return false;
 	}
 
-	if (email.match(email_valid)) {
+	if (!email.match(email_valid)) {
 			invalid_modal("email");
 			return false;
 	}
 
-	if (cpf.match(cpf_valid)) {
+	if (!cpf.match(cpf_valid)) {
 			invalid_modal(cpf);
 			return false;
 	}
 
-	if (rg.match(rg_valid)) {
+	if (!rg.match(rg_valid)) {
 			invalid_modal(rg);
 			return false;
 	}
 
-	if (cep.match(cep_valid)) {
+	if (!cep.match(cep_valid)) {
 			invalid_modal(cep);
 			return false;
 	}
 
-	if (telefone_1.match(telefone_valid)) {
+	if (!telefone_1.match(telefone_valid)) {
 			invalid_modal(telefone_1);
 			return false;
 	}
 
-	if (telefone_2.match(telefone_valid)) {
+	if (!telefone_2.match(telefone_valid)) {
 			invalid_modal(telefone_2);
 			return false;
 	}
 
-	if (orgao_expedidor) {
+	if (!orgao_expedidor) {
 			invalid_modal("orgao_expedidor");
 			return false;
 	}

@@ -46,19 +46,18 @@
 #enviar:enabled{
 
 	transition: 0.5s ease;
-	border-color: #DDDDDD !important;
+	border-color: #CCCCCC !important;
 	background-color: #6c757d !important;
 	color: #DDDDDD;
 }
 
-#enviar:hover{
+#enviar:enabled:hover{
 
 	transition: 0.5s ease;
 	border-color: #EEEEEE !important;
-	background-color: #7c858d !important;
+	background-color: #8c959d !important;
 	color: #EEEEEE;
 }
-
 
 .checkbox-text{
 	margin-bottom: 0px;
@@ -89,8 +88,8 @@
 }
 
 .invalido { 
-	border-color: #FF00000;
-	color: #FF0000;
+	border-color: #FF00000 !important;
+	color: #FF0000 !important;
 }
 
 /* Chrome, Safari, Edge, Opera */

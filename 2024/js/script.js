@@ -1,6 +1,220 @@
 $(document).ready(function () {
 
+  var nome = document.getElementById("nome").value
+			var profissao = document.getElementById("profissao").value
+			var email = document.getElementById("email").value
+			var cpf = document.getElementById("cpf").value
+			var rg = document.getElementById("rg").value 
+			var orgao_expedidor = document.getElementById("orgao_expedidor").value
+			var telefone_1 = document.getElementById("telefone_1").value 
+			var rua = document.getElementById("rua").value
+			var bairro = document.getElementById("bairro").value
+			var cidade = document.getElementById("cidade").value
+			var cep = document.getElementById("cep").value
+			var uf = document.getElementById("uf").value 
+			var orgao_expedidor = document.getElementById("orgao_expedidor").value
+			var agencia = document.getElementById("agencia").value 
+			var conta_bancaria = document.getElementById("conta_bancaria").value
+			var tipo_conta = document.getElementById("tipo_conta").value
+			var pis_nit = document.getElementById("pis_nit").value
+			var proposta = document.getElementById("proposta").value 
+			var pis_nut = document.getElementById("pis_nit").value 
+			var foto = document.getElementById("foto").value
+			var video = document.getElementById("video").value
+			var identidade = document.getElementById("identidade").value
+			var identi_candi = document.getElementById("identi_candi").value
+			var termo_premi = document.getElementById("termo_premi").value
+
+			var nome_valid = /^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$/g;
+			var email_valid = /^[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$/g;
+			var cpf_valid = /(^[0-9]{11}$)|(^([0-9]{3}\.){2}[0-9]{3}\-[0-9]{2}$)/g;
+			var rg_valid = /(^[0-9]{6,14}$)|(^([0-9]|[0-9][0-9\-\.]){6,14}$)/g;
+			var cep_valid = /^[0-9]{8}$/g;
+			var uf_valid = /^[a-zA-Z]{2}$/g;
+			var telefone_valid = /^[0-9]{10,12}$/g;
+			var telefone2_valid = /(^[0-9]{10,12}$|^$)/g;
+			var orgao_expedidor_valid = /^[a-zA-Z0-9\-]*$/g;
+			var agencia_valid = /^[0-9]{4,5}$/g;
+			var conta_bancaria_valid = /^[0-9]{8,20}$/g;
+			var pis_nit_valid = /^[0-9]{8,20}$/g;
+			
+
   const sleep = ms => new Promise(res => setTimeout(res, ms));
+
+  function validarCPF(inputCPF){
+    var soma = 0;
+    var resto;
+
+    if(inputCPF == '00000000000') return false;
+    for(i=1; i<=9; i++) soma = soma + parseInt(inputCPF.substring(i-1, i)) * (11 - i);
+    resto = (soma * 10) % 11;
+
+    if((resto == 10) || (resto == 11)) resto = 0;
+    if(resto != parseInt(inputCPF.substring(9, 10))) return false;
+
+    soma = 0;
+    for(i = 1; i <= 10; i++) soma = soma + parseInt(inputCPF.substring(i-1, i))*(12-i);
+    resto = (soma * 10) % 11;
+
+    if((resto == 10) || (resto == 11)) resto = 0;
+    if(resto != parseInt(inputCPF.substring(10, 11))) return false;
+    return true;
+  }
+
+	function invalid_modal(invalid_field) {
+			console.log(invalid_field);
+				document.getElementById(invalid_field).classList.add("invalido");
+				var nodes = document.getElementById(invalid_field).parentNode.children;
+				for(var i=0; i<nodes.length; i++) {
+					nodes[i].classList.add("invalido");	
+					document.getElementById(invalid_field).classList.remove("invalido");
+				}
+			}
+
+			function verificapreenchimento() {
+				
+				var nome = document.getElementById("nome").value
+				var profissao = document.getElementById("profissao").value
+				var email = document.getElementById("email").value
+				var cpf = document.getElementById("cpf").value
+				var rg = document.getElementById("rg").value
+				var orgao_expedidor = document.getElementById("orgao_expedidor").value
+				var telefone_1 = document.getElementById("telefone_1").value
+				var telefone_2 = document.getElementById("telefone_2").value 
+				var rua = document.getElementById("rua").value
+				var bairro = document.getElementById("bairro").value
+				var cidade = document.getElementById("cidade").value
+				var cep = document.getElementById("cep").value
+				var uf = document.getElementById("uf").value 
+				var orgao_expedidor = document.getElementById("orgao_expedidor").value
+				var agencia = document.getElementById("agencia").value 
+				var conta_bancaria = document.getElementById("conta_bancaria").value
+				var tipo_conta = document.getElementById("tipo_conta").value
+				var pis_nit = document.getElementById("pis_nit").value
+				var proposta = document.getElementById("proposta").value 
+				var pis_nut = document.getElementById("pis_nit").value 
+				var foto = document.getElementById("foto").value
+				var video = document.getElementById("video").value
+				var identidade = document.getElementById("identidade").value
+				var identi_candi = document.getElementById("identi_candi").value
+				var termo_premi = document.getElementById("termo_premi").value
+
+				
+				Array.from(document.querySelectorAll('.invalido')).forEach(
+			   (el) => el.classList.remove("invalido"));
+				
+				console.log(name)
+				var invalid = false 
+				
+				if (!nome.match(nome_valid)) {
+						invalid_modal("nome");
+						invalid = true;
+				}
+
+				if (!profissao.match(nome_valid)) {
+						invalid_modal("profissao");
+						invalid = true;
+				}
+
+				if (!email.match(email_valid)) {
+						invalid_modal("email");
+						invalid = true;
+				}
+
+				if (!cpf.match(cpf_valid) || !validarCPF(cpf)) {
+						invalid_modal("cpf");
+						invalid = true;
+				}
+
+				if (!rg.match(rg_valid)) {
+						invalid_modal("rg");
+						invalid = true;
+				}
+
+				if (!cep.match(cep_valid)) {
+						invalid_modal("cep");
+						invalid = true;
+				}
+
+				if (!uf.match(uf_valid)) {
+						invalid_modal("uf");
+						invalid = true;
+				}
+
+				if (!telefone_1.match(telefone_valid)) {
+						invalid_modal("telefone_1");
+						invalid = true;
+				}
+
+				if (!telefone_2.match(telefone2_valid)) {
+						invalid_modal("telefone_2");
+						invalid = true;
+				}
+				
+				if (!rua.match(nome_valid)) {
+						invalid_modal("rua");
+						invalid = true;
+				}
+				
+				if (!bairro.match(nome_valid)) {
+						invalid_modal("bairro");
+						invalid = true;
+				}
+				
+				if (!cidade.match(nome_valid)) {
+						invalid_modal("cidade");
+						invalid = true;
+				}
+				
+
+				if (!orgao_expedidor.match(orgao_expedidor_valid)) {
+						invalid_modal("orgao_expedidor");
+						invalid = true;
+				}
+				
+				if (!agencia.match(agencia_valid)) {
+						invalid_modal("agencia");
+						invalid = true;
+				}
+				
+				if (!conta_bancaria.match(conta_bancaria_valid)) {
+						invalid_modal("conta_bancaria");
+						invalid = true;
+				}
+				
+				if (!tipo_conta.match(nome_valid)) {
+						invalid_modal("tipo_conta");
+						invalid = true;
+				}
+				if (!pis_nit.match(nome_valid)) {
+						invalid_modal("pis_nit");
+						invalid = true;
+				}
+				if (!proposta) {
+						invalid_modal("proposta");
+						invalid = true;
+				}
+				if (!foto) {
+						invalid_modal("foto");
+						invalid = true;
+				}
+				if (!video) {
+						invalid_modal("video");
+						invalid = true;
+				}
+				if (!identidade) {
+						invalid_modal("identidade");
+						invalid = true;
+				}
+				if (!identi_candi) {
+						invalid_modal("identi_candi");
+						invalid = true;
+				}
+				
+				if (invalid) return false; 
+				return true;
+
+			}
 
   // Smooth scrolling
   $("a.nav-link").on("click", function (event) {
@@ -209,9 +423,9 @@ $(document).ready(function () {
 
           checkbox.addEventListener('change', function(){
 			  
-			if (!verificapreenchimento()) {
+			if (checkbox.checked && !verificapreenchimento()) {
 				modal_alerta.show();
-        checkbox.checked = false;
+				checkbox.checked = false;
 				return;
 			}
 			var nome = document.getElementById("nome").value;
@@ -268,22 +482,4 @@ $(document).ready(function () {
           }
         } */
 		
-		function verificapreenchimento() {
-		
-		if (document.getElementById("nome").value && document.getElementById("profissao").value
-		&& document.getElementById("email").value && document.getElementById("cpf").value
-		&& document.getElementById("rg").value && document.getElementById("orgao_expedidor").value
-		&& document.getElementById("telefone_1").value 
-		&& document.getElementById("rua").value && document.getElementById("bairro").value
-		&& document.getElementById("cidade").value && document.getElementById("cep").value
-		&& document.getElementById("uf").value && document.getElementById("orgao_expedidor").value
-		&& document.getElementById("agencia").value && document.getElementById("conta_bancaria").value
-		&& document.getElementById("tipo_conta").value && document.getElementById("pis_nit").value
-		&& document.getElementById("proposta").value && document.getElementById("pis_nit").value 
-    && document.getElementById("foto").value && document.getElementById("video").value
-    && document.getElementById("identidade").value && document.getElementById("identi_candi").value
-    && document.getElementById("termo_premi").value)
-			return true;
-		else return false;
-		}
 });

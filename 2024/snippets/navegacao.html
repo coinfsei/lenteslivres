@@ -1,9 +1,8 @@
 <nav class="center navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
 
-        <a class="navbar-brand navbar-brand-custom" href="#home">
-            <i id="botao-home" class="fas fa-home"></i>
-        </a>
+        <div class="mobile gap2">
+        </div>
         <a class="navbar-brand navbar-brand-custom" href="#home">
             <div>
                 Concurso<br>
@@ -12,7 +11,11 @@
             </div>
         </a>
 		<div class="gap"></div>
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+		<div class="mobile flex-botoes-mobile"> 
+			<a class="nav-link btn text-white collapsed mobile edital-mobile" href="#download" target="_blank">EDITAL</a>
+			<a class="nav-link btn btn-danger text-white collapsed mobile inscricao-mobile" href="./inscricao.php"><b>INSCRIÇÕES</b></a>
+        </div/>
+		<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,10 +32,10 @@
                 <li class="nav-item">
                     <a class="nav-link btn text-white" href="#termo-home">INFORMAÇÃO</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn text-white" href="#download" target="_blank">DOWNLOAD</a>
+                <li class="desktop nav-item">
+                    <a class="nav-link btn text-white" href="#download" target="_blank">EDITAL</a>
                 </li>
-                <li class="nav-item">
+                <li class="desktop nav-item">
                     <a class="nav-link btn btn-danger text-white" href="./inscricao.php"><b>INSCRIÇÕES</b></a>
                 </li>
             </ul>

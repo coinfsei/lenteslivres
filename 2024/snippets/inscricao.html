@@ -47,21 +47,21 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">CPF<p class="icon">*</p></span>
                                     <input class="form-control" placeholder="CPF" aria-label="Username"
-                                        aria-describedby="basic-addon1" type="text" maxlength="11" name="cpf" id="cpf">
+                                        aria-describedby="basic-addon1" type="text" maxlength="15" name="cpf" id="cpf">
                                 </div>
                             </div>
                             <div class="col-md-6 md-3">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">RG<p class="icon">*</p></span>
                                     <input class="form-control" placeholder="RG" aria-label="Username"
-                                        aria-describedby="basic-addon1" type="text" maxlength="14" name="rg" id="rg">
+                                        aria-describedby="basic-addon1" type="text" maxlength="20" name="rg" id="rg">
                                 </div>
                             </div>
                             <div class="col-md-6 md-3">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">Órg. Expedidor<p class="icon">*</p></span>
                                     <input class="form-control" placeholder="Órg.Expedidor" aria-label="Username"
-                                        aria-describedby="basic-addon1" type="text" maxlength="3" name="orgao_expedidor"
+                                        aria-describedby="basic-addon1" type="text" maxlength="6" name="orgao_expedidor"
                                         id="orgao_expedidor">
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">Telefone 1<p class="icon">*</p></span>
                                     <input class="form-control" placeholder="telefone 1" aria-label="Username"
-                                        aria-describedby="basic-addon1" type="number" name="telefone_1" id="telefone_1">
+                                        aria-describedby="basic-addon1" type="number" name="telefone_1" maxlength="16" id="telefone_1">
                                 </div>
                             </div>
                             <div class="col-md-6 md-3">
@@ -138,7 +138,7 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">Con.Bancaria Nº<p class="icon">*</p></span>
                                     <input class="form-control" placeholder="Con.Bancaria" aria-label="Username"
-                                        aria-describedby="basic-addon1" type="number" name="conta_bancaria"
+                                        aria-describedby="basic-addon1" type="number"  pattern="[0-9]" name="conta_bancaria"
                                         id="conta_bancaria">
                                 </div>
                             </div>
@@ -157,16 +157,17 @@
                                 </div>
                             </div>
                         </div>
-
-                        <strong>
-                            <p style="font-size: medium;">Titulo da Proposta de Intervenção<span class="icon">*</span></p>
-                        </strong>
-
+						
                         <div class="row">
                             <div class="col-md-6 md-3">
                                 <div class="input-group">
                                     <div class="submission-item">
-                                        <div class="form-floating"><textarea class="form-control"
+                                        <div class="form-floating">
+											<strong>
+												<p style="font-size: medium;">Titulo da Proposta de Intervenção<span class="icon">*</span></p>
+											</strong>
+
+											<textarea class="form-control"
                                                 placeholder="Adicione a Proposta aqui" name="proposta" id="proposta"
                                                 rows="3" cols="70"></textarea>
                                         </div>
@@ -254,18 +255,15 @@
                                         </div>
                                     </div>
 
-                                    <div class="input-group md-3">
-                                        <div class="mb-3 submission-item">
-                                            <p style="font-size: medium;"><strong>Declaração de autoria e residencia<span class="icon">*</span></p>
-                                            <Label for="file"></Label>
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-text">
+									<div class=" md-3">
+									<div class="input-group mb-3">
+                                                <div class="checkbox">
                                                     <input type="checkbox" name="checkbox" id="checkbox">
                                                 </div>
-                                                <p class="checkbox-text"> Marque a caixa para ler os termos</p>
-                                            </div>
-                                        </div>
+												<p class="checkbox-text"><strong>Marque a caixa para ler os termos</p></strong>
                                     </div>
+									
+									</div>
                                         <br>
                                         <div class="col-md-7 md-3">
                                             <input class="btn btn-outline-secondary" id="enviar" type="submit" disabled

@@ -33,7 +33,7 @@ $(document).ready(function () {
 			var uf_valid = /^[a-zA-Z]{2}$/g;
 			var telefone_valid = /^[0-9]{10,12}$/g;
 			var telefone2_valid = /(^[0-9]{10,12}$|^$)/g;
-			var orgao_expedidor_valid = /^([a-zA-Z0-9]|([a-zA-Z0-9]\-)+)$/g;
+			var orgao_expedidor_valid = /^([a-zA-Z0-9]|([a-zA-Z0-9]\-))+$/g;
 			var agencia_valid = /^[0-9]{4,5}$/g;
 			var conta_bancaria_valid = /^[0-9]{8,20}$/g;
 			var pis_nit_valid = /^[0-9]{8,20}$/g;
@@ -101,7 +101,7 @@ $(document).ready(function () {
 
 				
 				Array.from(document.querySelectorAll('.invalido')).forEach(
-			   (el) => el.classList.remove("invalido"));
+			    (el) => el.classList.remove("invalido"));
 				
 				console.log(name)
 				var invalid = false 
@@ -460,6 +460,21 @@ $(document).ready(function () {
             }
         
         });
+		
+		var myForm = document.getElementById('formulario');
+		myForm.addEventListener('submit', function(e){
+		e.preventDefault();
+		if (verificapreenchimento()) {
+			myForm.submit();
+		} else {
+			var enviar = document.getElementById('enviar')
+			enviar.disabled = true;
+			checkbox.checked = false;
+			modal_alerta.show();
+		}
+
+    
+}); 
 
 
         //função para verifica se campo foi preenchido

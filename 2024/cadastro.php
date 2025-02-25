@@ -33,7 +33,7 @@ $conn = conexao_banco();
 
 	
     
-	$name_valid = "/^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$/";
+	$name_valid = "/(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/";
 	if (!preg_match($name_valid, $nome)) {
 		header("location: inscricao.php?cadastro=nome_invalido");
 		return;
@@ -45,15 +45,13 @@ $conn = conexao_banco();
 	}
 	
 	$email = strtolower($email);
-	$email_valid = "/[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+/";
+	$email_valid = "/(^[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$))/";
 	if (!preg_match($email_valid, $email)) {
 		header("location: inscricao.php?cadastro=email_invalido");
 		return;
 	}
 	
-	$cpf = preg_replace( '/[\.|\-]/', '', $cpf);
-	
-	$cpf_valid = "/^[0-9]{11}$/";
+	$cpf_valid = "/(^[0-9]{11}$)|(^([0-9]{3}\.){2}[0-9]{3}\-[0-9]{2}$)/";
 	
 	if (!preg_match($cpf_valid, $cpf)) {
 		header("location: inscricao.php?cadastro=cpf_invalido");
@@ -77,7 +75,7 @@ $conn = conexao_banco();
 	
 	$rg = preg_replace( '/[\.|\-]/', '', $rg);
 	
-	$rg_valid = "/^[0-9]{6,14}$/";
+	$rg_valid = "/(^[0-9]{6,14}$)|(^([0-9]|[0-9][0-9\-\.]){6,14}$)/";
 	
 	if (!preg_match($rg_valid, $rg)) {
 		header("location: inscricao.php?cadastro=rg_invalido");
@@ -95,7 +93,7 @@ $conn = conexao_banco();
 	
 	$telefone_1 = preg_replace( '/[\(|\)|\-|]/', '', $telefone_1);
 
-    $telefone_valid = "/^[0-9]{10,11}$/";
+    $telefone_valid = "/(^[0-9]{10,12}|^[0-9]{4,8}\-[0-9]{4}|^\+[0-9]{12,14}|^\+[0-9]{8,10)\-[0-9]{4}$)/";
 
     if (!preg_match($telefone_valid, $telefone_1)) {
         header("location: inscricao.php?cadastro=telefone_invalido");
@@ -107,7 +105,7 @@ if($telefone_2 == ""){
     $telefone_2 = "Não informado";
 
 }
-$telefone_valid = "/^([0-9]{10,11}|Não informado)$/";
+$telefone_valid = "/(^[0-9]{10,12}|^[0-9]{4,8}\-[0-9]{4}|^\+[0-9]{12,14}|^\+[0-9]{8,10)\-[0-9]{4}$|^$)/";
 
     $telefone_2 = preg_replace( '/[\(|\)|\-|]/', '', $telefone_2);
       if (!preg_match($telefone_valid, $telefone_2)) {
@@ -126,19 +124,20 @@ $telefone_valid = "/^([0-9]{10,11}|Não informado)$/";
 
 //inserir no banco de dados na tabela inscrito
 
-$sql = "INSERT INTO inscrito (nome, profissao, cpf, rg, org_expedidor, email, proposta_intervecao) VALUES ('{$nome}', '{$profissao}', '{$cpf}', '{$rg}', '{$orgao_expedidor}', '{$email}', '{$proposta}')";
-
-$res = $conn->query($sql);
+$sql = $conn->prepare("INSERT INTO inscrito (nome, profissao, cpf, rg, org_expedidor, email, proposta_intervecao) VALUES ('{$nome}', '{$profissao}', '{$cpf}', '{$rg}', '{$orgao_expedidor}', '{$email}', '{$proposta}')");
+$sql->bind_param("is", $nome, $profissao, $cpf, $rg, $org_expedidor, $email, $proposta_intervecao);
+$res = $conn->execute();
 
 if($res){
 $id_inscrito = $conn->insert_id;
-}   
+}  
 
 //inserir no banco de dados na tabela telefone
 
-$sql = "INSERT INTO telefone (telefone_1, telefone_2, id_inscrito) VALUES ('{$telefone_1}', '{$telefone_2}', '{$id_inscrito}')";
+$sql = $conn->prepare("INSERT INTO telefone (telefone_1, telefone_2, id_inscrito) VALUES ('{$telefone_1}', '{$telefone_2}', '{$id_inscrito}')");
+$sql->bind_param("is", $telefone_1, $telefone_2, $id_inscrito);
 
-$res = $conn->query($sql);
+$sql->execute();
 
 //inserir no banco de dados na tabela dado_bancario
 

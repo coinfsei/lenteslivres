@@ -26,13 +26,13 @@ $(document).ready(function () {
 			var termo_premi = document.getElementById("termo_premi").value
 			
 			var nome_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/g;
-			var email_valid = /(^[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$))/g;
+			var email_valid = /(^[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$)/g;
 			var cpf_valid = /(^[0-9]{11}$)|(^([0-9]{3}\.){2}[0-9]{3}\-[0-9]{2}$)/g;
 			var rg_valid = /(^[0-9]{6,14}$)|(^([0-9]|[0-9][0-9\-\.]){6,14}$)/g;
 			var cep_valid = /^[0-9]{8}$/g;
 			var uf_valid = /^[a-zA-Z]{2}$/g;
-			var telefone_valid = /(^[0-9]{10,12}|^[0-9]{4,8}\-[0-9]{4}|^\+[0-9]{12,14}|^\+[0-9]{8,10)\-[0-9]{4}$)/g;
-			var telefone2_valid = /(^[0-9]{10,12}|^[0-9]{4,8}\-[0-9]{4}|^\+[0-9]{12,14}|^\+[0-9]{8,10)\-[0-9]{4}$|^$)/g;
+			var telefone_valid = /^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$/g;
+			var telefone2_valid = /(^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$|^$)/g;
 			var orgao_expedidor_valid = /(^(([a-zA-Z0-9]|([a-zA-Z0-9]\-))+$)+)/g;
 			var agencia_valid = /^[0-9]{4,5}$/g;
 			var conta_bancaria_valid = /^[0-9]{8,20}$/g;

@@ -37,9 +37,33 @@ ini_set('display_errors', 'Off');
 
 					echo "<script>alert('Inscrição não foi possivel ser realizada! CEP inválido!')</script>";
 					break;
+			case "uf_invalido":
+
+					echo "<script>alert('Inscrição não foi possivel ser realizada! UF inválida!')</script>";
+					break;
 			case "telefone_invalido":
 
 					echo "<script>alert('Inscrição não foi possivel ser realizada! Telefone inválido! Coloque o DDD!')</script>";
+					break;
+			case "orgao_expedidor_invalido":
+
+					echo "<script>alert('Inscrição não foi possivel ser realizada! Órgão expedidor inválido!')</script>";
+					break;
+			case "agencia_invalida":
+
+					echo "<script>alert('Inscrição não foi possivel ser realizada! Agência inválida!')</script>";
+					break;
+			case "conta_bancaria_invalida":
+
+					echo "<script>alert('Inscrição não foi possivel ser realizada! Conta bancária inválida!')</script>";
+					break;
+			case "pis_nit_invalido":
+
+					echo "<script>alert('Inscrição não foi possivel ser realizada! PIS_NIT inválido!')</script>";
+					break;
+			case "tipo_conta_invalido":
+
+					echo "<script>alert('Inscrição não foi possivel ser realizada! Tipo de conta inválido!')</script>";
 					break;
             case "arquivo_invalido":
 

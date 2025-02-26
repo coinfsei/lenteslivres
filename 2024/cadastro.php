@@ -45,11 +45,13 @@ $conn = conexao_banco();
 	}
 	
 	$email = strtolower($email);
-	$email_valid = "/(^[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$))/";
+	$email_valid = "/(^[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$)/";
 	if (!preg_match($email_valid, $email)) {
 		header("location: inscricao.php?cadastro=email_invalido");
 		return;
 	}
+	
+	$cpf = preg_replace( '/[\.|\-]/', '', $cpf);
 	
 	$cpf_valid = "/(^[0-9]{11}$)|(^([0-9]{3}\.){2}[0-9]{3}\-[0-9]{2}$)/";
 	
@@ -73,8 +75,6 @@ $conn = conexao_banco();
 	}
 	} 
 	
-	$rg = preg_replace( '/[\.|\-]/', '', $rg);
-	
 	$rg_valid = "/(^[0-9]{6,14}$)|(^([0-9]|[0-9][0-9\-\.]){6,14}$)/";
 	
 	if (!preg_match($rg_valid, $rg)) {
@@ -91,27 +91,54 @@ $conn = conexao_banco();
 		return;
 	}
 	
-	$telefone_1 = preg_replace( '/[\(|\)|\-|]/', '', $telefone_1);
+	$uf_valid = "/^[a-zA-Z]{2}$/";
+	
+	if (!preg_match($uf_valid, $uf)) {
+		header("location: inscricao.php?cadastro=uf_invalido");
+		return;
+	}
 
-    $telefone_valid = "/(^[0-9]{10,12}|^[0-9]{4,8}\-[0-9]{4}|^\+[0-9]{12,14}|^\+[0-9]{8,10)\-[0-9]{4}$)/";
+    $telefone_valid = "/^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$/";
 
     if (!preg_match($telefone_valid, $telefone_1)) {
         header("location: inscricao.php?cadastro=telefone_invalido");
         return;
     }
 
-if($telefone_2 == ""){
+	$telefone2_valid = "/(^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$|^$)/";
 
-    $telefone_2 = "Não informado";
+    if (!preg_match($telefone2_valid, $telefone_2)) {
+        header("location: inscricao.php?cadastro=telefone_invalido");
+        return;
+    }
+	
+	$orgao_expedidor_valid = "/(^(([a-zA-Z0-9]|([a-zA-Z0-9]\-))+$)+)/";
+	
+	if (!preg_match($orgao_expedidor_valid, $orgao_expedidor)) {
+        header("location: inscricao.php?cadastro=orgao_expedidor_invalido");
+        return;
+    }
 
-}
-$telefone_valid = "/(^[0-9]{10,12}|^[0-9]{4,8}\-[0-9]{4}|^\+[0-9]{12,14}|^\+[0-9]{8,10)\-[0-9]{4}$|^$)/";
+	$agencia_valid = "/^[0-9]{4,5}$/";
 
-    $telefone_2 = preg_replace( '/[\(|\)|\-|]/', '', $telefone_2);
-      if (!preg_match($telefone_valid, $telefone_2)) {
-          header("location: inscricao.php?cadastro=telefone_invalido");
-          return;
-      }
+    if (!preg_match($agencia_valid, $agencia)) {
+        header("location: inscricao.php?cadastro=agencia_invalida");
+        return;
+    }
+	
+	$conta_bancaria_valid = "/^[0-9]{8,20}$/";
+
+    if (!preg_match($conta_bancaria_valid, $conta_bancaria)) {
+        header("location: inscricao.php?cadastro=conta_bancaria_invalida");
+        return;
+    }
+	
+	$pis_nit_valid = "/^[0-9]{8,20}$/";
+
+    if (!preg_match($pis_nit_valid, $pis_nit)) {
+        header("location: inscricao.php?cadastro=pis_nit_invalido");
+        return;
+    }
 	
 	//coleta e validação de arquivos
 
@@ -124,20 +151,19 @@ $telefone_valid = "/(^[0-9]{10,12}|^[0-9]{4,8}\-[0-9]{4}|^\+[0-9]{12,14}|^\+[0-9
 
 //inserir no banco de dados na tabela inscrito
 
-$sql = $conn->prepare("INSERT INTO inscrito (nome, profissao, cpf, rg, org_expedidor, email, proposta_intervecao) VALUES ('{$nome}', '{$profissao}', '{$cpf}', '{$rg}', '{$orgao_expedidor}', '{$email}', '{$proposta}')");
-$sql->bind_param("is", $nome, $profissao, $cpf, $rg, $org_expedidor, $email, $proposta_intervecao);
-$res = $conn->execute();
+$sql = "INSERT INTO inscrito (nome, profissao, cpf, rg, org_expedidor, email, proposta_intervecao) VALUES ('{$nome}', '{$profissao}', '{$cpf}', '{$rg}', '{$orgao_expedidor}', '{$email}', '{$proposta}')";
+echo $sql;
+$res = $conn->query($sql);
 
 if($res){
 $id_inscrito = $conn->insert_id;
-}  
+}   
 
 //inserir no banco de dados na tabela telefone
 
-$sql = $conn->prepare("INSERT INTO telefone (telefone_1, telefone_2, id_inscrito) VALUES ('{$telefone_1}', '{$telefone_2}', '{$id_inscrito}')");
-$sql->bind_param("is", $telefone_1, $telefone_2, $id_inscrito);
+$sql = "INSERT INTO telefone (telefone_1, telefone_2, id_inscrito) VALUES ('{$telefone_1}', '{$telefone_2}', '{$id_inscrito}')";
 
-$sql->execute();
+$res = $conn->query($sql);
 
 //inserir no banco de dados na tabela dado_bancario
 

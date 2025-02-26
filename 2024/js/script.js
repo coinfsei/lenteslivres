@@ -18,7 +18,7 @@ $(document).ready(function () {
 			var tipo_conta = document.getElementById("tipo_conta").value
 			var pis_nit = document.getElementById("pis_nit").value
 			var proposta = document.getElementById("proposta").value 
-			var pis_nut = document.getElementById("pis_nit").value 
+			var pis_nit = document.getElementById("pis_nit").value 
 			var foto = document.getElementById("foto").value
 			var video = document.getElementById("video").value
 			var identidade = document.getElementById("identidade").value
@@ -186,7 +186,7 @@ $(document).ready(function () {
 						invalid_modal("tipo_conta");
 						invalid = true;
 				}
-				if (!pis_nit.match(nome_valid)) {
+				if (!pis_nit.match(pis_nit_valid)) {
 						invalid_modal("pis_nit");
 						invalid = true;
 				}

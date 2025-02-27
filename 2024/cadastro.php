@@ -33,7 +33,7 @@ $conn = conexao_banco();
 
 	
     
-	$name_valid = "/^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$/";
+	$name_valid = "/(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/";
 	if (!preg_match($name_valid, $nome)) {
 		header("location: inscricao.php?cadastro=nome_invalido");
 		return;
@@ -45,7 +45,7 @@ $conn = conexao_banco();
 	}
 	
 	$email = strtolower($email);
-	$email_valid = "/[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+/";
+	$email_valid = "/(^[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$)/";
 	if (!preg_match($email_valid, $email)) {
 		header("location: inscricao.php?cadastro=email_invalido");
 		return;
@@ -53,7 +53,7 @@ $conn = conexao_banco();
 	
 	$cpf = preg_replace( '/[\.|\-]/', '', $cpf);
 	
-	$cpf_valid = "/^[0-9]{11}$/";
+	$cpf_valid = "/(^[0-9]{11}$)|(^([0-9]{3}\.){2}[0-9]{3}\-[0-9]{2}$)/";
 	
 	if (!preg_match($cpf_valid, $cpf)) {
 		header("location: inscricao.php?cadastro=cpf_invalido");
@@ -75,9 +75,7 @@ $conn = conexao_banco();
 	}
 	} 
 	
-	$rg = preg_replace( '/[\.|\-]/', '', $rg);
-	
-	$rg_valid = "/^[0-9]{6,14}$/";
+	$rg_valid = "/(^[0-9]{6,14}$)|(^([0-9]|[0-9][0-9\-\.]){6,14}$)/";
 	
 	if (!preg_match($rg_valid, $rg)) {
 		header("location: inscricao.php?cadastro=rg_invalido");
@@ -86,34 +84,61 @@ $conn = conexao_banco();
 	
 	$cep = preg_replace( '/[\.|\-]/', '', $cep);
 	
-	$cep_valid = "/^[0-9]{8}$/";
+	$cep_valid = "/^([0-9]{8}|[0-9]{5}\-[0-9]{3})$/";
 	
 	if (!preg_match($cep_valid, $cep)) {
 		header("location: inscricao.php?cadastro=cep_invalido");
 		return;
 	}
 	
-	$telefone_1 = preg_replace( '/[\(|\)|\-|]/', '', $telefone_1);
+	$uf_valid = "/^[a-zA-Z]{2}$/";
+	
+	if (!preg_match($uf_valid, $uf)) {
+		header("location: inscricao.php?cadastro=uf_invalido");
+		return;
+	}
 
-    $telefone_valid = "/^[0-9]{10,11}$/";
+    $telefone_valid = "/^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$/";
 
     if (!preg_match($telefone_valid, $telefone_1)) {
         header("location: inscricao.php?cadastro=telefone_invalido");
         return;
     }
 
-if($telefone_2 == ""){
+	$telefone2_valid = "/(^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$|^$)/";
 
-    $telefone_2 = "Não informado";
+    if (!preg_match($telefone2_valid, $telefone_2)) {
+        header("location: inscricao.php?cadastro=telefone_invalido");
+        return;
+    }
+	
+	$orgao_expedidor_valid = "/(^(([a-zA-Z0-9]|([a-zA-Z0-9]\-))+$)+)/";
+	
+	if (!preg_match($orgao_expedidor_valid, $orgao_expedidor)) {
+        header("location: inscricao.php?cadastro=orgao_expedidor_invalido");
+        return;
+    }
 
-}
-$telefone_valid = "/^([0-9]{10,11}|Não informado)$/";
+	$agencia_valid = "/^[0-9]{4,5}$/";
 
-    $telefone_2 = preg_replace( '/[\(|\)|\-|]/', '', $telefone_2);
-      if (!preg_match($telefone_valid, $telefone_2)) {
-          header("location: inscricao.php?cadastro=telefone_invalido");
-          return;
-      }
+    if (!preg_match($agencia_valid, $agencia)) {
+        header("location: inscricao.php?cadastro=agencia_invalida");
+        return;
+    }
+	
+	$conta_bancaria_valid = "/^[0-9]{8,20}$/";
+
+    if (!preg_match($conta_bancaria_valid, $conta_bancaria)) {
+        header("location: inscricao.php?cadastro=conta_bancaria_invalida");
+        return;
+    }
+	
+	$pis_nit_valid = "/^[0-9]{8,20}$/";
+
+    if (!preg_match($pis_nit_valid, $pis_nit)) {
+        header("location: inscricao.php?cadastro=pis_nit_invalido");
+        return;
+    }
 	
 	//coleta e validação de arquivos
 
@@ -127,7 +152,7 @@ $telefone_valid = "/^([0-9]{10,11}|Não informado)$/";
 //inserir no banco de dados na tabela inscrito
 
 $sql = "INSERT INTO inscrito (nome, profissao, cpf, rg, org_expedidor, email, proposta_intervecao) VALUES ('{$nome}', '{$profissao}', '{$cpf}', '{$rg}', '{$orgao_expedidor}', '{$email}', '{$proposta}')";
-
+echo $sql;
 $res = $conn->query($sql);
 
 if($res){

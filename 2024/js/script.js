@@ -18,22 +18,22 @@ $(document).ready(function () {
 			var tipo_conta = document.getElementById("tipo_conta").value
 			var pis_nit = document.getElementById("pis_nit").value
 			var proposta = document.getElementById("proposta").value 
-			var pis_nut = document.getElementById("pis_nit").value 
+			var pis_nit = document.getElementById("pis_nit").value 
 			var foto = document.getElementById("foto").value
 			var video = document.getElementById("video").value
 			var identidade = document.getElementById("identidade").value
 			var identi_candi = document.getElementById("identi_candi").value
 			var termo_premi = document.getElementById("termo_premi").value
-
-			var nome_valid = /^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$/g;
-			var email_valid = /^[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$/g;
+			
+			var nome_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/g;
+			var email_valid = /(^[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$)/g;
 			var cpf_valid = /(^[0-9]{11}$)|(^([0-9]{3}\.){2}[0-9]{3}\-[0-9]{2}$)/g;
 			var rg_valid = /(^[0-9]{6,14}$)|(^([0-9]|[0-9][0-9\-\.]){6,14}$)/g;
-			var cep_valid = /^[0-9]{8}$/g;
+			var cep_valid = /^([0-9]{8}|[0-9]{5}\-[0-9]{3})$/g;
 			var uf_valid = /^[a-zA-Z]{2}$/g;
-			var telefone_valid = /^[0-9]{10,12}$/g;
-			var telefone2_valid = /(^[0-9]{10,12}$|^$)/g;
-			var orgao_expedidor_valid = /^([a-zA-Z0-9]|([a-zA-Z0-9]\-))+$/g;
+			var telefone_valid = /^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$/g;
+			var telefone2_valid = /(^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$|^$)/g;
+			var orgao_expedidor_valid = /(^(([a-zA-Z0-9]|([a-zA-Z0-9]\-))+$)+)/g;
 			var agencia_valid = /^[0-9]{4,5}$/g;
 			var conta_bancaria_valid = /^[0-9]{8,20}$/g;
 			var pis_nit_valid = /^[0-9]{8,20}$/g;
@@ -186,7 +186,7 @@ $(document).ready(function () {
 						invalid_modal("tipo_conta");
 						invalid = true;
 				}
-				if (!pis_nit.match(nome_valid)) {
+				if (!pis_nit.match(pis_nit_valid)) {
 						invalid_modal("pis_nit");
 						invalid = true;
 				}

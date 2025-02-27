@@ -84,7 +84,7 @@ $conn = conexao_banco();
 	
 	$cep = preg_replace( '/[\.|\-]/', '', $cep);
 	
-	$cep_valid = "/^[0-9]{8}$/";
+	$cep_valid = "/^([0-9]{8}|[0-9]{5}\-[0-9]{3})$/";
 	
 	if (!preg_match($cep_valid, $cep)) {
 		header("location: inscricao.php?cadastro=cep_invalido");

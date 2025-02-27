@@ -7,7 +7,7 @@
 }
 
 
- @media (min-width: 992px) {
+ @media screen and (min-width: 992px) {
 
 	.mobile {
 		display: none;
@@ -15,7 +15,7 @@
 
  }
  
-  @media (max-width: 991px) {
+  @media screen and (max-width: 991px) {
 
 	.desktop {
 		display: none;
@@ -28,7 +28,7 @@
  }
  
  
- @media (max-width: 512px) { 
+ @media screen and (max-width: 512px) { 
  
 	.navbar-brand {
 		margin-right: 20px !important;
@@ -46,7 +46,7 @@
 	}
 }
 
-@media (max-width: 399px) {
+@media screen and (max-width: 399px) {
 		
 		.navbar-brand {
 			margin-right: 10px !important;

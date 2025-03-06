@@ -343,7 +343,12 @@ $(document).ready(function () {
         //ativa botão de enviar formulario
         var checkbox = document.getElementById('checkbox');
         var enviar = document.getElementById('enviar');
-        const modalEleconfir = document.getElementById('confirmar-modal');
+		const modalAguarde = document.getElementById('aguardar-modal');
+        var modal_aguarde = new bootstrap.Modal(modalAguarde, {
+            backdrop: 'static',
+            keyboard: false
+        });
+		const modalEleconfir = document.getElementById('confirmar-modal');
         modal_confirmar = new bootstrap.Modal(modalEleconfir, {
             backdrop: 'static',
             keyboard: false
@@ -465,6 +470,7 @@ $(document).ready(function () {
 		myForm.addEventListener('submit', function(e){
 		e.preventDefault();
 		if (verificapreenchimento()) {
+			modal_aguarde.show();
 			myForm.submit();
 		} else {
 			var enviar = document.getElementById('enviar')

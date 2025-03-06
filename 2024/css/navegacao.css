@@ -57,6 +57,17 @@
 		.navbar .inscricao-mobile {
 			margin-right: 10px !important;
 		}
+		.navbar .flex-botoes-mobile {
+			max-width: 180px;
+	
+		}
+}
+
+@media screen and (max-width: 370px) {
+		.navbar .flex-botoes-mobile {
+			max-width: 160px;
+			margin-left: 0;
+		}
 }
 .nav-link-alt {
 	padding: 0.5rem;	

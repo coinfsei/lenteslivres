@@ -23,7 +23,7 @@ $(document).ready(function () {
 	var video = document.getElementById("video").value
 	var identidade = document.getElementById("identidade").value
 	var identi_candi = document.getElementById("identi_candi").value
-	var termo_premi = document.getElementById("termo_premi").value
+	//var termo_premi = document.getElementById("termo_premi").value
 
 	var nome_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/g;
 	var email_valid = /(^[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$)/g;
@@ -99,28 +99,66 @@ $(document).ready(function () {
 		var video = document.getElementById("video").value
 		var identidade = document.getElementById("identidade").value
 		var identi_candi = document.getElementById("identi_candi").value
-		var termo_premi = document.getElementById("termo_premi").value
+		//var termo_premi = document.getElementById("termo_premi").value
 
 		// Função para validar o arquivo PDF
-		function validarArquivoPDF(inputId) {
+		function validarArquivoPDF(inputId, avisoid, maxsize) {
 			var pdfInput = document.getElementById(inputId);
-			var aviso = document.getElementById('aviso-tamanho-arquivo');
-			if (pdfInput) {
-				var file = pdfInput.files[0];
-				if (file && file.type === 'application/pdf') {
-					var fileSizeMB = file.size / (1024 * 1024);
-					if (fileSizeMB > 20) {
+			var aviso = document.getElementById(avisoid);
+			var file = pdfInput.files[0];
+			var fileSizeMB = file.size / (1024 * 1024);
+			switch (file.type) {
+				case 'image/jpeg':
+					if (fileSizeMB > maxsize) {
 						pdfInput.value = ''; // Limpa o campo de upload
-						aviso.textContent = 'Não foi possível enviar o arquivo. O tamanho máximo permitido é 20MB.';
+						aviso.textContent = 'Não foi possível enviar o JPEG. O tamanho máximo permitido é 20MB.';
 						aviso.style.display = 'block';
 						return false;
+					} else {
+						aviso.style.display = 'none';
+						return true;
 					}
-				}
-			}
-			aviso.style.display = 'none';
-			return true;
-		}
 
+				case 'image/jpg':
+					if (fileSizeMB > maxsize) {
+						pdfInput.value = ''; // Limpa o campo de upload
+						aviso.textContent = 'Não foi possível enviar o JPG. O tamanho máximo permitido é 20MB.';
+						aviso.style.display = 'block';
+						return false;
+					} else {
+						aviso.style.display = 'none';
+						return true;
+					}
+
+				case 'image/png':
+
+					break;
+
+				case 'application/pdf':
+					if (fileSizeMB > maxsize) {
+						pdfInput.value = ''; // Limpa o campo de upload
+						aviso.textContent = 'Não foi possível enviar o PDF. O tamanho máximo permitido é 20MB.';
+						aviso.style.display = 'block';
+						return false;
+					} else {
+						aviso.style.display = 'none';
+						return true;
+					}
+
+				case 'video/mp4':
+					if (fileSizeMB > maxsize) {
+						pdfInput.value = ''; // Limpa o campo de upload
+						aviso.textContent = 'Não foi possível enviar o video. O tamanho máximo permitido é 400MB.';
+						aviso.style.display = 'block';
+						return false;
+					} else {
+						aviso.style.display = 'none';
+						return true;
+					}	
+
+			}
+			return false;
+		}
 
 
 		Array.from(document.querySelectorAll('.invalido')).forEach(
@@ -217,26 +255,23 @@ $(document).ready(function () {
 			invalid_modal("proposta");
 			invalid = true;
 		}
-		if (!foto) {
+		if (!(foto && validarArquivoPDF('foto', 'aviso-tamanho-foto', 25))) {
+			invalid = true;
 			invalid_modal("foto");
-			invalid = true;
 
 		}
-		if (!validarArquivoPDF('foto')) {
-			invalid = true;
-		}
 
-		if (!video) {
+		if (!(video && validarArquivoPDF('video', 'aviso-tamanho-video', 400))) {
 			invalid_modal("video");
 			invalid = true;
 		}
-		if (!identidade) {
+		if (!(identidade && validarArquivoPDF('identidade', 'aviso-tamanho-identidade', 25))) {
+			invalid = true;
 			invalid_modal("identidade");
-			invalid = true;
 		}
-		if (!identi_candi) {
-			invalid_modal("identi_candi");
+		if (!(identi_candi && validarArquivoPDF('identi_candi', 'aviso-tamanho-identi_candi', 25))) {
 			invalid = true;
+			invalid_modal("identi_candi");
 		}
 
 		if (invalid) return false;

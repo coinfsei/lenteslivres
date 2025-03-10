@@ -62,7 +62,6 @@ $(document).ready(function () {
 	}
 
 	function invalid_modal(invalid_field) {
-		console.log(invalid_field);
 		document.getElementById(invalid_field).classList.add("invalido");
 		var nodes = document.getElementById(invalid_field).parentNode.children;
 		for (var i = 0; i < nodes.length; i++) {
@@ -101,62 +100,30 @@ $(document).ready(function () {
 		var identi_candi = document.getElementById("identi_candi").value
 		//var termo_premi = document.getElementById("termo_premi").value
 
-		// Função para validar o arquivo PDF
-		function validarArquivoPDF(inputId, avisoid, maxsize) {
+		// Função para validar o arquivo
+		function validarArquivo(inputId, avisoid, maxsize, tipocerto) {
+			var tiposCertos = tipocerto.split(",")
 			var pdfInput = document.getElementById(inputId);
 			var aviso = document.getElementById(avisoid);
 			var file = pdfInput.files[0];
 			var fileSizeMB = file.size / (1024 * 1024);
-			switch (file.type) {
-				case 'image/jpeg':
-					if (fileSizeMB > maxsize) {
-						pdfInput.value = ''; // Limpa o campo de upload
-						aviso.textContent = 'Não foi possível enviar o JPEG. O tamanho máximo permitido é 20MB.';
-						aviso.style.display = 'block';
-						return false;
-					} else {
-						aviso.style.display = 'none';
-						return true;
-					}
-
-				case 'image/jpg':
-					if (fileSizeMB > maxsize) {
-						pdfInput.value = ''; // Limpa o campo de upload
-						aviso.textContent = 'Não foi possível enviar o JPG. O tamanho máximo permitido é 20MB.';
-						aviso.style.display = 'block';
-						return false;
-					} else {
-						aviso.style.display = 'none';
-						return true;
-					}
-
-				case 'image/png':
-
-					break;
-
-				case 'application/pdf':
-					if (fileSizeMB > maxsize) {
-						pdfInput.value = ''; // Limpa o campo de upload
-						aviso.textContent = 'Não foi possível enviar o PDF. O tamanho máximo permitido é 20MB.';
-						aviso.style.display = 'block';
-						return false;
-					} else {
-						aviso.style.display = 'none';
-						return true;
-					}
-
-				case 'video/mp4':
-					if (fileSizeMB > maxsize) {
-						pdfInput.value = ''; // Limpa o campo de upload
-						aviso.textContent = 'Não foi possível enviar o video. O tamanho máximo permitido é 400MB.';
-						aviso.style.display = 'block';
-						return false;
-					} else {
-						aviso.style.display = 'none';
-						return true;
-					}	
-
+			if (!tiposCertos.includes(file.type)) {
+				pdfInput.value = ''; // Limpa o campo de upload
+				aviso.textContent = 'Tipo de arquivo não aceito para esse campo.';
+				aviso.style.display = 'block';
+				return false;
 			}
+			if (fileSizeMB > maxsize) {
+						pdfInput.value = ''; // Limpa o campo de upload
+						aviso.textContent = `Não foi possível enviar o ${file.type.slice(file.type.indexOf("/") + 1)}. O tamanho máximo permitido é ${maxsize}MB.`;
+						aviso.style.display = 'block';
+						return false;
+					} else {
+						aviso.style.display = 'none';
+						return true;
+			}
+		
+			aviso.style.display = 'none';
 			return false;
 		}
 
@@ -255,21 +222,20 @@ $(document).ready(function () {
 			invalid_modal("proposta");
 			invalid = true;
 		}
-		if (!(foto && validarArquivoPDF('foto', 'aviso-tamanho-foto', 25))) {
+		if (!(foto && validarArquivo('foto', 'aviso-tamanho-foto', 20, 'image/png,image/jpg,image/jpeg,image/webp,application/pdf'))) {
 			invalid = true;
 			invalid_modal("foto");
 
 		}
-
-		if (!(video && validarArquivoPDF('video', 'aviso-tamanho-video', 400))) {
+		if (!(video && validarArquivo('video', 'aviso-tamanho-video', 400, 'video/mp4,video/mkv,video/webm,video/avi,video/m4a'))) {
 			invalid_modal("video");
 			invalid = true;
 		}
-		if (!(identidade && validarArquivoPDF('identidade', 'aviso-tamanho-identidade', 25))) {
+		if (!(identidade && validarArquivo('identidade', 'aviso-tamanho-identidade', 20, 'image/png,image/jpg,image/jpeg,image/webp,application/pdf'))) {
 			invalid = true;
 			invalid_modal("identidade");
 		}
-		if (!(identi_candi && validarArquivoPDF('identi_candi', 'aviso-tamanho-identi_candi', 25))) {
+		if (!(identi_candi && validarArquivo('identi_candi', 'aviso-tamanho-identi_candi', 20, 'application/pdf'))) {
 			invalid = true;
 			invalid_modal("identi_candi");
 		}
@@ -280,98 +246,6 @@ $(document).ready(function () {
 	}
 
 	//leitura de arquivo para validação
-
-	// Smooth scrolling
-	$("a.nav-link").on("click", function (event) {
-		if (this.hash !== "" && !$(this).attr("data-toggle")) {
-			event.preventDefault();
-			var hash = this.hash;
-
-			// Verifique se o elemento com o hash existe antes de tentar rolar
-			if ($(hash).length) {
-				$("html, body").animate(
-					{
-						scrollTop: $(hash).offset().top,
-					},
-					700,
-					function () {
-						window.location.hash = hash;
-					}
-				);
-			}
-
-			// Collapse the navbar after clicking on an item (only on mobile view)
-			if ($(".navbar-toggler").is(":visible")) {
-				$(".navbar-collapse").collapse("hide");
-			}
-		}
-	});
-
-	// Show modal when clicking on the "Download" menu item
-	$('a[href="#download"]').on("click", function (event) {
-		event.preventDefault();
-		$("#downloadModal").modal("show");
-	});
-
-	// Show gallery modal when clicking on the "Gallery" menu item
-	$('a[href="#gallery"]').on("click", function (event) {
-		event.preventDefault();
-		$("#galleryModal").modal("show");
-	});
-
-	// Show versoes modal when clicking on the "Versoes" menu item
-	$('a[href="#versoes"]').on("click", function (event) {
-		event.preventDefault();
-		$("#previousVersionsModal").modal("show");
-	});
-
-	// Activate scrollspy
-	$("body").scrollspy({ target: ".navbar", offset: 90 });
-
-	// Prevent scrolling when clicking on tab links
-	$('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
-		// Check if the hash is present in the URL and remove it to prevent scroll
-		if (history.pushState) {
-			history.pushState(null, null, " ");
-		} else {
-			window.location.hash = "";
-		}
-	});
-
-	// Mostrar botões flutuantes ao rolar para o fim da página
-	$(window).on("scroll", function () {
-		var scrollPosition = $(window).scrollTop();
-		var windowHeight = $(window).height();
-		var documentHeight = $(document).height();
-
-		if (
-			scrollPosition <= 100 ||
-			scrollPosition + windowHeight >= documentHeight - 100
-		) {
-			$("#botao-inscricao").fadeIn();
-			$("#botao-submissao").fadeIn();
-			$("#botao-compartilhar").fadeIn();
-		} else {
-			$("#botao-inscricao").fadeOut();
-			$("#botao-submissao").fadeOut();
-			$("#botao-compartilhar").fadeOut();
-		}
-	});
-
-	document.addEventListener("DOMContentLoaded", function () {
-		var navbarToggler = document.querySelector(".navbar-toggler");
-
-		navbarToggler.addEventListener("click", function () {
-			this.classList.toggle("collapsed");
-		});
-	});
-
-	// Collapse navbar when clicking on the brand link
-	$('a.navbar-brand').on('click', function () {
-		if ($(".navbar-collapse").hasClass("show")) {
-			$(".navbar-collapse").collapse("hide");
-		}
-	});
 
 	// Script para alternar entre Expandir biografia e Recolher biografia 
 	document.querySelectorAll('.toggle-btn').forEach(function (button) {
@@ -494,6 +368,13 @@ $(document).ready(function () {
 	checkbox.addEventListener('change', function () {
 
 		if (checkbox.checked && !verificapreenchimento()) {
+			console.log(document.getElementById("aviso-tamanho-video").style);
+			if (document.getElementById("aviso-tamanho-video").style.display == "block" 
+			&& document.getElementById("aviso-tamanho-video").textContent.includes("400MB")) {
+				document.getElementById("alerta-video").innerHTML = 'Parece que seu vídeo ultrapassa o tamanho máximo permitido de 400MB... Mas não se preocupe. <br/><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Clique aqui para ver um tutorial de como deixá-lo com um tamanho menor</a>.'
+			} else {
+				document.getElementById("alerta-video").innerHTML = ''
+			}				
 			modal_alerta.show();
 			checkbox.checked = false;
 			return;

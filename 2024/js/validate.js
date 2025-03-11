@@ -32,3 +32,4 @@ var $rg_valid = /^[0-9]{6,14}$/g;
 var $cep_valid = /^[0-9]{8}$/g;
 var $telefone_valid = /^[0-9]{10,11}$/g;
 
+}

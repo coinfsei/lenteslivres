@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+/*
  // Smooth scrolling
   $("a.nav-link").on("click", function (event) {
     if (this.hash !== "" && !$(this).attr("data-toggle")) {
@@ -34,7 +34,7 @@ $(document).ready(function () {
       window.location.hash = "";
     }
   });
-
+*/
   // Mostrar botÃµes flutuantes ao rolar para o fim da pÃ¡gina
   $(window).on("scroll", function () {
     var scrollPosition = $(window).scrollTop();

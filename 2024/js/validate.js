@@ -18,7 +18,7 @@ var conta_bancaria = document.getElementById("conta_bancaria").value
 var tipo_conta = document.getElementById("tipo_conta").value
 var pis_nit = document.getElementById("pis_nit").value
 var proposta = document.getElementById("proposta").value 
-var pis_nut document.getElementById("pis_nit").value 
+var pis_nut = document.getElementById("pis_nit").value 
 var foto = document.getElementById("foto").value
 var video = document.getElementById("video").value
 var identidade = document.getElementById("identidade").value
@@ -32,3 +32,4 @@ var $rg_valid = /^[0-9]{6,14}$/g;
 var $cep_valid = /^[0-9]{8}$/g;
 var $telefone_valid = /^[0-9]{10,11}$/g;
 
+});

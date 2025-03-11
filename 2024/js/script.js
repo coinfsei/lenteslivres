@@ -371,7 +371,7 @@ $(document).ready(function () {
 			console.log(document.getElementById("aviso-tamanho-video").style);
 			if (document.getElementById("aviso-tamanho-video").style.display == "block" 
 			&& document.getElementById("aviso-tamanho-video").textContent.includes("400MB")) {
-				document.getElementById("alerta-video").innerHTML = 'Parece que seu vídeo ultrapassa o tamanho máximo permitido de 400MB... Mas não se preocupe. <br/><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Clique aqui para ver um tutorial de como deixá-lo com um tamanho menor</a>.'
+				document.getElementById("alerta-video").innerHTML = 'Parece que seu vídeo ultrapassa o tamanho máximo permitido de 400MB... Mas não se preocupe. <br/><a href="./tutorial-envio.php" target="_blank">Clique aqui para ver um tutorial de como deixá-lo com um tamanho menor</a>.'
 			} else {
 				document.getElementById("alerta-video").innerHTML = ''
 			}				

@@ -1,18 +1,17 @@
 $(document).ready(function () {
-/*
+
  // Smooth scrolling
   $("a.nav-link").on("click", function (event) {
     if (this.hash !== "" && !$(this).attr("data-toggle")) {
       event.preventDefault();
       var hash = this.hash;
+	  console.log($("#navbar").height());
       $("html, body").animate(
         {
-          scrollTop: (window.location.hash > $(hash).offset().top ? $(hash) : $(hash).offset().top
+           scrollTop: $(hash)[0].getBoundingClientRect().top + window.scrollY - $("#navbar").height()
         },
-        500,
-        function () {
-          window.location.hash = $(hash).offset().top;
-        }
+        700,
+        'easeOutQuad'
       ); 
 
       // Collapse the navbar after clicking on an item (only on mobile view)
@@ -34,7 +33,7 @@ $(document).ready(function () {
       window.location.hash = "";
     }
   });
-*/
+
   // Mostrar botÃµes flutuantes ao rolar para o fim da pÃ¡gina
   $(window).on("scroll", function () {
     var scrollPosition = $(window).scrollTop();

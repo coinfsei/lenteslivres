@@ -449,4 +449,14 @@ $(document).ready(function () {
 	  }
 	} */
 
+	//Carroseul de imagens
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var myCarousel = new bootstrap.Carousel(document.querySelector("#carouselExampleDark"), {
+            interval: 5000, // Tempo de troca (5 segundos)
+            wrap: true // Permite looping infinito
+        });
+    });
+
+
 });

@@ -14,6 +14,9 @@
     <!-- Sessão Banner -->
     <?php include('./snippets/banner.html'); ?>
 
+    <!-- Noticias -->
+    <?php include('./snippets/noticia.html'); ?>
+
     <!-- Sessão Sobre -->
     <?php include('./snippets/sobre.html'); ?>
 

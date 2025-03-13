@@ -1,0 +1,9 @@
+#carouselExampleDark {
+    max-width: 750px !important; 
+    margin: 0 auto; 
+}
+
+#carouselExampleDark .carousel-item img {
+    width: 100%; 
+    object-fit: cover; 
+}

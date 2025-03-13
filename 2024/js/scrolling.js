@@ -6,13 +6,15 @@ $(document).ready(function () {
       event.preventDefault();
       var hash = this.hash;
 	  console.log($("#navbar").height());
-      $("html, body").animate(
+      setTimeout(() => {
+		 $("html, body").animate(
         {
            scrollTop: $(hash)[0].getBoundingClientRect().top + window.scrollY - $("#navbar").height()
         },
-        700,
+        500,
         'easeOutQuad'
-      ); 
+		);
+	  }, 200)		
 
       // Collapse the navbar after clicking on an item (only on mobile view)
       if ($(".navbar-toggler").is(":visible")) {

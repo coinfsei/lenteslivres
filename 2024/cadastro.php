@@ -16,10 +16,6 @@ $conn = conexao_banco();
     $cidade = $_POST["cidade"];
     $cep = $_POST["cep"];
     $uf = $_POST["uf"];
-    $agencia = $_POST["agencia"];
-    $conta_bancaria = $_POST["conta_bancaria"];
-    $tipo_conta = $_POST["tipo_conta"];
-    $pis_nit = $_POST["pis_nit"];
     $proposta = $_POST["proposta"];
     $nome_compro = $_FILES['foto']['name'];
     $nome_video = $_FILES['video']['name'];
@@ -119,27 +115,6 @@ $conn = conexao_banco();
         return;
     }
 
-	$agencia_valid = "/^[0-9]{4,5}$/";
-
-    if (!preg_match($agencia_valid, $agencia)) {
-        header("location: inscricao.php?cadastro=agencia_invalida");
-        return;
-    }
-	
-	$conta_bancaria_valid = "/^[0-9]{8,20}$/";
-
-    if (!preg_match($conta_bancaria_valid, $conta_bancaria)) {
-        header("location: inscricao.php?cadastro=conta_bancaria_invalida");
-        return;
-    }
-	
-	$pis_nit_valid = "/^[0-9]{8,20}$/";
-
-    if (!preg_match($pis_nit_valid, $pis_nit)) {
-        header("location: inscricao.php?cadastro=pis_nit_invalido");
-        return;
-    }
-	
 	//coleta e validação de arquivos
 
       validar_foto($nome_compro);

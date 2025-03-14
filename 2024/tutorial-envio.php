@@ -17,6 +17,8 @@
     <?php include('./snippets/como-enviar.html'); ?>
 
 	<!-- Chamada dos Scripts -->
-    <?php include('./snippets/scripts.html'); ?>
+    <?php include('./snippets/scripts2.html'); ?>
 
 </body>
+
+</html>

@@ -13,12 +13,7 @@ $(document).ready(function () {
 	var cep = document.getElementById("cep").value
 	var uf = document.getElementById("uf").value
 	var orgao_expedidor = document.getElementById("orgao_expedidor").value
-	var agencia = document.getElementById("agencia").value
-	var conta_bancaria = document.getElementById("conta_bancaria").value
-	var tipo_conta = document.getElementById("tipo_conta").value
-	var pis_nit = document.getElementById("pis_nit").value
 	var proposta = document.getElementById("proposta").value
-	var pis_nit = document.getElementById("pis_nit").value
 	var foto = document.getElementById("foto").value
 	var video = document.getElementById("video").value
 	var identidade = document.getElementById("identidade").value
@@ -45,6 +40,7 @@ $(document).ready(function () {
 		var soma = 0;
 		var resto;
 
+		inputCPF = inputCPF.replaceAll(/(\.|\-)/g, "");
 		if (inputCPF == '00000000000') return false;
 		for (i = 1; i <= 9; i++) soma = soma + parseInt(inputCPF.substring(i - 1, i)) * (11 - i);
 		resto = (soma * 10) % 11;
@@ -88,12 +84,7 @@ $(document).ready(function () {
 		var cep = document.getElementById("cep").value
 		var uf = document.getElementById("uf").value
 		var orgao_expedidor = document.getElementById("orgao_expedidor").value
-		var agencia = document.getElementById("agencia").value
-		var conta_bancaria = document.getElementById("conta_bancaria").value
-		var tipo_conta = document.getElementById("tipo_conta").value
-		var pis_nit = document.getElementById("pis_nit").value
 		var proposta = document.getElementById("proposta").value
-		var pis_nut = document.getElementById("pis_nit").value
 		var foto = document.getElementById("foto").value
 		var video = document.getElementById("video").value
 		var identidade = document.getElementById("identidade").value
@@ -131,7 +122,6 @@ $(document).ready(function () {
 		Array.from(document.querySelectorAll('.invalido')).forEach(
 			(el) => el.classList.remove("invalido"));
 
-		console.log(name)
 		var invalid = false
 
 		if (!nome.match(nome_valid)) {
@@ -200,24 +190,6 @@ $(document).ready(function () {
 			invalid = true;
 		}
 
-		if (!agencia.match(agencia_valid)) {
-			invalid_modal("agencia");
-			invalid = true;
-		}
-
-		if (!conta_bancaria.match(conta_bancaria_valid)) {
-			invalid_modal("conta_bancaria");
-			invalid = true;
-		}
-
-		if (!tipo_conta.match(nome_valid)) {
-			invalid_modal("tipo_conta");
-			invalid = true;
-		}
-		if (!pis_nit.match(pis_nit_valid)) {
-			invalid_modal("pis_nit");
-			invalid = true;
-		}
 		if (!proposta) {
 			invalid_modal("proposta");
 			invalid = true;
@@ -368,7 +340,6 @@ $(document).ready(function () {
 	checkbox.addEventListener('change', function () {
 
 		if (checkbox.checked && !verificapreenchimento()) {
-			console.log(document.getElementById("aviso-tamanho-video").style);
 			if (document.getElementById("aviso-tamanho-video").style.display == "block" 
 			&& document.getElementById("aviso-tamanho-video").textContent.includes("400MB")) {
 				document.getElementById("alerta-video").innerHTML = 'Parece que seu vídeo ultrapassa o tamanho máximo permitido de 400MB... Mas não se preocupe. <br/><a href="./tutorial-envio.php" target="_blank">Clique aqui para ver um tutorial de como deixá-lo com um tamanho menor</a>.'

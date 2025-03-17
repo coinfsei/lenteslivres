@@ -22,13 +22,10 @@ $conn = conexao_banco();
     $nome_identidade = $_FILES['identidade']['name'];
  /* $nome_decla_autoria = $_FILES['decla_autoria']['name'];*/
     $nome_identi_candi = $_FILES['identi_candi']['name'];
-    $nome_termo_premi = $_FILES['termo_premi']['name'];
+    /*$nome_termo_premi = $_FILES['termo_premi']['name'];*/
 
  //verifica se os uploads possuem as extensões permitidas 
 
-
-	
-    
 	$name_valid = "/(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/";
 	if (!preg_match($name_valid, $nome)) {
 		header("location: inscricao.php?cadastro=nome_invalido");
@@ -121,13 +118,13 @@ $conn = conexao_banco();
       validar_foto($nome_identidade);
       validar_video($nome_video);
       validar_arquivo($nome_identi_candi);
-      validar_arquivo($nome_termo_premi);
+      //validar_arquivo($nome_termo_premi);
 
 
 //inserir no banco de dados na tabela inscrito
 
 $sql = "INSERT INTO inscrito (nome, profissao, cpf, rg, org_expedidor, email, proposta_intervecao) VALUES ('{$nome}', '{$profissao}', '{$cpf}', '{$rg}', '{$orgao_expedidor}', '{$email}', '{$proposta}')";
-echo $sql;
+
 $res = $conn->query($sql);
 
 if($res){
@@ -142,9 +139,9 @@ $res = $conn->query($sql);
 
 //inserir no banco de dados na tabela dado_bancario
 
-$sql = "INSERT INTO dado_bancario (agencia, conta_bancaria, tipo_conta, pis_nit, id_inscrito) VALUES ('{$agencia}', '{$conta_bancaria}', '{$tipo_conta}', '{$pis_nit}', '{$id_inscrito}')";
+/*$sql = "INSERT INTO dado_bancario (agencia, conta_bancaria, tipo_conta, pis_nit, id_inscrito) VALUES ('{$agencia}', '{$conta_bancaria}', '{$tipo_conta}', '{$pis_nit}', '{$id_inscrito}')";
 
-$res = $conn->query($sql);
+$res = $conn->query($sql);*/
 
 //inserir no banco de dados na tabela endereco
 
@@ -157,18 +154,18 @@ $res = $conn->query($sql);
     $novocompro ="id_".$id_inscrito."_Nome_".$nome."_compro_residencia" .'.'. pathinfo($nome_compro, PATHINFO_EXTENSION);
     /*$novodecla = "id_".$id_inscrito."_Nome_".$nome."_decla_autoria" .'.'. pathinfo($nome_decla_autoria, PATHINFO_EXTENSION);*/
     $novoidenti= "id_".$id_inscrito."_Nome_".$nome."_identi_candi" .'.'. pathinfo($nome_identi_candi, PATHINFO_EXTENSION);
-    $novotermo = "id_".$id_inscrito."_Nome_".$nome."_termo_premi" .'.'. pathinfo($nome_termo_premi, PATHINFO_EXTENSION);
+    /*$novotermo = "id_".$id_inscrito."_Nome_".$nome."_termo_premi" .'.'. pathinfo($nome_termo_premi, PATHINFO_EXTENSION);*/
     $novoidentidade = "id_".$id_inscrito."_Nome_".$nome."_documen_identidade" .'.'. pathinfo($nome_identidade,PATHINFO_EXTENSION);
 
     $caminho_compro = move_arquivo($novocompro);
     $caminho_video = move_arquivo($novovideo);
     /*$caminho_decla = move_arquivo($novodecla);*/
     $caminho_identi = move_arquivo($novoidenti);
-    $caminho_termo = move_arquivo($novotermo);
+    //$caminho_termo = move_arquivo($novotermo);
     $caminho_identidade = move_arquivo($novoidentidade);
 
 
-        $sql = "INSERT INTO upload (compro_resi, video_arquivo, identi_candi_arquivo, quali_participes_arquivo, id_inscrito, local_compro, local_video, local_identi_candi, local_quali_participes, documento_arquivo, local_documento) VALUES ('{$novocompro}','{$novovideo}','{$novoidenti}','{ $novotermo}','{$id_inscrito}', '{$caminho_compro}','{$caminho_video}','{$caminho_identi}','{$caminho_termo}','{$novoidentidade}','{$caminho_identidade}')";
+        $sql = "INSERT INTO upload (compro_resi, video_arquivo, identi_candi_arquivo, id_inscrito, local_compro, local_video, local_identi_candi, documento_arquivo, local_documento) VALUES ('{$novocompro}','{$novovideo}','{$novoidenti}','{$id_inscrito}', '{$caminho_compro}','{$caminho_video}','{$caminho_identi}','{$novoidentidade}','{$caminho_identidade}')";
 
         $res = $conn->query($sql);
   

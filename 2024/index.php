@@ -20,9 +20,11 @@
     <!-- Sessão Sobre -->
     <?php include('./snippets/sobre.html'); ?>
 
+    <!-- Sessão Local -->
+     <?php include('./snippets/local.html'); ?>
+
     <!-- Sessão Termo  -->
-    <?php include('./snippets/termo.html'); 
-    ?>
+    <?php include('./snippets/termo.html'); ?>
 
     <!-- Sessao de Download -->
     <?php include('./snippets/download.html'); ?>

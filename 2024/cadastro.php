@@ -13,7 +13,7 @@ $conn = conexao_banco();
     $telefone_2 = $_POST["telefone_2"];
     $rua = $_POST["rua"];
     $bairro = $_POST["bairro"];
-    $cidade = $_POST["cidade"];
+    $municipio = $_POST["municipio"];
     $cep = $_POST["cep"];
     $uf = $_POST["uf"];
     $proposta = $_POST["proposta"];
@@ -145,7 +145,7 @@ $res = $conn->query($sql);*/
 
 //inserir no banco de dados na tabela endereco
 
-$sql = "INSERT INTO endereco (rua, bairro, cidade, cep, uf, id_inscrito) VALUES ('{$rua}', '{$bairro}', '{$cidade}', '{$cep}', '{$uf}', '{$id_inscrito}')";
+$sql = "INSERT INTO endereco (rua, bairro, municipio, cep, uf, id_inscrito) VALUES ('{$rua}', '{$bairro}', '{$municipio}', '{$cep}', '{$uf}', '{$id_inscrito}')";
 
 $res = $conn->query($sql);
 

@@ -9,7 +9,7 @@ $(document).ready(function () {
 	var telefone_1 = document.getElementById("telefone_1").value
 	var rua = document.getElementById("rua").value
 	var bairro = document.getElementById("bairro").value
-	var cidade = document.getElementById("cidade").value
+	var municipio = document.getElementById("municipio").value
 	var cep = document.getElementById("cep").value
 	var uf = document.getElementById("uf").value
 	var orgao_expedidor = document.getElementById("orgao_expedidor").value
@@ -80,7 +80,7 @@ $(document).ready(function () {
 		var telefone_2 = document.getElementById("telefone_2").value
 		var rua = document.getElementById("rua").value
 		var bairro = document.getElementById("bairro").value
-		var cidade = document.getElementById("cidade").value
+		var municipio = document.getElementById("municipio").value
 		var cep = document.getElementById("cep").value
 		var uf = document.getElementById("uf").value
 		var orgao_expedidor = document.getElementById("orgao_expedidor").value
@@ -179,8 +179,8 @@ $(document).ready(function () {
 			invalid = true;
 		}
 
-		if (!cidade.match(nome_valid)) {
-			invalid_modal("cidade");
+		if (!municipio.match(nome_valid)) {
+			invalid_modal("municipio");
 			invalid = true;
 		}
 
@@ -286,7 +286,7 @@ $(document).ready(function () {
 		var cpf = document.getElementById("cpf").value;
 		var rua = document.getElementById("rua").value;
 		var bairro = document.getElementById("bairro").value;
-		var cidade = document.getElementById("cidade").value;
+		var municipio = document.getElementById("municipio").value;
 		var cep = document.getElementById("cep").value;
 		var uf = document.getElementById("uf").value;
 		// var conteudo = document.getElementById("texto-modal").textContent;
@@ -301,7 +301,7 @@ $(document).ready(function () {
 		conteudo_nome = conteudo_nome.replace(`${nome}`, "[placeholder]");
 		conteudo_proposta = conteudo_proposta.replace(`${proposta}`, "[placeholder]");
 		conteudo_cpf = conteudo_cpf.replace(`${cpf}`, "[placeholder]");
-		conteudo_endereco = conteudo_endereco.replace(`${rua}, ${bairro}, ${cidade}, ${uf}, CEP: ${cep},`, "[placeholder]");
+		conteudo_endereco = conteudo_endereco.replace(`${rua}, ${bairro}, ${municipio}, ${uf}, CEP: ${cep},`, "[placeholder]");
 		document.getElementById("texto-modal-nome").textContent = conteudo_nome;
 		document.getElementById("texto-modal-cpf").textContent = conteudo_cpf;
 		document.getElementById("texto-modal-proposta").textContent = conteudo_proposta;
@@ -315,7 +315,7 @@ $(document).ready(function () {
 		var cpf = document.getElementById("cpf").value;
 		var rua = document.getElementById("rua").value;
 		var bairro = document.getElementById("bairro").value;
-		var cidade = document.getElementById("cidade").value;
+		var municipio = document.getElementById("municipio").value;
 		var cep = document.getElementById("cep").value;
 		var uf = document.getElementById("uf").value;
 		// var conteudo = document.getElementById("texto-modal").textContent;
@@ -329,7 +329,7 @@ $(document).ready(function () {
 		conteudo_nome = conteudo_nome.replace(`${nome}`, "[placeholder]");
 		conteudo_proposta = conteudo_proposta.replace(`${proposta}`, "[placeholder]");
 		conteudo_cpf = conteudo_cpf.replace(`${cpf}`, "[placeholder]");
-		conteudo_endereco = conteudo_endereco.replace(`${rua}, ${bairro}, ${cidade}, ${uf}, CEP: ${cep},`, "[placeholder]");
+		conteudo_endereco = conteudo_endereco.replace(`${rua}, ${bairro}, ${municipio}, ${uf}, CEP: ${cep},`, "[placeholder]");
 		document.getElementById("texto-modal-nome").textContent = conteudo_nome;
 		document.getElementById("texto-modal-cpf").textContent = conteudo_cpf;
 		document.getElementById("texto-modal-proposta").textContent = conteudo_proposta;
@@ -355,7 +355,7 @@ $(document).ready(function () {
 		var cpf = document.getElementById("cpf").value;
 		var rua = document.getElementById("rua").value;
 		var bairro = document.getElementById("bairro").value;
-		var cidade = document.getElementById("cidade").value;
+		var municipio = document.getElementById("municipio").value;
 		var cep = document.getElementById("cep").value;
 		var uf = document.getElementById("uf").value;
 		// var conteudo = document.getElementById("texto-modal").textContent;
@@ -369,7 +369,7 @@ $(document).ready(function () {
 			conteudo_nome = conteudo_nome.replace("[placeholder]", `${nome}`);
 			conteudo_proposta = conteudo_proposta.replace("[placeholder]", `${proposta}`);
 			conteudo_cpf = conteudo_cpf.replace("[placeholder]", `${cpf}`);
-			conteudo_endereco = conteudo_endereco.replace("[placeholder]", `Rua: ${rua},\n Bairro: ${bairro},\n Cidade: ${cidade},\n UF: ${uf},\n CEP: ${cep}`);
+			conteudo_endereco = conteudo_endereco.replace("[placeholder]", `Rua: ${rua},\n Bairro: ${bairro},\n Municipio: ${municipio},\n UF: ${uf},\n CEP: ${cep}`);
 			document.getElementById("texto-modal-nome").textContent = conteudo_nome;
 			document.getElementById("texto-modal-cpf").textContent = conteudo_cpf;
 			document.getElementById("texto-modal-proposta").textContent = conteudo_proposta;

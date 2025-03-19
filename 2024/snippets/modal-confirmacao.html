@@ -45,7 +45,7 @@
                         Declaro, ainda, que as informações aqui prestadas são verdadeiras, sob pena de incorrer nas penalidades 
                         previstas nas esferas cível, criminal e administrativa, na forma da lei</p>
                 <div class="modal-footer">
-                <p>Eu li e aceito a Declaração de autoria e residência</p>
+                <p>Eu li e aceito a declaração de autoria e residência.</p>
                 <button id="aceitar_envio" type="button" class="btn btn-success">Aceitar</button>
                 <button id="rejeitar_envio" type="button" class="btn btn-danger">Rejeitar</button>
                 </div>
@@ -81,16 +81,35 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exemploModalLabel">Carregando dados</h5>
+                <h5 class="modal-title" id="exemploModalLabel">Carregando dados...</h5>
             </div>
                 <br>
                 <div class="d-flex justify-content-center">
-                    <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Loading...</span>
+                    <div style="margin-top: 20px" class="spinner-border" role="status">
+                        <span class="visually-hidden">Carregando...</span>
                     </div>
                 </div>
-                <p>Estamos processando os arquivos, por favor aguarde na página</p>
+                <p>Estamos processando os arquivos, por favor aguarde na página.</p>
             </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="enviado-modal" tabindex="-1" aria-labelledby="exemploModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exemploModalLabel">Envio Realizado com sucesso!</h5>
+            </div>
+            <div class="modal-body">
+
+                Você já pode fechar essa página.
+            </div>
+     
+                <button id="fechar_modal_enviado" type="button" class="btn btn-success">OK</button>
+                </div>
             </div>
         </div>
     </div>

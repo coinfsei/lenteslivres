@@ -27,11 +27,68 @@
 
 .button-check-cites {
 	margin-top: 30px;
+	margin-bottom: 0px;
 	width: 30% !important;
 	border-radius: 8px;
 	margin-left: auto;
 	margin-right: auto;
 } 
+
+.banner-div {
+	height: 80px; 
+	width: 100%;
+}
+
+ @media  screen and (max-width: 768px) { 
+	
+	.banner-div {
+		background-image: url(../imgs/fundo-banner.png); 
+		margin-top: 0px;
+		padding-top: 10px;
+		height: 140px;
+	}
+	
+	.button-check-cites {
+		width: 58% !important;
+	} 
+	
+ }
+ 
+ @media  screen and (max-width: 512px) { 
+	
+	td {
+		max-width: 12vw !important;
+		font-size: 0.7rem !important;
+	}
+	
+	.banner-div {
+		margin-top: 0px;
+		padding-top: 20px;
+		height: 150px;
+	}
+	
+	.button-check-cites {
+		width: 65% !important;
+	} 
+	
+ }
+ 
+ @media  screen and (max-width: 435px) { 
+	
+	td {
+		font-size: 0.65rem !important;
+	}
+	
+ }
+ 
+  @media  screen and (max-width: 380px) { 
+	
+	td {
+		font-size: 0.58rem !important;
+	}
+	
+ }
+
 
 #participating-cities {
 	padding-top: 40px;

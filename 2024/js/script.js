@@ -220,7 +220,7 @@ $(document).ready(function () {
 	//leitura de arquivo para validação
 
 	// Script para alternar entre Expandir biografia e Recolher biografia 
-	document.querySelectorAll('.toggle-btn').forEach(function (button) {
+	/* document.querySelectorAll('.toggle-btn').forEach(function (button) {
 		button.addEventListener('click', function () {
 			// Verifica se o conteúdo está expandido ou colapsado
 			var collapseElement = document.querySelector(this.getAttribute('href'));

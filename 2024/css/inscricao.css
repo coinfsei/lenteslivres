@@ -103,6 +103,10 @@
 	justify-content: flex-end !important;
 }
 
+.texto-proposta {
+	display: block;
+}
+
  @media  screen and (max-width: 512px) { 
 	.item-form-texto {
 		flex-direction: column;

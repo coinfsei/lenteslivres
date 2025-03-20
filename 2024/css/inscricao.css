@@ -118,6 +118,10 @@
 	justify-content: center !important;
 	}
 
+	.seletor-municipio {
+		width: 100% !important;
+	}
+
 	.item-form-texto input {
 	width: 100% !important;
 	}
@@ -134,6 +138,7 @@
 		max-width: 110%;
 	}
  }
+ 
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

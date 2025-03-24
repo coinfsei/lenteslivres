@@ -129,13 +129,20 @@
 		max-width: 120%;
 	}
  }
+ 
+@media  screen and (max-width: 440px) { 
+	input[type="file"] {
+		font-size: 0.9rem;
+	}
+}
 
  @media screen and (max-width: 399px) { 
 	.submission-item {
 		max-width: 80%;
 	}
 	input[type="file"] {
-		max-width: 110%;
+		max-width: 140%;
+		font-size: 0.72rem;
 	}
  }
  

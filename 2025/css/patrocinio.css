@@ -6,7 +6,7 @@
 
 .row-patrocinio {
     display: flex;
-    flex-wrap: wrap;
+	flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
     margin-top: 10px;
@@ -29,6 +29,11 @@
     text-align: center;
 }
 
+.row-patrocinio{
+    margin:0 auto; 
+    width:500px;
+}
+
 .divisao {
     border: 1px solid #000;
     margin: 1rem 0;
@@ -42,7 +47,19 @@
     }
 }
 
-.row-patrocinio{
-    margin:0 auto; 
-    width:500px;
+@media (max-width: 768px) {
+.row-patrocinio {
+	width: 200px;
+	min-width: 40vw;
+	max-width: 95vw;
+	flex-direction: column;
+}
+}
+
+@media (max-width: 512px) {
+.row-patrocinio {
+	width: 300px;
+	min-width: 50vw;
+
+}
 }

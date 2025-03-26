@@ -1,3 +1,4 @@
+<?php include ('./snippets/scripts.html') ?>
 
 <?php
 
@@ -7,7 +8,7 @@ ini_set('display_errors', 'Off');
 
             case "sucesso":
 
-                    echo "<script>alert('Inscrição realizada com sucesso!')</script>";
+                    echo "<script src='./js/showModal.js'></script>";
                     break; 
 
 			case "nome_invalido":
@@ -114,7 +115,7 @@ ini_set('display_errors', 'Off');
     <?php include('./snippets/rodape.html'); ?>
 
     <!-- Chamada dos Scripts -->
-    <?php include('./snippets/scripts.html'); ?>
+    
 </body>
 
 </html>

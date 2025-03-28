@@ -158,7 +158,8 @@
 }
 
 .banner-image-left {
-	width: 50%;
+	width: 70%;
+	align-items: center;
 }
 
 
@@ -167,5 +168,17 @@
 	padding-bottom: 5px;
     align-self: flex-end; /* Garante que a imagem fique na parte inferior */
 }
+
+.municipio{
+
+	border-color: #cba172 !important;
+	border-width: 10px 10px 10px 10px !important;
+	border-style: solid;
+
+}
+
+
+
+
 
 

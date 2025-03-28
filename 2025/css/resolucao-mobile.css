@@ -32,13 +32,7 @@
     .row-patrocinio {
         flex-direction: column;
     }
-
-
-    #home {
-        background-image: url(../imgs/fundo-banner-mobile.png);
-        background-size: cover;
-    }
-
+	
     #botao-inscricao {
         display: flex;
         animation: pulse 1s infinite;

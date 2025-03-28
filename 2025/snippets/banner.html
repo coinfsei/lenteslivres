@@ -1,11 +1,19 @@
-<section id="home" class="d-flex justify-content-center align-items-center text-center hero">
-    <div class="banner d-flex justify-content-between align-items-center">
+<section id="home" class="justify-content-center align-items-center text-center hero">
+    <div class="background">
+		<picture>
+			<source media="(max-width: 768px)" srcset="./imgs/fundo-banner-mobile.png">
+			<img class="background-img" src="./imgs/fundo-banner.png" alt="fundo banner"/>
+		</picture>
+
+		
+	</div>
+	<div class="banner d-flex justify-content-between align-items-center">
         <!-- Imagem à esquerda -->
         <div class="banner-image-left">
             <img src="./imgs/titulo-banner.png" alt="Imagem à esquerda" class="img-fluid">
         </div>
 
-        <picture>
+        <!-- <picture>
             <!-- Imagem para dispositivos móveis 
             <source srcset="./imgs/banner-mobile.png" media="(max-width: 767px)">-->
     
@@ -13,13 +21,13 @@
             <source srcset="./imgs/banner.png" media="(min-width: 1024px)">-->
 
             <!-- Imagem de fallback, caso nenhum dos media queries seja atendido 
-            <img src="./imgs/banner.png" alt="Descrição da imagem" class="img-fluid">-->
-        </picture>
+            <img src="./imgs/banner.png" alt="Descrição da imagem" class="img-fluid">
+        </picture> -->
 
         <!-- Imagem à direita -->
        
     <div class="banner-div">
-        <a href="#participating-cities" class="nav-link button-check-cites btn btn-danger text-white">Veja se seu município está participando!</a>
+        <a href="#participating-cities" id="go-to-cities" class="nav-link button-check-cites btn btn-danger text-white">Veja se seu município está participando!</a>
     </div>
     <!-- Imagem à direita -->
     <div class="banner-image-right">

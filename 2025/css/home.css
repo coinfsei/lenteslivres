@@ -1,14 +1,43 @@
 #home {
-    background-image: url(../imgs/fundo-banner.png);
-    background-repeat: no-repeat;
-	background-size: cover;
-	margin-top: 75px;
-    
+	margin-top: 74px;
+    display: grid !important;
+    grid-template-columns: 1fr;
+}
+
+#home div {
+ background-color: transparent;
+ grid-row-start: 1;
+ grid-column-start: 1;
+}
+
+.hidden {
+	display: none;
+}
+
+.background-img, .background picture {
+		width: 100vw;
+		height: auto;
+		margin: 0;
+		padding: 0;
+}
+
+.background {
+	width: 100%;
+	height: auto;
+}
+
+.background picture {
+	margin: 0;
+	padding: 0;
+}
+
+.banner {
+	height: 100%;
 }
 
 .hero {
     /*     height: 100vh; */
-    background: #fff;
+    background: transparent;
     color: white;
     display: flex;
     align-items: center;
@@ -42,11 +71,25 @@
 	width: 100%;
 }
 
+ @media screen and (max-width: 920px) { 
+	.button-check-cites { 
+		width: 70% !important;
+	}
+ }
 
- @media  screen and (max-width: 768px) { 
+
+ @media screen and (max-width: 768px) { 
+	
+	#home {
+		margin-top: 72px;
+    }
+	
+	#home .banner {
+	flex-direction: column;
+	}
+	
 	
 	.banner-div {
-		background-image: url(../imgs/fundo-banner.png); 
 		margin-top: 0px;
 		padding-top: 10px;
 		height: 140px;
@@ -85,13 +128,29 @@
 	
  }
  
-  @media  screen and (max-width: 380px) { 
+ @media  screen and (max-width: 410px) { 
+  #home {
+	margin-top: 60px;
+  }
+}
+
+@media  screen and (max-width: 380px) { 
 	
+	#home {
+		margin-top: 56px;
+    }
 	td {
 		font-size: 0.58rem !important;
 	}
+}
+
+@media  screen and (max-width: 364px) { 
 	
- }
+	#home {
+		margin-top: 54px;
+    }
+
+}
 
 
 #participating-cities {

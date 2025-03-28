@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-	console.log($("#como-enviar-botao"));
+	$("#go-to-cities")[0].classList.add("hidden");
 	$("#como-enviar-botao")[0].classList.add("active");
 
 });

@@ -64,7 +64,20 @@ $conn = conexao_banco();
             header("location: inscricao.php?cadastro=cpf_invalido");
 			return;
         }
+        //Verifica se o cpf já foi cadastrado
+
+        $sql = "SELECT * FROM inscrito WHERE cpf = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $cpf);
+        $stmt->execute();
+        $result = $stmt->get_result();
         
+        if ($result->num_rows > 0) {
+            header("location: inscricao.php?cadastro=cpf_registrado");
+            return;
+            
+        }
+
 	}
 	} 
 	

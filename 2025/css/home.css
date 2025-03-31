@@ -35,6 +35,19 @@
 	height: 100%;
 }
 
+.banner-image-left {
+	margin-top: 60px !important;
+	width: 70%;
+	align-items: center;
+
+}
+
+.banner-image-right {
+	width: 90%;
+	padding-bottom: 5px;
+    align-self: flex-end; /* Garante que a imagem fique na parte inferior */
+}
+
 .hero {
     /*     height: 100vh; */
     background: transparent;
@@ -67,7 +80,6 @@
 } 
 
 .banner-div {
-	height: 80px; 
 	width: 100%;
 }
 
@@ -84,15 +96,34 @@
 		margin-top: 72px;
     }
 	
+	.button-check-cites { 
+		width: 80% !important;
+		margin: 0 auto 0 auto; 
+	}
+	
+	.banner-image-left {
+		margin-top: 0 !important;
+		margin-left: -40%;
+	}
+	
+	.banner-image-right {
+		width: 96%;
+		margin-right: -10px;
+		margin-bottom: 10px;
+	}
+	
+	
 	#home .banner {
-	flex-direction: column;
+		flex-direction: column;
+		gap: 0px;
 	}
 	
 	
 	.banner-div {
 		margin-top: 0px;
+		margin-bottom: 0px;
 		padding-top: 10px;
-		height: 140px;
+		
 	}
 	
 	.button-check-cites {
@@ -110,12 +141,12 @@
 	
 	.banner-div {
 		margin-top: 0px;
-		padding-top: 20px;
-		height: 150px;
+		padding-top: 5px;
+		margin-bottom: 0;
 	}
 	
 	.button-check-cites {
-		width: 65% !important;
+		width: 85% !important;
 	} 
 	
  }
@@ -157,16 +188,18 @@
 	padding-top: 40px;
 }
 
-.banner-image-left {
-	width: 50%;
-	margin-top: 60px !important;
+
+
+.municipio{
+
+	border-color: #cba172 !important;
+	border-width: 10px 10px 10px 10px !important;
+	border-style: solid;
+
 }
 
 
-.banner-image-right {
-	width: 90%;
-	padding-bottom: 5px;
-    align-self: flex-end; /* Garante que a imagem fique na parte inferior */
-}
+
+
 
 

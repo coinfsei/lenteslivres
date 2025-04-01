@@ -1,31 +1,23 @@
 <?php 
-
 function conexao_banco(){
 	
 	try {
 	
-	$root = $_SERVER['DOCUMENT_ROOT'];
-    $envFilepath = "$root/.env";
-    
-    if (is_file($envFilepath)) {
-        $file = new \SplFileObject($envFilepath);
-
-        // Loop until we reach the end of the file.
-        while (false === $file->eof()) {
-            // Get the current line value, trim it and save by putenv.
-            putenv(trim($file->fgets()));
-        }
-    }
-    
-    // example
-    $server_name = getenv('SERVER_NAME', '');
-	$user = getenv('USER', 'root');
-	$password = getenv('PASSWORD', '');
-    $base = ('DATABASE_NAME', '');
-	
-	
-    //Definindo variaveis para acessa o banco
+    //Definindo variaveis parar acessa o banco
     ini_set('display_errors', 'Off');
+    
+    $env = file_get_contents(__DIR__."\.env");
+    $lines = explode("\n",$env);
+
+    foreach($lines as $line){
+	preg_match("/([^#]+)\=(.*)/",$line,$matches);
+	if(isset($matches[2])){ putenv(trim($line)); }
+	} 
+    
+    $server_name = getenv('SERVER_NAME');
+	$user = getenv('USER');
+	$password = getenv('PASSWORD');
+    $base = getenv('DATABASE_NAME');
     
     $conn = new mysqli($server_name, $user, $password, $base);
     

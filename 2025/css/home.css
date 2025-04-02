@@ -136,7 +136,7 @@
 	
 	td {
 		max-width: 12vw !important;
-		font-size: 0.7rem !important;
+		font-size: 0.72rem !important;
 	}
 	
 	.banner-div {
@@ -151,7 +151,7 @@
 	
  }
  
- @media  screen and (max-width: 435px) { 
+ @media  screen and (max-width: 480px) { 
 	
 	td {
 		font-size: 0.65rem !important;
@@ -193,8 +193,12 @@
 .municipio{
 
 	border-color: #cba172 !important;
-	border-width: 10px 10px 10px 10px !important;
+	border-width: 4px !important;
 	border-style: solid;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	
 
 }
 

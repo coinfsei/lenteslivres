@@ -6,18 +6,10 @@ function conexao_banco(){
     //Definindo variaveis parar acessa o banco
     ini_set('display_errors', 'Off');
     
-    $env = file_get_contents(__DIR__."\.env");
-    $lines = explode("\n",$env);
-
-    foreach($lines as $line){
-	preg_match("/([^#]+)\=(.*)/",$line,$matches);
-	if(isset($matches[2])){ putenv(trim($line)); }
-	} 
-    
-    $server_name = getenv('SERVER_NAME');
-	$user = getenv('USER');
-	$password = getenv('PASSWORD');
-    $base = getenv('DATABASE_NAME');
+    $server_name = ('10.28.0.41');
+    $user = ('root');
+    $password = ('SenhaSegura!123');
+    $base = ('concurso');
     
     $conn = new mysqli($server_name, $user, $password, $base);
     
@@ -90,7 +82,7 @@ function conexao_banco(){
     function validar_arquivo($arquivo){
 
 		try {
-        $extencao =['pdf'];
+        $extencao =['doc','docx'];
 
         $testa_extencao = strtolower(pathinfo($arquivo, PATHINFO_EXTENSION));
 
@@ -134,11 +126,11 @@ function conexao_banco(){
                         return $caminho ;
                         */
 
-        }elseif(preg_match("/_identi_candi/",$arquivo)){
+        }elseif(preg_match("/_desc_prop/",$arquivo)){
 //
-            $caminho = 'uploads/identificacao_do_candidato/' . $arquivo;
+            $caminho = 'uploads/desc_prop/' . $arquivo;
 
-            move_uploaded_file($_FILES['identi_candi']['tmp_name'], $caminho);
+            move_uploaded_file($_FILES['desc_prop']['tmp_name'], $caminho);
 
     
                         return $caminho;

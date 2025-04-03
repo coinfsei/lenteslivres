@@ -17,7 +17,7 @@ $(document).ready(function () {
 	var foto = document.getElementById("foto").value
 	var video = document.getElementById("video").value
 	var identidade = document.getElementById("identidade").value
-	var identi_candi = document.getElementById("identi_candi").value
+	var desc_prop = document.getElementById("desc_prop").value
 	//var termo_premi = document.getElementById("termo_premi").value
 
 	var nome_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/g;
@@ -88,7 +88,7 @@ $(document).ready(function () {
 		var foto = document.getElementById("foto").value
 		var video = document.getElementById("video").value
 		var identidade = document.getElementById("identidade").value
-		var identi_candi = document.getElementById("identi_candi").value
+		var desc_prop = document.getElementById("desc_prop").value
 		//var termo_premi = document.getElementById("termo_premi").value
 
 		// Função para validar o arquivo
@@ -207,9 +207,9 @@ $(document).ready(function () {
 			invalid = true;
 			invalid_modal("identidade");
 		}
-		if (!(identi_candi && validarArquivo('identi_candi', 'aviso-tamanho-identi_candi', 20, 'application/pdf'))) {
+		if (!(desc_prop && validarArquivo('desc_prop', 'aviso-tamanho-desc_prop', 20, 'application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'))) {
 			invalid = true;
-			invalid_modal("identi_candi");
+			invalid_modal("desc_prop");
 		}
 
 		if (invalid) return false;

@@ -21,7 +21,7 @@ $conn = conexao_banco();
     $nome_video = $_FILES['video']['name'];
     $nome_identidade = $_FILES['identidade']['name'];
  /* $nome_decla_autoria = $_FILES['decla_autoria']['name'];*/
-    $nome_identi_candi = $_FILES['identi_candi']['name'];
+    $nome_desc_prop = $_FILES['desc_prop']['name'];
     /*$nome_termo_premi = $_FILES['termo_premi']['name'];*/
 
  //verifica se os uploads possuem as extensões permitidas 
@@ -130,7 +130,7 @@ $conn = conexao_banco();
       validar_foto($nome_compro);
       validar_foto($nome_identidade);
       validar_video($nome_video);
-      validar_arquivo($nome_identi_candi);
+      validar_arquivo($nome_desc_prop);
       //validar_arquivo($nome_termo_premi);
 
 
@@ -166,19 +166,19 @@ $res = $conn->query($sql);
     $novovideo = "id_".$id_inscrito."_Nome_".$nome."_video".'.'. pathinfo($nome_video, PATHINFO_EXTENSION);
     $novocompro ="id_".$id_inscrito."_Nome_".$nome."_compro_residencia" .'.'. pathinfo($nome_compro, PATHINFO_EXTENSION);
     /*$novodecla = "id_".$id_inscrito."_Nome_".$nome."_decla_autoria" .'.'. pathinfo($nome_decla_autoria, PATHINFO_EXTENSION);*/
-    $novoidenti= "id_".$id_inscrito."_Nome_".$nome."_identi_candi" .'.'. pathinfo($nome_identi_candi, PATHINFO_EXTENSION);
+    $novodesc_prop= "id_".$id_inscrito."_Nome_".$nome."_desc_prop" .'.'. pathinfo($nome_desc_prop, PATHINFO_EXTENSION);
     /*$novotermo = "id_".$id_inscrito."_Nome_".$nome."_termo_premi" .'.'. pathinfo($nome_termo_premi, PATHINFO_EXTENSION);*/
     $novoidentidade = "id_".$id_inscrito."_Nome_".$nome."_documen_identidade" .'.'. pathinfo($nome_identidade,PATHINFO_EXTENSION);
 
     $caminho_compro = move_arquivo($novocompro);
     $caminho_video = move_arquivo($novovideo);
     /*$caminho_decla = move_arquivo($novodecla);*/
-    $caminho_identi = move_arquivo($novoidenti);
+    $caminho_novodesc_prop = move_arquivo($novodesc_prop);
     //$caminho_termo = move_arquivo($novotermo);
     $caminho_identidade = move_arquivo($novoidentidade);
 
 
-        $sql = "INSERT INTO upload (compro_resi, video_arquivo, identi_candi_arquivo, id_inscrito, local_compro, local_video, local_identi_candi, documento_arquivo, local_documento) VALUES ('{$novocompro}','{$novovideo}','{$novoidenti}','{$id_inscrito}', '{$caminho_compro}','{$caminho_video}','{$caminho_identi}','{$novoidentidade}','{$caminho_identidade}')";
+        $sql = "INSERT INTO upload (compro_resi, video_arquivo, descricao_arquivo, id_inscrito, local_compro, local_video, local_descricao, documento_arquivo, local_documento) VALUES ('{$novocompro}','{$novovideo}','{$novodesc_prop}','{$id_inscrito}', '{$caminho_compro}','{$caminho_video}','{$novodesc_prop}','{$novoidentidade}','{$caminho_identidade}')";
 
         $res = $conn->query($sql);
   

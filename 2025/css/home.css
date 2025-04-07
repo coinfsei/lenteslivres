@@ -184,9 +184,14 @@
 		font-size: 0.65rem !important;
 	}
 	.banner-image-left {
-		width: 50%;
-		margin-right: 50px;
+		width: 40%;
+		margin-right: 0px;
 		
+	}
+	.banner-image-right{
+
+		width: 150%;
+		margin: 0px 0px;
 	}
 	
 	

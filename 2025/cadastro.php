@@ -120,7 +120,7 @@ $conn = conexao_banco();
 	
 	$orgao_expedidor_valid = "/(^(([a-zA-Z0-9]|([a-zA-Z0-9]\-))+$)+)/";
 	
-	if (!preg_match($orgao_expedidor_valid, $orgao_expedidor)) {
+	if (!preg_match($orgao_expedidor_valid, $orgao_expedidor) || strlen($orgao_expedidor) > 7) {
         header("location: inscricao.php?cadastro=orgao_expedidor_invalido");
         return;
     }

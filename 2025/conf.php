@@ -1,27 +1,5 @@
 <?php 
-function conexao_banco(){
 	
-	try {
-	
-    //Definindo variaveis parar acessa o banco
-    ini_set('display_errors', 'Off');
-    
-    $server_name = ('10.28.0.42');
-    $user = ('root');
-    $password = ('SenhaSegura!123');
-    $base = ('concurso');
-
-    
-    $conn = new mysqli($server_name, $user, $password, $base);
-    
-    if ($conn->connect_error) {
-        die("Erro de conexão: " . $conn->connect_error);
-    }
-    return $conn;
-	} catch(Exception $e) {
-		
-	}
-}	
 	if (!file_exists('uploads')) {
     mkdir('uploads', 0755, true);
 	}

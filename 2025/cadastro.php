@@ -1,5 +1,6 @@
 <?php 
 include('conf.php');
+include('conf_bd.php');
 $conn = conexao_banco();
 
 //Coleta de dados sobre o inscrito

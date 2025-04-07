@@ -185,7 +185,7 @@ $(document).ready(function () {
 		}
 
 
-		if (!orgao_expedidor.match(orgao_expedidor_valid)) {
+		if (!orgao_expedidor.match(orgao_expedidor_valid) || orgao_expedidor.length > 7) {
 			invalid_modal("orgao_expedidor");
 			invalid = true;
 		}

@@ -10,6 +10,7 @@ function conexao_banco(){
     $user = ('root');
     $password = ('SenhaSegura!123');
     $base = ('concurso');
+
     
     $conn = new mysqli($server_name, $user, $password, $base);
     
@@ -47,11 +48,11 @@ function conexao_banco(){
 		
 		try {
 
-        $extencao =['jpeg','jpg','png','pdf'];
+        $extensao =['jpeg','jpg','png','pdf'];
 
-        $testa_extencao = strtolower(pathinfo($foto, PATHINFO_EXTENSION));
+        $testa_extensao = strtolower(pathinfo($foto, PATHINFO_EXTENSION));
 
-        if(!in_array($testa_extencao,$extencao)){
+        if(!in_array($testa_extensao,$extensao)){
 
             header("location: inscricao.php?cadastro=arquivo_invalido");
             exit();
@@ -82,11 +83,15 @@ function conexao_banco(){
     function validar_arquivo($arquivo){
 
 		try {
+<<<<<<< HEAD
+        $extensao =['doc','docx'];
+=======
         $extencao =['pdf'];
+>>>>>>> e51b30069409d8a5cc04ca6d54ebf53962f970a6
 
-        $testa_extencao = strtolower(pathinfo($arquivo, PATHINFO_EXTENSION));
+        $testa_extensao = strtolower(pathinfo($arquivo, PATHINFO_EXTENSION));
 
-        if(!in_array($testa_extencao,$extencao)){
+        if(!in_array($testa_extensao,$extensao)){
 
             header("location: inscricao.php?cadastro=arquivo_invalido");
             exit();

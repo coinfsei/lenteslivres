@@ -83,11 +83,8 @@ function conexao_banco(){
     function validar_arquivo($arquivo){
 
 		try {
-<<<<<<< HEAD
-        $extensao =['doc','docx'];
-=======
-        $extencao =['pdf'];
->>>>>>> e51b30069409d8a5cc04ca6d54ebf53962f970a6
+            
+        $extensao =['pdf'];
 
         $testa_extensao = strtolower(pathinfo($arquivo, PATHINFO_EXTENSION));
 

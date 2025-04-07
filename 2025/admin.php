@@ -17,7 +17,8 @@
     echo "O total de inscrições ate o momento são de ".$dados['id'];
     //sistema para listar inscritos
     
-        $sql= "SELECT
+    // Consulta para listar os inscritos com os dados relacionados
+    $sql = "SELECT
         i.id AS id_inscrito,
         i.nome AS nome_inscrito,
         i.profissao,
@@ -31,25 +32,17 @@
         t.telefone_2,
         e.rua,
         e.bairro,
-        e.cidade,
+        e.municipio,
         e.cep,
         e.uf,
-        d.agencia,
-        d.conta_bancaria,
-        d.tipo_conta,
-        d.pis_nit,
         u.compro_resi,
         u.video_arquivo,
-       /*u.decla_autoria_arquivo,*/
-        u.identi_candi_arquivo,
-        u.quali_participes_arquivo,
+        u.descricao_arquivo,
+        u.documento_arquivo,
         u.local_compro,
         u.local_documento,
         u.local_video,
-        /*u.local_decla_autoria,*/
-        u.local_identi_candi,
-        u.local_quali_participes,
-        u.data_envio
+        u.local_descricao
     FROM
         inscrito i
     LEFT JOIN
@@ -57,17 +50,148 @@
     LEFT JOIN
         endereco e ON i.id = e.id_inscrito
     LEFT JOIN
-        dado_bancario d ON i.id = d.id_inscrito
-    LEFT JOIN
-        upload u ON i.id = u.id_inscrito;
-    ";
+        upload u ON i.id = u.id_inscrito";
+
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+
+while ($row = $result->fetch_assoc()) {
+echo "<br>";
+echo "<div class='container'>";
+
+// Tabela de Dados Básicos
+echo "<table class='table table-hover table-striped table-bordered'>";
+echo "<tr>";
+echo "<th>ID: {$row['id_inscrito']} - Dados Básicos</th>";
+echo "</tr>";
+echo "</table>";
+
+
+// Tabela de Informações Pessoais
+echo "<table class='table table-hover table-striped table-bordered'>";
+echo "<thead>";
+echo "<tr>";
+echo "<th>Nome</th>";
+echo "<th>Profissão</th>";
+echo "<th>E-mail</th>";
+echo "<th>CPF</th>";
+echo "<th>RG</th>";
+echo "<th>Órgão Expedidor</th>";
+echo "</tr>";
+echo "</thead>";
+echo "<tbody>";
+echo "<tr>";
+echo "<td>{$row['nome_inscrito']}</td>";
+echo "<td>{$row['profissao']}</td>";
+echo "<td>{$row['email']}</td>";
+echo "<td>{$row['cpf']}</td>";
+echo "<td>{$row['rg']}</td>";
+echo "<td>{$row['org_expedidor']}</td>";
+echo "</tr>";
+echo "</tbody>";
+echo "</table>";
+
+// Tabela de Endereço
+echo "<table class='table table-hover table-striped table-bordered'>";
+echo "<thead>";
+echo "<tr>";
+echo "<th>Rua</th>";
+echo "<th>Bairro</th>";
+echo "<th>municipio</th>";
+echo "<th>CEP</th>";
+echo "<th>UF</th>";
+echo "</tr>";
+echo "</thead>";
+echo "<tbody>";
+echo "<tr>";
+echo "<td>{$row['rua']}</td>";
+echo "<td>{$row['bairro']}</td>";
+echo "<td>{$row['cidade']}</td>";
+echo "<td>{$row['cep']}</td>";
+echo "<td>{$row['uf']}</td>";
+echo "</tr>";
+echo "</tbody>";
+echo "</table>";
+
+// Tabela de Contato
+echo "<table class='table table-hover table-striped table-bordered'>";
+echo "<thead>";
+echo "<tr>";
+echo "<th>Telefone 1</th>";
+echo "<th>Telefone 2</th>";
+echo "</tr>";
+echo "</thead>";
+echo "<tbody>";
+echo "<tr>";
+echo "<td>{$row['telefone_1']}</td>";
+echo "<td>{$row['telefone_2']}</td>";
+echo "</tr>";
+echo "</tbody>";
+echo "</table>";
+
+// Tabela de Documentos
+echo "<table class='table table-hover table-striped table-bordered'>";
+echo "<thead>";
+echo "<tr>";
+echo "<th>Foto do Documento de Identificação</th>";
+echo "<th>Comprovante de Residência</th>";
+echo "<th>Vídeo</th>";
+echo "<th>Descrição da Proposta</th>";
+echo "</tr>";
+echo "</thead>";
+echo "<tbody>";
+echo "<tr>";
+echo "<td><a href='{$row['local_documento']}' target='_blank'>Documento</a></td>";
+echo "<td><a href='{$row['local_compro']}' target='_blank'>Comprovante</a></td>";
+echo "<td><a href='{$row['local_video']}' target='_blank'>Vídeo</a></td>";
+echo "<td><a href='{$row['local_descricao']}' target='_blank'>Proposta</a></td>";
+echo "</tr>";
+echo "</tbody>";
+echo "</table>";
+
+// Tabela de Proposta de Intervenção
+echo "<table class='table table-hover table-striped table-bordered'>";
+echo "<thead>";
+echo "<tr>";
+echo "<th>Título da Proposta de Intervenção</th>";
+echo "</tr>";
+echo "</thead>";
+echo "<tbody>";
+echo "<tr>";
+echo "<td>{$row['proposta_intervecao']}</td>";
+echo "</tr>";
+echo "</tbody>";
+echo "</table>";
+
+echo "</div>";
+echo "<br><hr>";
+
+}
+} else {
+    echo "Nenhum inscrito encontrado."; 
+}
+
+$conn->close();
     
     
-        $result = $conn->query($sql);
+
+
+
+
+
+
+
+
+
+
+
+       /* $result = $conn->query($sql);
     
         if ($result->num_rows > 0) {
-            // Transformar os resultados em um array
             $dados = $result->fetch_all(MYSQLI_ASSOC);
+            var_dump($dados); // Depuração
             foreach ($dados as $arquivo) {
                 
                 //campos da tabela
@@ -162,14 +286,14 @@
                 echo "<th>Foto do Documento de indentificação</th>";
                 echo "<th>Comprovante de residencia</th>";
                 echo "<th>Video</th>";
-                /*echo "<th>Declaração de autoria e residencia</th>";*/
+                echo "<th>Declaração de autoria e residencia</th>";
                 echo "<th>Indentificação do candidato e da proposta</th>";
                 echo "<th>Termo de premiacão</th>";
                 echo "</tr>";
                 echo "<td><a href='{$arquivo['local_documento']}' target='_blank'>Documento</a></td>";
                 echo "<td><a href='{$arquivo['local_compro']}' target='_blank'>Comprovante</a></th>";
                 echo "<td><a href='{$arquivo['local_video']}' target='_blank'>Vídeo</a></td>";
-                /*echo "<td><a href='{$arquivo['local_decla_autoria']}' target='_blank'>Declaração de autotoria e residencia</a></td>";*/
+                echo "<td><a href='{$arquivo['local_decla_autoria']}' target='_blank'>Declaração de autotoria e residencia</a></td>";
                 echo "<td><a href='{$arquivo['local_identi_candi']}' target='_blank'>Indentificação do candidato e da proposta</a></td>";
                 echo "<td><a href='{$arquivo['local_quali_participes']}' target='_blank'>Termo de premiacão e cessão de direitos patrimoniais e de imagem</a></td>";
                 echo "</tr>";
@@ -192,7 +316,7 @@
             }
         } else {
             echo "Nenhum registro encontrado.";
-        }
+        }  */
 
     ?>
-    </div>
+</div>

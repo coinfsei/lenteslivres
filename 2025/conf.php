@@ -6,11 +6,18 @@ function conexao_banco(){
     //Definindo variaveis parar acessa o banco
     ini_set('display_errors', 'Off');
     
-    $server_name = ('10.28.0.42');
-    $user = ('root');
-    $password = ('SenhaSegura!123');
-    $base = ('concurso');
+    $env = file_get_contents(__DIR__."\.env");
+    $lines = explode("\n",$env);
 
+    foreach($lines as $line){
+	preg_match("/([^#]+)\=(.*)/",$line,$matches);
+	if(isset($matches[2])){ putenv(trim($line)); }
+	} 
+    
+    $server_name = getenv('SERVER_NAME');
+	$user = getenv('USER');
+	$password = getenv('PASSWORD');
+    $base = getenv('DATABASE_NAME');
     
     $conn = new mysqli($server_name, $user, $password, $base);
     

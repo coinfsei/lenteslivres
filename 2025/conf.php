@@ -6,18 +6,11 @@ function conexao_banco(){
     //Definindo variaveis parar acessa o banco
     ini_set('display_errors', 'Off');
     
-    $env = file_get_contents(__DIR__."\.env");
-    $lines = explode("\n",$env);
+    $server_name = ('10.28.0.42');
+    $user = ('root');
+    $password = ('SenhaSegura!123');
+    $base = ('concurso');
 
-    foreach($lines as $line){
-	preg_match("/([^#]+)\=(.*)/",$line,$matches);
-	if(isset($matches[2])){ putenv(trim($line)); }
-	} 
-    
-    $server_name = getenv('SERVER_NAME');
-	$user = getenv('USER');
-	$password = getenv('PASSWORD');
-    $base = getenv('DATABASE_NAME');
     
     $conn = new mysqli($server_name, $user, $password, $base);
     
@@ -90,7 +83,11 @@ function conexao_banco(){
     function validar_arquivo($arquivo){
 
 		try {
+<<<<<<< HEAD
         $extensao =['doc','docx'];
+=======
+        $extencao =['pdf'];
+>>>>>>> e51b30069409d8a5cc04ca6d54ebf53962f970a6
 
         $testa_extensao = strtolower(pathinfo($arquivo, PATHINFO_EXTENSION));
 

@@ -207,7 +207,7 @@ $(document).ready(function () {
 			invalid = true;
 			invalid_modal("identidade");
 		}
-		if (!(desc_prop && validarArquivo('desc_prop', 'aviso-tamanho-desc_prop', 20, 'application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'))) {
+		if (!(desc_prop && validarArquivo('desc_prop', 'aviso-tamanho-desc_prop', 20, 'application/pdf'))) {
 			invalid = true;
 			invalid_modal("desc_prop");
 		}

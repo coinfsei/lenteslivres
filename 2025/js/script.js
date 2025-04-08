@@ -199,7 +199,7 @@ $(document).ready(function () {
 			invalid_modal("foto");
 
 		}
-		if (!(video && validarArquivo('video', 'aviso-tamanho-video', 400, 'video/mp4,video/mkv,video/webm,video/avi,video/m4a'))) {
+		if (!(video && validarArquivo('video', 'aviso-tamanho-video', 550, 'video/mp4,video/m4a,video/m4v,video/quicktime'))) {
 			invalid_modal("video");
 			invalid = true;
 		}

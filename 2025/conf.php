@@ -1,6 +1,6 @@
 <?php 
-function conexao_banco(){
 	
+<<<<<<< HEAD
 	try {
 	
     //Definindo variaveis parar acessa o banco
@@ -29,6 +29,8 @@ function conexao_banco(){
 		
 	}
 }	
+=======
+>>>>>>> 3ff6aff1a1df10f1b7ca1fa9e17dcdeb4ad6f9d6
 	if (!file_exists('uploads')) {
     mkdir('uploads', 0755, true);
 	}
@@ -71,9 +73,9 @@ function conexao_banco(){
     }
 
     function validar_video($video){
-		
+
 		try {
-        $extensao =['mp4','m4a','mkv','webm'];
+        $extensao =['mp4','m4a','m4v','mov'];
 
         $testa_extensao = strtolower(pathinfo($video, PATHINFO_EXTENSION));
 
@@ -90,11 +92,8 @@ function conexao_banco(){
     function validar_arquivo($arquivo){
 
 		try {
-<<<<<<< HEAD
-        $extensao =['doc','docx'];
-=======
-        $extencao =['pdf'];
->>>>>>> e51b30069409d8a5cc04ca6d54ebf53962f970a6
+            
+        $extensao =['pdf'];
 
         $testa_extensao = strtolower(pathinfo($arquivo, PATHINFO_EXTENSION));
 

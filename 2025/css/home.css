@@ -111,13 +111,11 @@
 		width: 30%;
 		margin-top: 0 !important;
 		margin-left: -60%;
-		
-		
 	}
 	
 	.banner-image-right {
 		width: 120%;
-		margin: 0px 0px;
+		margin-right: 30px;
 
 	}
 	
@@ -147,7 +145,7 @@
 	
  }
  
- @media  screen and (max-width: 512px) { 
+ @media  screen and (max-width: 513px) { 
 	
 	td {
 		max-width: 12vw !important;
@@ -184,9 +182,13 @@
 		font-size: 0.65rem !important;
 	}
 	.banner-image-left {
-		width: 50%;
-		margin-right: 50px;
+		width:30%;
+		margin-right: 0px;
 		
+	}
+	.banner-image-right{
+		width: 140%;
+		margin: 0px 0px;
 	}
 	
 	

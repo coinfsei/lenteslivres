@@ -27,104 +27,104 @@ $conn = conexao_banco();
 
  //verifica se os uploads possuem as extensões permitidas 
 
-	$name_valid = "/(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|((\ |\-)[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/";
-	if (!preg_match($name_valid, $nome)) {
-		header("location: inscricao.php?cadastro=nome_invalido");
-		return;
-	}
-	
-	if (!preg_match($name_valid, $profissao)) {
-		header("location: inscricao.php?cadastro=profissao_invalida");
-		return;
-	}
-	
-	$email = strtolower($email);
-	$email_valid = "/(^[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$)/";
-	if (!preg_match($email_valid, $email)) {
-		header("location: inscricao.php?cadastro=email_invalido");
-		return;
-	}
-	
-	$cpf = preg_replace( '/[\.|\-]/', '', $cpf);
-	
-	$cpf_valid = "/(^[0-9]{11}$)|(^([0-9]{3}\.){2}[0-9]{3}\-[0-9]{2}$)/";
-	
-	if (!preg_match($cpf_valid, $cpf)) {
-		header("location: inscricao.php?cadastro=cpf_invalido");
-		return;
-	} else if (preg_match('/(\d)\1{10}/', $cpf)) {
-		header("location: inscricao.php?cadastro=cpf_invalido");
-        return;
-	} else {
-		for ($t = 9; $t < 11; $t++) {
-        for ($d = 0, $c = 0; $c < $t; $c++) {
-            $d += $cpf[$c] * (($t + 1) - $c);
-        }
-        $d = ((10 * $d) % 11) % 10;
-        if ($cpf[$c] != $d) {
-            header("location: inscricao.php?cadastro=cpf_invalido");
-			return;
-        }
-        //Verifica se o cpf já foi cadastrado
 
-        $sql = "SELECT * FROM inscrito WHERE cpf = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $cpf);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        if ($result->num_rows > 0) {
-            header("location: inscricao.php?cadastro=cpf_registrado");
-            return;
-            
-        }
-
-	}
-	} 
-	
-	$rg_valid = "/(^[0-9]{6,14}$)|(^([0-9]|[0-9][0-9\-\.]){6,14}$)/";
-	
-	if (!preg_match($rg_valid, $rg)) {
-		header("location: inscricao.php?cadastro=rg_invalido");
-		return;
-	}
-	
-	$cep = preg_replace( '/[\.|\-]/', '', $cep);
-	
-	$cep_valid = "/^([0-9]{8}|[0-9]{5}\-[0-9]{3})$/";
-	
-	if (!preg_match($cep_valid, $cep)) {
-		header("location: inscricao.php?cadastro=cep_invalido");
-		return;
-	}
-	
-	$uf_valid = "/^[a-zA-Z]{2}$/";
-	
-	if (!preg_match($uf_valid, $uf)) {
-		header("location: inscricao.php?cadastro=uf_invalido");
-		return;
-	}
-
-    $telefone_valid = "/^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$/";
-
-    if (!preg_match($telefone_valid, $telefone_1)) {
-        header("location: inscricao.php?cadastro=telefone_invalido");
-        return;
-    }
-
-	$telefone2_valid = "/(^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$|^$)/";
-
-    if (!preg_match($telefone2_valid, $telefone_2)) {
-        header("location: inscricao.php?cadastro=telefone_invalido");
-        return;
-    }
-	
-	$orgao_expedidor_valid = "/(^(([a-zA-Z0-9]|([a-zA-Z0-9](\-|\ )))+$)+)/";
-	
-	if (!preg_match($orgao_expedidor_valid, $orgao_expedidor) || strlen($orgao_expedidor) > 7) {
-        header("location: inscricao.php?cadastro=orgao_expedidor_invalido");
-        return;
-    }
+ $name_valid = "/(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|((\ |\-)[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)\s?$)/";
+ if (!preg_match($name_valid, $nome)) {
+     header("location: inscricao.php?cadastro=nome_invalido");
+     return;
+ }
+ 
+ if (!preg_match($name_valid, $profissao)) {
+     header("location: inscricao.php?cadastro=profissao_invalida");
+     return;
+ }
+ 
+ $email = strtolower($email);
+ $email_valid = "/(^[a-zA-Z0-9._]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+\s?$)/";
+ if (!preg_match($email_valid, $email)) {
+     header("location: inscricao.php?cadastro=email_invalido");
+     return;
+ }
+ 
+ $cpf = preg_replace('/[\.|\-]/', '', $cpf);
+ 
+ $cpf_valid = "/(^[0-9]{11}\s?$)|(^([0-9]{3}\.){2}[0-9]{3}\-[0-9]{2}\s?$)/";
+ 
+ if (!preg_match($cpf_valid, $cpf)) {
+     header("location: inscricao.php?cadastro=cpf_invalido");
+     return;
+ } else if (preg_match('/(\d)\1{10}/', $cpf)) {
+     header("location: inscricao.php?cadastro=cpf_invalido");
+     return;
+ } else {
+     for ($t = 9; $t < 11; $t++) {
+         for ($d = 0, $c = 0; $c < $t; $c++) {
+             $d += $cpf[$c] * (($t + 1) - $c);
+         }
+         $d = ((10 * $d) % 11) % 10;
+         if ($cpf[$c] != $d) {
+             header("location: inscricao.php?cadastro=cpf_invalido");
+             return;
+         }
+         // Verifica se o cpf já foi cadastrado
+ 
+         $sql = "SELECT * FROM inscrito WHERE cpf = ?";
+         $stmt = $conn->prepare($sql);
+         $stmt->bind_param("s", $cpf);
+         $stmt->execute();
+         $result = $stmt->get_result();
+ 
+         if ($result->num_rows > 0) {
+             header("location: inscricao.php?cadastro=cpf_registrado");
+             return;
+         }
+     }
+ }
+ 
+ $rg_valid = "/(^[0-9]{6,14}\s?$)|(^([0-9]|[0-9][0-9\-\.]){6,14}\s?$)/";
+ 
+ if (!preg_match($rg_valid, $rg)) {
+     header("location: inscricao.php?cadastro=rg_invalido");
+     return;
+ }
+ 
+ $cep = preg_replace('/[\.|\-]/', '', $cep);
+ 
+ $cep_valid = "/^([0-9]{8}\s?|[0-9]{5}\-[0-9]{3}\s?)$/";
+ 
+ if (!preg_match($cep_valid, $cep)) {
+     header("location: inscricao.php?cadastro=cep_invalido");
+     return;
+ }
+ 
+ $uf_valid = "/^[a-zA-Z]{2}\s?$/";
+ 
+ if (!preg_match($uf_valid, $uf)) {
+     header("location: inscricao.php?cadastro=uf_invalido");
+     return;
+ }
+ 
+ $telefone_valid = "/^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})\s?$/";
+ 
+ if (!preg_match($telefone_valid, $telefone_1)) {
+     header("location: inscricao.php?cadastro=telefone_invalido");
+     return;
+ }
+ 
+ $telefone2_valid = "/(^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$|^$)\s?/";
+ 
+ if (!preg_match($telefone2_valid, $telefone_2)) {
+     header("location: inscricao.php?cadastro=telefone_invalido");
+     return;
+ }
+ 
+ 
+$orgao_expedidor_valid = "/(^(([a-zA-Z0-9]|([a-zA-Z0-9](\-|\/|\.|\\\\|\ )))+$)+\s?$)/";
+ 
+ if (!preg_match($orgao_expedidor_valid, $orgao_expedidor) || strlen($orgao_expedidor) > 7) {
+     header("location: inscricao.php?cadastro=orgao_expedidor_invalido");
+     return;
+ }
 
 	//coleta e validação de arquivos
 

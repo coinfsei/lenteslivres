@@ -4,10 +4,10 @@
 function conexao_banco() {
     ini_set('display_errors', 'Off');
     
-    $server_name = '10.28.0.42';
-    $user = 'root';
-    $password = 'SenhaSegura!123';
-    $base = 'concurso';
+    $server_name = '10.28.246.66';
+    $user = 'usr_sei_lenteslivres';
+    $password = '5sr_S23_L2nt2sL3vr2s';
+    $base = 'bd_sei_lenteslivres';
 
     $conn = new mysqli($server_name, $user, $password, $base);
     

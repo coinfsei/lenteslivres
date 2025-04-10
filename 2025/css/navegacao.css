@@ -144,3 +144,18 @@
 #botao-home {
     display: none;
 }
+
+.btn-danger {
+	background-color: #dc3545 !important;
+	border-radius: 0.25rem;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #c82333 !important;
+  border-color: #bd2130;
+}
+
+.btn:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}

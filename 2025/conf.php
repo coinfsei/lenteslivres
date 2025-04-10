@@ -1,36 +1,5 @@
 <?php 
 	
-<<<<<<< HEAD
-	try {
-	
-    //Definindo variaveis parar acessa o banco
-    ini_set('display_errors', 'Off');
-    
-    $env = file_get_contents(__DIR__."\.env");
-    $lines = explode("\n",$env);
-
-    foreach($lines as $line){
-	preg_match("/([^#]+)\=(.*)/",$line,$matches);
-	if(isset($matches[2])){ putenv(trim($line)); }
-	} 
-    
-    $server_name = getenv('SERVER_NAME');
-	$user = getenv('USER');
-	$password = getenv('PASSWORD');
-    $base = getenv('DATABASE_NAME');
-    
-    $conn = new mysqli($server_name, $user, $password, $base);
-    
-    if ($conn->connect_error) {
-        die("Erro de conexão: " . $conn->connect_error);
-    }
-    return $conn;
-	} catch(Exception $e) {
-		
-	}
-}	
-=======
->>>>>>> 3ff6aff1a1df10f1b7ca1fa9e17dcdeb4ad6f9d6
 	if (!file_exists('uploads')) {
     mkdir('uploads', 0755, true);
 	}

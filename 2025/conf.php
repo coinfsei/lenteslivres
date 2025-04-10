@@ -42,9 +42,9 @@
     }
 
     function validar_video($video){
-		
+
 		try {
-        $extensao =['mp4','m4a','mkv','webm'];
+        $extensao =['mp4','m4v','m4a','mov','webm','mkv'];
 
         $testa_extensao = strtolower(pathinfo($video, PATHINFO_EXTENSION));
 

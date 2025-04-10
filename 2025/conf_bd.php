@@ -10,7 +10,14 @@ function conexao_banco() {
     foreach($lines as $line){
 	preg_match("/([^#]+)\=(.*)/",$line,$matches);
 	if(isset($matches[2])){ putenv(trim($line)); }
-	} */
+	} 
+	
+	$server_name = getenv('SERVER_NAME');
+	$user = getenv('USER');
+	$password = getenv('PASSWORD');
+    $base = getenv('DATABASE_NAME');
+	
+	*/
 	
     $server_name = '10.28.0.42';
     $user = 'root';

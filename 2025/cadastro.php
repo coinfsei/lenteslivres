@@ -27,7 +27,7 @@ $conn = conexao_banco();
 
  //verifica se os uploads possuem as extensões permitidas 
 
-	$name_valid = "/(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/";
+	$name_valid = "/(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|((\ |\-)[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/";
 	if (!preg_match($name_valid, $nome)) {
 		header("location: inscricao.php?cadastro=nome_invalido");
 		return;
@@ -119,7 +119,7 @@ $conn = conexao_banco();
         return;
     }
 	
-	$orgao_expedidor_valid = "/(^(([a-zA-Z0-9]|([a-zA-Z0-9]\-))+$)+)/";
+	$orgao_expedidor_valid = "/(^(([a-zA-Z0-9]|([a-zA-Z0-9](\-|\ )))+$)+)/";
 	
 	if (!preg_match($orgao_expedidor_valid, $orgao_expedidor) || strlen($orgao_expedidor) > 7) {
         header("location: inscricao.php?cadastro=orgao_expedidor_invalido");

@@ -18,8 +18,9 @@ $(document).ready(function () {
 	var video = document.getElementById("video").value
 	var identidade = document.getElementById("identidade").value
 	var desc_prop = document.getElementById("desc_prop").value
-	//var termo_premi = document.getElementById("termo_premi").value
+	//var termo_premi = document.getElementById("termo_premi").value 
 
+<<<<<<< HEAD
 	var nome_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|(\ [a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)\s?$)/g;
 	var email_valid = /(^[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+\s?$)/g;
 	var cpf_valid = /(^[0-9]{11}\s?$)|(^([0-9]{3}\.){2}[0-9]{3}\-[0-9]{2}\s?$)/g;
@@ -29,6 +30,17 @@ $(document).ready(function () {
 	var telefone_valid = /^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})\s?$/g;
 	var telefone2_valid = /(^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$|^$)\s?/g;
 	var orgao_expedidor_valid = /(^(([a-zA-Z0-9]|([a-zA-Z0-9]\-))+$)+\s?$)/g;
+=======
+	var nome_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|((\ |\-)[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/g;
+	var email_valid = /(^[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$)/g;
+	var cpf_valid = /(^[0-9]{11}$)|(^([0-9]{3}\.){2}[0-9]{3}\-[0-9]{2}$)/g;
+	var rg_valid = /(^[0-9]{6,14}$)|(^([0-9]|[0-9][0-9\-\.]){6,14}$)/g;
+	var cep_valid = /^(4[0-8]([0-9]){6})|(4[0-8]([0-9]){3}\-[0-9]{3})$/g;
+	var uf_valid = /^[a-zA-Z]{2}$/g;
+	var telefone_valid = /^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$/g;
+	var telefone2_valid = /(^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$|^$)/g;
+	var orgao_expedidor_valid = /(^(([a-zA-Z0-9]|([a-zA-Z0-9](\-|\ )))+$)+)/g;
+>>>>>>> 0b2423846dec5f89667740f830b51b330a5a286d
 	var agencia_valid = /^[0-9]{4,5}$/g;
 	var conta_bancaria_valid = /^[0-9]{8,20}$/g;
 	var pis_nit_valid = /^[0-9]{8,20}$/g;
@@ -199,7 +211,7 @@ $(document).ready(function () {
 			invalid_modal("foto");
 
 		}
-		if (!(video && validarArquivo('video', 'aviso-tamanho-video', 550, 'video/mp4,video/m4a,video/m4v,video/quicktime'))) {
+		if (!(video && validarArquivo('video', 'aviso-tamanho-video', 550, 'video/mp4,video/m4v,video/m4a,video/mkv,video/quicktime,video/mov,video/webm'))) {
 			invalid_modal("video");
 			invalid = true;
 		}

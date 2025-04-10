@@ -160,7 +160,7 @@
                                 <div class="item-form-texto input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">CEP<p class="icon">*</p></span>
                                     <input class="form-control" placeholder="CEP" aria-label="Username"
-                                        aria-describedby="basic-addon1" type="text" maxlength="9" name="cep" id="cep">
+                                        aria-describedby="basic-addon1"  type="text" maxlength="8" oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="cep" id="cep"/>
                                 </div>
                             </div>
                             <div class="col-md-6 md-3">

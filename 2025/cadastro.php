@@ -126,6 +126,7 @@ $conn = conexao_banco();
         return;
     }
 
+
 	//coleta e validação de arquivos
 
       validar_foto($nome_compro);

@@ -61,7 +61,7 @@
                                 <div class="item-form-texto input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">Órg. Expedidor<p class="icon">*</p></span>
                                     <input class="form-control" placeholder="Órg.Expedidor" aria-label="Username"
-                                        aria-describedby="basic-addon1" type="text" maxlength="6" name="orgao_expedidor"
+                                        aria-describedby="basic-addon1" type="text" maxlength="10" name="orgao_expedidor"
                                         id="orgao_expedidor">
                                 </div>
                             </div>
@@ -236,7 +236,7 @@
                                             </p>
                                                 <span class="smaller">Arquivos permitidos: jpg, jpeg, png, pdf</span>
                                                 <br>
-                                                <div id="aviso-tamanho-identidade" style="display: none; color: red;"></div>                                             
+                                                <div id="aviso-tamanho-identidade" accept=".pdf,image/*" style="display: none; color: red;"></div>                                             
                                             <input type="file" name="identidade" id="identidade">
                                         </div>
 
@@ -246,12 +246,11 @@
                                                     <strong>Enviar comprovante de residencia<span class="icon">*</span>
                                                     </strong><br />
                                                 </p>
-                                                    <span class="smaller">Arquivos permitidos: jpg, jpeg, png,
-                                                        pdf</span>
+                                                    <span class="smaller">Arquivos permitidos: jpg, jpeg, png, pdf</span>
                                                     <br>
                                                 <div id="aviso-tamanho-foto" style="display: none; color: red;"></div>
                                                     <br>
-                                                <input type="file" name="foto" id="foto">
+                                                <input type="file" name="foto" id="foto" accept=".pdf,image/*">
                                             </div>
                                         </div>
 
@@ -285,7 +284,7 @@
                                                     <br>
                                                     <div id="aviso-tamanho-desc_prop" style="display: none; color: red;"></div>
                                                     <br>                                                  
-                                                    <input type="file" name="desc_prop" id="desc_prop">
+                                                    <input type="file" name="desc_prop" id="desc_prop" accept=".pdf">
                                                 </div>
                                             </div>
 

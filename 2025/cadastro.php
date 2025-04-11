@@ -27,7 +27,7 @@ $conn = conexao_banco();
 
  //verifica se os uploads possuem as extensões permitidas 
 
-	$name_valid = "/(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|((\ |\-)[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/";
+	$name_valid = "/(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|((\ |\. |º|ª)[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)\.?$)/";
 	if (!preg_match($name_valid, $nome)) {
 		header("location: inscricao.php?cadastro=nome_invalido");
 		return;
@@ -39,13 +39,13 @@ $conn = conexao_banco();
 	}
 	
 	$email = strtolower($email);
-	$email_valid = "/(^[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$)/";
+	$email_valid = "/(^[a-zA-Z0-9\.\_\-]+@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$)/";
 	if (!preg_match($email_valid, $email)) {
 		header("location: inscricao.php?cadastro=email_invalido");
 		return;
 	}
 	
-	$cpf = preg_replace( '/[\.|\-]/', '', $cpf);
+	$cpf = preg_replace( '/[\.|\-|\ ]/', '', $cpf);
 	
 	$cpf_valid = "/(^[0-9]{11}$)|(^([0-9]{3}\.){2}[0-9]{3}\-[0-9]{2}$)/";
 	
@@ -91,7 +91,7 @@ $conn = conexao_banco();
 	
 	$cep = preg_replace( '/[\.|\-]/', '', $cep);
 	
-	$cep_valid = "/^([0-9]{8}|[0-9]{5}\-[0-9]{3})$/";
+	$cep_valid = "/^(4[0-8]([0-9]){6})|(4[0-8]([0-9]){3}\-[0-9]{3})$/";
 	
 	if (!preg_match($cep_valid, $cep)) {
 		header("location: inscricao.php?cadastro=cep_invalido");
@@ -112,7 +112,7 @@ $conn = conexao_banco();
         return;
     }
 
-	$telefone2_valid = "/(^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$|^$)/";
+	$telefone2_valid = "/^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$|^$)/";
 
     if (!preg_match($telefone2_valid, $telefone_2)) {
         header("location: inscricao.php?cadastro=telefone_invalido");

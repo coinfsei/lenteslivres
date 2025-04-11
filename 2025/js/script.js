@@ -1,31 +1,52 @@
 $(document).ready(function () {
 
+	function removerEspacoFinal(myString) {
+			if (myString.slice(-1) === " ") return myString.slice(0, -1);
+			else return myString;
+	}	
+
 	var nome = document.getElementById("nome").value
+	nome = removerEspacoFinal(nome)
 	var profissao = document.getElementById("profissao").value
+	profissao = removerEspacoFinal(profissao)
 	var email = document.getElementById("email").value
+	email = removerEspacoFinal(email)
 	var cpf = document.getElementById("cpf").value
+	cpf = removerEspacoFinal(cpf)
 	var rg = document.getElementById("rg").value
+	rg = removerEspacoFinal(rg)
 	var orgao_expedidor = document.getElementById("orgao_expedidor").value
+	orgao_expedidor = removerEspacoFinal(orgao_expedidor)
 	var telefone_1 = document.getElementById("telefone_1").value
+	telefone_1 = removerEspacoFinal(telefone_1)
+	var telefone_2 = document.getElementById("telefone_2").value
+	telefone_2 = removerEspacoFinal(telefone_2)
 	var rua = document.getElementById("rua").value
+	rua = removerEspacoFinal(rua)
 	var bairro = document.getElementById("bairro").value
+	bairro = removerEspacoFinal(bairro)
 	var municipio = document.getElementById("municipio").value
+	municipio = removerEspacoFinal(municipio)
 	var cep = document.getElementById("cep").value
+	cep = removerEspacoFinal(cep)
 	var uf = document.getElementById("uf").value
-	var orgao_expedidor = document.getElementById("orgao_expedidor").value
+	uf = removerEspacoFinal(uf)
 	var proposta = document.getElementById("proposta").value
+	proposta = removerEspacoFinal(proposta)
 	var foto = document.getElementById("foto").value
 	var video = document.getElementById("video").value
 	var identidade = document.getElementById("identidade").value
 	var desc_prop = document.getElementById("desc_prop").value
 	//var termo_premi = document.getElementById("termo_premi").value 
 
-	var nome_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|((\ |\-)[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/g;
-	var email_valid = /(^[a-zA-Z0-9]+\@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$)/g;
+	var nome_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|((\ |\. |º|ª)[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)\.?$)/g;
+	var email_valid = /(^[a-zA-Z0-9\.\_\-]+@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$)/g;
 	var cpf_valid = /(^[0-9]{11}$)|(^([0-9]{3}\.){2}[0-9]{3}\-[0-9]{2}$)/g;
 	var rg_valid = /(^[0-9]{6,14}$)|(^([0-9]|[0-9][0-9\-\.]){6,14}$)/g;
 	var cep_valid = /^(4[0-8]([0-9]){6})|(4[0-8]([0-9]){3}\-[0-9]{3})$/g;
 	var uf_valid = /^[a-zA-Z]{2}$/g;
+	var rua_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|((\ |\-|\,\ |\.\ )[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/
+	var bairro_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|((\ |\-|\.\ )[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/
 	var telefone_valid = /^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$/g;
 	var telefone2_valid = /(^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$|^$)/g;
 	var orgao_expedidor_valid = /(^(([a-zA-Z0-9]|([a-zA-Z0-9](\-|\ )))+$)+)/g;
@@ -70,25 +91,52 @@ $(document).ready(function () {
 
 	function verificapreenchimento() {
 
-		var nome = document.getElementById("nome").value
-		var profissao = document.getElementById("profissao").value
-		var email = document.getElementById("email").value
-		var cpf = document.getElementById("cpf").value
-		var rg = document.getElementById("rg").value
-		var orgao_expedidor = document.getElementById("orgao_expedidor").value
-		var telefone_1 = document.getElementById("telefone_1").value
-		var telefone_2 = document.getElementById("telefone_2").value
-		var rua = document.getElementById("rua").value
-		var bairro = document.getElementById("bairro").value
-		var municipio = document.getElementById("municipio").value
-		var cep = document.getElementById("cep").value
-		var uf = document.getElementById("uf").value
-		var orgao_expedidor = document.getElementById("orgao_expedidor").value
-		var proposta = document.getElementById("proposta").value
-		var foto = document.getElementById("foto").value
-		var video = document.getElementById("video").value
-		var identidade = document.getElementById("identidade").value
-		var desc_prop = document.getElementById("desc_prop").value
+	var nome = document.getElementById("nome").value
+	nome = removerEspacoFinal(nome)
+	document.getElementById("nome").value = nome
+	var profissao = document.getElementById("profissao").value
+	profissao = removerEspacoFinal(profissao)
+	document.getElementById("profissao").value = profissao
+	var email = document.getElementById("email").value
+	email = removerEspacoFinal(email)
+	document.getElementById("email").value = email
+	var cpf = document.getElementById("cpf").value
+	cpf = removerEspacoFinal(cpf)
+	document.getElementById("cpf").value = cpf
+	var rg = document.getElementById("rg").value
+	rg = removerEspacoFinal(rg)
+	document.getElementById("rg").value = rg
+	var orgao_expedidor = document.getElementById("orgao_expedidor").value
+	orgao_expedidor = removerEspacoFinal(orgao_expedidor)
+	document.getElementById("orgao_expedidor").value = orgao_expedidor
+	var telefone_1 = document.getElementById("telefone_1").value
+	telefone_1 = removerEspacoFinal(telefone_1)
+	document.getElementById("telefone_1").value = telefone_1
+	var telefone_2 = document.getElementById("telefone_2").value
+	telefone_2 = removerEspacoFinal(telefone_2)
+	document.getElementById("telefone_2").value = telefone_2
+	var rua = document.getElementById("rua").value
+	rua = removerEspacoFinal(rua)
+	document.getElementById("rua").value = rua
+	var bairro = document.getElementById("bairro").value
+	bairro = removerEspacoFinal(bairro)
+	document.getElementById("bairro").value = bairro
+	var municipio = document.getElementById("municipio").value
+	municipio = removerEspacoFinal(municipio)
+	document.getElementById("municipio").value = municipio
+	var cep = document.getElementById("cep").value
+	cep = removerEspacoFinal(cep)
+	document.getElementById("cep").value = cep
+	var uf = document.getElementById("uf").value
+	uf = removerEspacoFinal(uf)
+	document.getElementById("uf").value = uf
+	var proposta = document.getElementById("proposta").value
+	proposta = removerEspacoFinal(proposta)
+	document.getElementById("proposta").value = proposta
+	var foto = document.getElementById("foto").value
+	var video = document.getElementById("video").value
+	var identidade = document.getElementById("identidade").value
+	var desc_prop = document.getElementById("desc_prop").value
 		//var termo_premi = document.getElementById("termo_premi").value
 
 		// Função para validar o arquivo
@@ -169,17 +217,17 @@ $(document).ready(function () {
 			invalid = true;
 		}
 
-		if (!rua.match(nome_valid)) {
+		if (!rua.match(rua_valid)) {
 			invalid_modal("rua");
 			invalid = true;
 		}
 
-		if (!bairro.match(nome_valid)) {
+		if (!bairro.match(bairro_valid)) {
 			invalid_modal("bairro");
 			invalid = true;
 		}
 
-		if (!municipio.match(nome_valid)) {
+		if (!municipio) {
 			invalid_modal("municipio");
 			invalid = true;
 		}
@@ -281,14 +329,22 @@ $(document).ready(function () {
 
 
 	document.getElementById('rejeitar_envio').addEventListener('click', async function () {
-		var nome = document.getElementById("nome").value;
-		var proposta = document.getElementById("proposta").value;
-		var cpf = document.getElementById("cpf").value;
-		var rua = document.getElementById("rua").value;
-		var bairro = document.getElementById("bairro").value;
-		var municipio = document.getElementById("municipio").value;
-		var cep = document.getElementById("cep").value;
-		var uf = document.getElementById("uf").value;
+		var nome = document.getElementById("nome").value
+	nome = removerEspacoFinal(nome)
+	var cpf = document.getElementById("cpf").value
+	cpf = removerEspacoFinal(cpf)
+	var rua = document.getElementById("rua").value
+	rua = removerEspacoFinal(rua)
+	var bairro = document.getElementById("bairro").value
+	bairro = removerEspacoFinal(bairro)
+	var municipio = document.getElementById("municipio").value
+	municipio = removerEspacoFinal(municipio)
+	var cep = document.getElementById("cep").value
+	cep = removerEspacoFinal(cep)
+	var uf = document.getElementById("uf").value
+	uf = removerEspacoFinal(uf)
+	var proposta = document.getElementById("proposta").value
+	proposta = removerEspacoFinal(proposta)
 		// var conteudo = document.getElementById("texto-modal").textContent;
 		checkbox.checked = false;
 		await alert('É necessário concordar com a declaração de autoria e residencia para prosseguir.');

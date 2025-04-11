@@ -105,19 +105,20 @@ $conn = conexao_banco();
 		return;
 	}
 
-    $telefone_valid = "/^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$/";
-
+    $telefone_valid = "/^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})\s?$/";
+ 
     if (!preg_match($telefone_valid, $telefone_1)) {
         header("location: inscricao.php?cadastro=telefone_invalido");
         return;
     }
-
-	$telefone2_valid = "/^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$|^$)/";
-
+    
+    $telefone2_valid = "/(^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$|^$)\s?/";
+    
     if (!preg_match($telefone2_valid, $telefone_2)) {
         header("location: inscricao.php?cadastro=telefone_invalido");
         return;
     }
+   
 	
 	$orgao_expedidor_valid = "/(^(([a-zA-Z0-9]|([a-zA-Z0-9](\-|\ )))+$)+)/";
 	

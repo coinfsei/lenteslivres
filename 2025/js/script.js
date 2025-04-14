@@ -42,13 +42,13 @@ $(document).ready(function () {
 	var nome_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|((\ |\. |º|ª)[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)\.?$)/g;
 	var email_valid = /(^[a-zA-Z0-9\.\_\-]+@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$)/g;
 	var cpf_valid = /(^[0-9]{11}$)|(^([0-9]{3}\.){2}[0-9]{3}\-[0-9]{2}$)/g;
-	var rg_valid = /(^[0-9]{6,14}$)|(^([0-9]|[0-9][0-9\-\.]){6,14}$)/g;
+	var rg_valid = /(^[0-9]{4,12}$)|(^([0-9]{1,3}\.){2}([0-9]{1,3}\-)([0-9]{1,3})$)/g;
 	var cep_valid = /^(4[0-8]([0-9]){6})|(4[0-8]([0-9]){3}\-[0-9]{3})$/g;
 	var uf_valid = /^[a-zA-Z]{2}$/g;
 	var rua_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû.,]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû.,]|((\ |\-|\,\ |\.\ )[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû.,]+)*)$)/
 	var bairro_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|((\ |\-|\.\ )[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/
-	var telefone_valid = /^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$/g;
-	var telefone2_valid = /(^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$|^$)/g;
+	var telefone_valid = /^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,15}|\+[0-9]{8,12}\-[0-9]{4}|\([0-9]{2,3}\)[0-9]{8-9}|\([0-9]{2,3}\)[0-9]{4-5}\-[0-9]{4}|\+[0-9]{2,3}\([0-9]{2,3}\)[0-9]{4-5}[0-9]{4})$/g;
+	var telefone2_valid = /((^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,15}|\+[0-9]{8,12}\-[0-9]{4}|\([0-9]{2,3}\)[0-9]{8-9}|\([0-9]{2,3}\)[0-9]{4-5}\-[0-9]{4}|\+[0-9]{2,3}\([0-9]{2,3}\)[0-9]{4-5}[0-9]{4}|$))|^$)/g;
 	var orgao_expedidor_valid = /^(?:[a-zA-Z0-9\/]|[a-zA-Z0-9\/](?:\-|\ ))+$/g;
 	var agencia_valid = /^[0-9]{4,5}$/g;
 	var conta_bancaria_valid = /^[0-9]{8,20}$/g;
@@ -489,17 +489,22 @@ $(document).ready(function () {
 	// Aplicação de máscara para CPF
 
 	document.getElementById('cpf').addEventListener('input', function (e) {
-		let mas_cpf = e.target.value.replace(/\D/g, ''); 
-		mas_cpf = mas_cpf.replace(/(\d{3})(\d)/, '$1.$2'); 
-		mas_cpf = mas_cpf.replace(/(\d{3})(\d)/, '$1.$2'); 
-		mas_cpf = mas_cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); 
+		let mas_cpf = e.target.value;
+		if (mas_cpf.length < 12) {
+			mas_cpf = mas_cpf.replace(/(\d{3})(\d)/, '$1.$2'); 
+			mas_cpf = mas_cpf.replace(/(\d{3})(\d)/, '$1.$2'); 
+			mas_cpf = mas_cpf.replace(/[^0-9\.\-]/g, ''); 
+		} else {
+			mas_cpf = mas_cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); 
+		}
+		
 		e.target.value = mas_cpf;
 	});
 
 	//Aplicação de máscara para CEP
 
 	document.getElementById('cep').addEventListener('input',function (e) {
-		let mas_cep = e.target.value.replace(/\D/g, ''); 
+		let mas_cep = e.target.value.replace(/^(?!([0-9]{1,5}))(?!([0,9]{5}\-[0-9]{1-3})).*$/g, ''); 
 		mas_cep = mas_cep.replace(/(\d{5})(\d)/, '$1-$2'); 
 		e.target.value = mas_cep;
 

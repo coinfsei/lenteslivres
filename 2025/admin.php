@@ -136,7 +136,7 @@ echo "<tbody>";
 echo "<tr>";
 echo "<td>{$row['rua']}</td>";
 echo "<td>{$row['bairro']}</td>";
-echo "<td>{$row['cidade']}</td>";
+echo "<td>{$row['municipio']}</td>";
 echo "<td>{$row['cep']}</td>";
 echo "<td>{$row['uf']}</td>";
 echo "</tr>";

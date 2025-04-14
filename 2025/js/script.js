@@ -49,7 +49,7 @@ $(document).ready(function () {
 	var bairro_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|((\ |\-|\.\ )[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/
 	var telefone_valid = /^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$/g;
 	var telefone2_valid = /(^([0-9]{10,12}|[0-9]{4,8}\-[0-9]{4}|\+[0-9]{12,14}|\+[0-9]{8,10}\-[0-9]{4})$|^$)/g;
-	var orgao_expedidor_valid = /(^(([a-zA-Z0-9]|([a-zA-Z0-9](\-|\ )))+$)+)/g;
+	var orgao_expedidor_valid = /^(?:[a-zA-Z0-9\/]|[a-zA-Z0-9\/](?:\-|\ ))+$/g;
 	var agencia_valid = /^[0-9]{4,5}$/g;
 	var conta_bancaria_valid = /^[0-9]{8,20}$/g;
 	var pis_nit_valid = /^[0-9]{8,20}$/g;

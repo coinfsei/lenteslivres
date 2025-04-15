@@ -112,7 +112,7 @@ $conn = conexao_banco();
         return;
     }
     
-    $telefone2_valid = "/((^([0-9]{10,12}|[0-9]{6,8}\-[0-9]{4}|\([0-9]{2,3}\)[0-9]{8,9}|\([0-9]{2,3}\)[0-9]{4,5}\-[0-9]{4})$|^$)/";
+    $telefone2_valid = "/(^([0-9]{10,12}|[0-9]{6,8}\-[0-9]{4}|\([0-9]{2,3}\)[0-9]{8,9}|\([0-9]{2,3}\)[0-9]{4,5}\-[0-9]{4})$|^$)/";
     
     if (!preg_match($telefone2_valid, $telefone_2)) {
         header("location: inscricao.php?cadastro=telefone_invalido");

@@ -39,14 +39,14 @@ $(document).ready(function () {
 	var desc_prop = document.getElementById("desc_prop").value
 	//var termo_premi = document.getElementById("termo_premi").value 
 
-	var nome_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|((\ |\. |º|ª)[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)\.?$)/g;
+	var nome_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû\']+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû\']|((\ |\. |º|ª)[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû\']+)*)\.?$)/g;
 	var email_valid = /(^[a-zA-Z0-9\.\_\-]+@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$)/g;
 	var cpf_valid = /(^[0-9]{11}$)|(^([0-9]{3}\.){2}[0-9]{3}\-[0-9]{2}$)/g;
 	var rg_valid = /(^[0-9]{4,12}$)|(^([0-9]{1,3}\.){2}([0-9]{1,3}\-)([0-9]{1,3})$)/g;
 	var cep_valid = /^(4[0-8]([0-9]){6})|(4[0-8]([0-9]){3}\-[0-9]{3})$/g;
 	var uf_valid = /^[a-zA-Z]{2}$/g;
-	var rua_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû.,]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû.,]|((\ |\-|\,\ |\.\ )[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû.,]+)*)$)/
-	var bairro_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]|((\ |\-|\.\ )[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû]+)*)$)/
+	var rua_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû\.\,\']+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû\.\,\']|((\ |\-|\,\ |\.\ )[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû\.\,\']+)*)$)/
+	var bairro_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû\.\,\']+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû\.\,\']|((\ |\-|\.\ )[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû\.\,\']+)*)$)/
 	var telefone_valid = /^([0-9]{10,12}|[0-9]{6,8}\-[0-9]{4}|\([0-9]{2,3}\)[0-9]{8,9}|\([0-9]{2,3}\)[0-9]{4,5}\-[0-9]{4})$/g;
 	var telefone2_valid = /(^([0-9]{10,12}|[0-9]{6,8}\-[0-9]{4}|\([0-9]{2,3}\)[0-9]{8,9}|\([0-9]{2,3}\)[0-9]{4,5}\-[0-9]{4})$|^$)/g;
 	var orgao_expedidor_valid = /^(?:[a-zA-Z0-9\/]|[a-zA-Z0-9\/](?:\-|\ ))+$/g;
@@ -513,21 +513,22 @@ $(document).ready(function () {
 
 	//Aplicação de máscara para Telefone 1
 	document.getElementById('telefone_1').addEventListener('input', function (e) {
-    let mas_tel1 = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-    mas_tel1 = mas_tel1.replace(/(\d{2})(\d)/, '($1)$2'); // Adiciona os parênteses e espaço
-    mas_tel1 = mas_tel1.replace(/(\d{5})(\d)/, '$1-$2'); // Adiciona o traço após os 5 primeiros dígitos
-    mas_tel1 = mas_tel1.substring(0,15); // Limita o tamanho máximo para (00) 00000-0000
-    e.target.value = mas_tel1;
+    let mas_tel = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+    mas_tel = mas_tel.replace(/(\d{2})(\d)/, '($1)$2'); // Adiciona os parênteses e espaço
+    mas_tel = mas_tel.replace(/(\d{4})(\d)/, '$1-$2'); // Adiciona o traço após os 4 primeiros dígitos
+	if (mas_tel.length >= 14) mas_tel = mas_tel.substring(0,8) + mas_tel.substring(9,10) + mas_tel.substring(8,9) + mas_tel.substring(10,14); 
+	mas_tel = mas_tel.substring(0,14); // Limita o tamanho máximo para (00) 00000-0000
+    e.target.value = mas_tel;
 	});
 
-	//Aplicação de máscara para Telefone 1
+	//Aplicação de máscara para Telefone 2
 	document.getElementById('telefone_2').addEventListener('input', function (e) {
-		let mas_tel2 = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-		mas_tel2 = mas_tel2.replace(/(\d{2})(\d)/, '($1)$2'); // Adiciona os parênteses e espaço
-		mas_tel2 = mas_tel2.replace(/(\d{5})(\d)/, '$1-$2'); // Adiciona o traço após os 5 primeiros dígitos
-		mas_tel2 = mas_tel2.substring(0, 15); // Limita o tamanho máximo para (00) 00000-0000
-		e.target.value = mas_tel2;
-		});
-
+    let mas_tel = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+    mas_tel = mas_tel.replace(/(\d{2})(\d)/, '($1)$2'); // Adiciona os parênteses e espaço
+    mas_tel = mas_tel.replace(/(\d{4})(\d)/, '$1-$2'); // Adiciona o traço após os 4 primeiros dígitos
+	if (mas_tel.length >= 14) mas_tel = mas_tel.substring(0,8) + mas_tel.substring(9,10) + mas_tel.substring(8,9) + mas_tel.substring(10,14); 
+	mas_tel = mas_tel.substring(0,14); // Limita o tamanho máximo para (00) 00000-0000
+    e.target.value = mas_tel;
+	});
 
 });

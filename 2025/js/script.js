@@ -511,23 +511,23 @@ $(document).ready(function () {
 	});
 
 
-	/*//Aplicação de máscara para Telefone 1
+	//Aplicação de máscara para Telefone 1
 	document.getElementById('telefone_1').addEventListener('input', function (e) {
     let mas_tel1 = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-    mas_tel1 = mas_tel1.replace(/(\d{2})(\d)/, '($1) $2'); // Adiciona os parênteses e espaço
+    mas_tel1 = mas_tel1.replace(/(\d{2})(\d)/, '($1)$2'); // Adiciona os parênteses e espaço
     mas_tel1 = mas_tel1.replace(/(\d{5})(\d)/, '$1-$2'); // Adiciona o traço após os 5 primeiros dígitos
-    mas_tel1 = mas_tel1.substring(0, 15); // Limita o tamanho máximo para (00) 00000-0000
+    mas_tel1 = mas_tel1.substring(0,15); // Limita o tamanho máximo para (00) 00000-0000
     e.target.value = mas_tel1;
 	});
 
 	//Aplicação de máscara para Telefone 1
 	document.getElementById('telefone_2').addEventListener('input', function (e) {
 		let mas_tel2 = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-		mas_tel2 = mas_tel2.replace(/(\d{2})(\d)/, '($1) $2'); // Adiciona os parênteses e espaço
+		mas_tel2 = mas_tel2.replace(/(\d{2})(\d)/, '($1)$2'); // Adiciona os parênteses e espaço
 		mas_tel2 = mas_tel2.replace(/(\d{5})(\d)/, '$1-$2'); // Adiciona o traço após os 5 primeiros dígitos
 		mas_tel2 = mas_tel2.substring(0, 15); // Limita o tamanho máximo para (00) 00000-0000
 		e.target.value = mas_tel2;
 		});
 
-*/
+
 });

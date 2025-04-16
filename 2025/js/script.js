@@ -490,6 +490,12 @@ $(document).ready(function () {
 
 	document.getElementById('cpf').addEventListener('input', function (e) {
 		let mas_cpf = e.target.value;
+		if (mas_cpf.length !== 4 && mas_cpf.length !== 8 && mas_cpf.slice(-1) === ".") {
+			mas_cpf = mas_cpf.substring(0, mas_cpf.length - 1);		
+		}
+		if (mas_cpf.length !== 12 && mas_cpf.slice(-1) === "-") {
+			mas_cpf = mas_cpf.substring(0, mas_cpf.length - 1);		
+		}
 		if (mas_cpf.length < 12) {
 			mas_cpf = mas_cpf.replace(/(\d{3})(\d)/, '$1.$2'); 
 			mas_cpf = mas_cpf.replace(/(\d{3})(\d)/, '$1.$2'); 
@@ -497,14 +503,23 @@ $(document).ready(function () {
 		} else {
 			mas_cpf = mas_cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); 
 		}
-		
+		if (mas_cpf.length === 13 && !mas_cpf.slice(-3).includes("-")) {
+			mas_cpf = mas_cpf.substring(0,11) + "-" + mas_cpf.substring(11,13); 
+		}
 		e.target.value = mas_cpf;
 	});
 
 	//Aplicação de máscara para CEP
 
 	document.getElementById('cep').addEventListener('input',function (e) {
-		let mas_cep = e.target.value.replace(/^(?!([0-9]{1,5}))(?!([0,9]{5}\-[0-9]{1-3})).*$/g, ''); 
+		let mas_cep = e.target.value; 
+		if (mas_cep.length !== 6 && mas_cep.slice(-1) === "-") {
+			mas_cep = mas_cep.substring(0, mas_cep.length - 1);		
+		}
+		if (mas_cep.length > 5 && mas_cep.substring(5,6) !== "-" && mas_cep.includes("-")) {
+			console.log("teste")
+			mas_cep = mas_cep.replace(/\-/g, '');
+		}
 		mas_cep = mas_cep.replace(/(\d{5})(\d)/, '$1-$2'); 
 		e.target.value = mas_cep;
 

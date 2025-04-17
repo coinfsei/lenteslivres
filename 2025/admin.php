@@ -46,39 +46,7 @@ if ($mostrar_formulario) {
     //sistema para listar inscritos
     
     // Consulta para listar os inscritos com os dados relacionados
-    $sql = "SELECT
-        i.id AS id_inscrito,
-        i.nome AS nome_inscrito,
-        i.profissao,
-        i.cpf,
-        i.rg,
-        i.org_expedidor,
-        i.email,
-        i.data_inscricao,
-        i.proposta_intervecao,
-        t.telefone_1,
-        t.telefone_2,
-        e.rua,
-        e.bairro,
-        e.municipio,
-        e.cep,
-        e.uf,
-        u.compro_resi,
-        u.video_arquivo,
-        u.descricao_arquivo,
-        u.documento_arquivo,
-        u.local_compro,
-        u.local_documento,
-        u.local_video,
-        u.local_descricao
-    FROM
-        inscrito i
-    LEFT JOIN
-        telefone t ON i.id = t.id_inscrito
-    LEFT JOIN
-        endereco e ON i.id = e.id_inscrito
-    LEFT JOIN
-        upload u ON i.id = u.id_inscrito";
+    $sql = "SELECT * FROM coleta_dados";
 
 
 $result = $conn->query($sql);

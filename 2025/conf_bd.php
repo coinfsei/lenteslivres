@@ -4,7 +4,7 @@
 function conexao_banco() {
     ini_set('display_errors', 'Off');
     
-    $server_name = '10.28.0.42';
+    $server_name = '10.28.0.47';
     $user = 'root';
     $password = 'SenhaSegura!123';
     $base = 'concurso';

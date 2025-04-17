@@ -1,26 +1,4 @@
 <?php 
-	
-	if (!file_exists('uploads')) {
-    mkdir('uploads', 0755, true);
-	}
-	if (!file_exists('uploads/comprovante_residencia/')) {
-    mkdir('uploads/comprovante_residencia/', 0755, true);
-	}
-	if (!file_exists('uploads/declaracao_de_autoria/')) {
-    mkdir('uploads/declaracao_de_autoria/', 0755, true);
-	}
-	if (!file_exists('uploads/docu_identidade/')) {
-    mkdir('uploads/docu_identidade/', 0755, true);
-	}
-	if (!file_exists('uploads/identificacao_do_candidato/')) {
-    mkdir('uploads/identificacao_do_candidato/', 0755, true);
-	}
-	if (!file_exists('uploads/termo_de_premiacao/')) {
-    mkdir('uploads/termo_de_premiacao/', 0755, true);
-	}
-	if (!file_exists('uploads/video/')) {
-    mkdir('uploads/video/', 0755, true);
-	}
 
     function validar_foto($foto){
 		
@@ -89,7 +67,7 @@
 
                         return $caminho;
 //
-        }elseif(preg_match("/_compro_residencia/",$arquivo)){
+        }elseif(preg_match("/_comprovante_residencia/",$arquivo)){
 
             $caminho = 'uploads/comprovante_residencia/' . $arquivo;
 
@@ -106,26 +84,26 @@
                         return $caminho ;
                         */
 
-        }elseif(preg_match("/_desc_prop/",$arquivo)){
+        }elseif(preg_match("/_descricao_da_proposta/",$arquivo)){
 //
-            $caminho = 'uploads/desc_prop/' . $arquivo;
+            $caminho = 'uploads/descricao_da_proposta/' . $arquivo;
 
             move_uploaded_file($_FILES['desc_prop']['tmp_name'], $caminho);
 
     
                         return $caminho;
 
-        }elseif(preg_match("/_termo_premi/",$arquivo)){
+        /* }elseif(preg_match("/_termo_premi/",$arquivo)){
 
             $caminho = 'uploads/termo_de_premiacao/' . $arquivo;
 
             move_uploaded_file($_FILES['termo_premi']['tmp_name'], $caminho);
 
-                        return $caminho;
+                        return $caminho; */
 
-        }elseif(preg_match("/_documen_identidade/",$arquivo)){
+        }elseif(preg_match("/_documento_identidade/",$arquivo)){
 
-            $caminho = 'uploads/docu_identidade/' . $arquivo;
+            $caminho = 'uploads/documento_identidade/' . $arquivo;
 
             move_uploaded_file($_FILES['identidade']['tmp_name'], $caminho);
 

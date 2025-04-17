@@ -168,13 +168,14 @@ $sql = "INSERT INTO endereco (rua, bairro, municipio, cep, uf, id_inscrito) VALU
 
 $res = $conn->query($sql);
 
+    //Reformular o nome para retira " "
+    $nome_refor = str_replace(' ','_',$nome);
+
     //altera nome dos arquivos é tenta movimenta- para as pastas de destino
-    $novovideo = "id_".$id_inscrito."_Nome_".$nome."_video".'.'. pathinfo($nome_video, PATHINFO_EXTENSION);
-    $novocompro ="id_".$id_inscrito."_Nome_".$nome."_compro_residencia" .'.'. pathinfo($nome_compro, PATHINFO_EXTENSION);
-    /*$novodecla = "id_".$id_inscrito."_Nome_".$nome."_decla_autoria" .'.'. pathinfo($nome_decla_autoria, PATHINFO_EXTENSION);*/
-    $novodesc_prop= "id_".$id_inscrito."_Nome_".$nome."_desc_prop" .'.'. pathinfo($nome_desc_prop, PATHINFO_EXTENSION);
-    /*$novotermo = "id_".$id_inscrito."_Nome_".$nome."_termo_premi" .'.'. pathinfo($nome_termo_premi, PATHINFO_EXTENSION);*/
-    $novoidentidade = "id_".$id_inscrito."_Nome_".$nome."_documen_identidade" .'.'. pathinfo($nome_identidade,PATHINFO_EXTENSION);
+    $novovideo = "id_".$id_inscrito."_".$nome_refor."_video".'.'. pathinfo($nome_video, PATHINFO_EXTENSION);
+    $novocompro ="id_".$id_inscrito."_".$nome_refor."_comprovante_residencia" .'.'. pathinfo($nome_compro, PATHINFO_EXTENSION);
+    $novodesc_prop= "id_".$id_inscrito."_".$nome_refor."_descricao_da_proposta" .'.'. pathinfo($nome_desc_prop, PATHINFO_EXTENSION);
+    $novoidentidade = "id_".$id_inscrito."_".$nome_refor."_documento_identidade" .'.'. pathinfo($nome_identidade,PATHINFO_EXTENSION);
 
     $caminho_compro = move_arquivo($novocompro);
     $caminho_video = move_arquivo($novovideo);
@@ -184,7 +185,7 @@ $res = $conn->query($sql);
     $caminho_identidade = move_arquivo($novoidentidade);
 
 
-        $sql = "INSERT INTO upload (compro_resi, video_arquivo, descricao_arquivo, id_inscrito, local_compro, local_video, local_descricao, documento_arquivo, local_documento) VALUES ('{$novocompro}','{$novovideo}','{$novodesc_prop}','{$id_inscrito}', '{$caminho_compro}','{$caminho_video}','{$novodesc_prop}','{$novoidentidade}','{$caminho_identidade}')";
+        $sql = "INSERT INTO upload (compro_resi, video_arquivo, descricao_arquivo, id_inscrito, local_compro, local_video, local_descricao, documento_arquivo, local_documento) VALUES ('{$novocompro}','{$novovideo}','{$novodesc_prop}','{$id_inscrito}', '{$caminho_compro}','{$caminho_video}','{$caminho_novodesc_prop}','{$novoidentidade}','{$caminho_identidade}')";
 
         $res = $conn->query($sql);
   

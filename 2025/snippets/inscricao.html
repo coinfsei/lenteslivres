@@ -61,7 +61,7 @@
                                 <div class="item-form-texto input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">Órgão Expedidor<p class="icon">*</p></span>
                                     <input class="form-control" placeholder="Exemplo: SSP-BA" aria-label="Username"
-                                        aria-describedby="basic-addon1" type="text" maxlength="10" name="orgao_expedidor"
+                                        aria-describedby="basic-addon1" type="text" maxlength="10" name="orgao_expedidor" oninput="this.value = this.value.replace(/[^A-Za-z\/\ \-]/g, '')"
                                         id="orgao_expedidor">
                                 </div>
                             </div>

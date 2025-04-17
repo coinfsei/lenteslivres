@@ -39,7 +39,7 @@ $(document).ready(function () {
 	var desc_prop = document.getElementById("desc_prop").value
 	//var termo_premi = document.getElementById("termo_premi").value 
 
-	var nome_valid = /(^[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû\']+([a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû\']|((\ |\. |º|ª)[a-zA-Z0-9ÁÂÃÉÊÍÎÓÔÕÚçáâãéêíîóôõúû\']+)*)\.?$)/g;
+	var nome_valid = /(^[a-zA-Z0-9ÁÂÃÄËÉÊÏÍÎÓÔÕÖÜÚçáäâãëéêíïîóôöõúûü\']+([a-zA-Z0-9ÁÂÃÄËÉÊÏÍÎÓÔÕÖÜÚçáäâãëéêíïîóôöõúûü\']|((\ |\. |º|ª)[a-zA-Z0-9ÁÂÃÄËÉÊÏÍÎÓÔÕÖÜÚçáäâãëéêíïîóôöõúûü\']+)*)\.?$)/g;
 	var email_valid = /(^[a-zA-Z0-9\.\_\-]+@([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$)/g;
 	var cpf_valid = /(^[0-9]{11}$)|(^([0-9]{3}\.){2}[0-9]{3}\-[0-9]{2}$)/g;
 	var rg_valid = /(^[0-9]{4,12}$)|(^([0-9]{1,3}\.){2}([0-9]{1,3}\-)([0-9]{1,3})$)/g;
@@ -490,6 +490,16 @@ $(document).ready(function () {
 
 	document.getElementById('cpf').addEventListener('input', function (e) {
 		let mas_cpf = e.target.value;
+		if ((mas_cpf.length > 4 && (mas_cpf.substring(4,5) !== "-" && mas_cpf.substring(4,5) !== ".")) || (mas_cpf.length > 8 && (mas_cpf.substring(8,9) !== "-" && mas_cpf.substring(8,9) !== ".")) && mas_cpf.includes(".")) {
+			mas_cpf = mas_cpf.replace(/\./g, '');
+			mas_cpf = mas_cpf.replace(/(\d{3})(\d)/, '$1.$2'); 
+			mas_cpf = mas_cpf.replace(/(\d{3})(\d)/, '$1.$2'); 
+			if (mas_cpf.length >= 12 && mas_cpf.substring(10,11) === "-") mas_cpf = mas_cpf.replace(/\-/g, '');
+		}
+		if (mas_cpf.length > 12 && (mas_cpf.substring(12,13) !== "-" && mas_cpf.substring(12,13) !== ".")) {
+			mas_cpf = mas_cpf.replace(/\-/g, '');
+			mas_cpf = mas_cpf.replace(/[^0-9\.\-]/g, ''); 
+		}
 		if (mas_cpf.length !== 4 && mas_cpf.length !== 8 && mas_cpf.slice(-1) === ".") {
 			mas_cpf = mas_cpf.substring(0, mas_cpf.length - 1);		
 		}
@@ -517,7 +527,6 @@ $(document).ready(function () {
 			mas_cep = mas_cep.substring(0, mas_cep.length - 1);		
 		}
 		if (mas_cep.length > 5 && mas_cep.substring(5,6) !== "-" && mas_cep.includes("-")) {
-			console.log("teste")
 			mas_cep = mas_cep.replace(/\-/g, '');
 		}
 		mas_cep = mas_cep.replace(/(\d{5})(\d)/, '$1-$2'); 
